@@ -1,0 +1,48 @@
+\documentclass[aps,pre,preprint,groupedaddress]{revtex4}
+%\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{epsf,epsfig,graphics}
+\usepackage{float}
+\usepackage{makeidx}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsbsy}
+\usepackage{subfigure}
+%\usepackage[table,x11names]{xcolor}
+%\usepackage{kpfonts}
+%\usepackage{xeCJK}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{morefloats}
+\newcommand*{\vv}[1]{\vec{\mkern0mu#1}}
+\newcommand{\figwsL}{16cm}
+\newcommand{\figws}{7.5cm}
+\newcommand{\figwss}{5.cm}
+\newcommand{\figw}{10cm}
+\newcommand{\figww}{15cm}
+%\usepackage{mathaccents}
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+
+\begin{document}
+
+\title{Linear Response Theory for Noisy Network Dynamics near Nonequilibrium Steady States}
+\author{Rong-Chih Chang$^1$\begin{CJK*}{UTF8}{bsmi}(張容誌)\end{CJK*}, Pik-Yin Lai$^{1,2}$%\footnote{pylai@phy.ncu.edu.tw}
+\begin{CJK*}{UTF8}{bsmi}(黎璧賢)\end{CJK*}}
+\affiliation{$^1$Dept. of Physics and Center
+for Complex Systems, National Central University, Chung-Li District, Taoyuan City 320, Taiwan, R.O.C.
+}
+\affiliation{$^2$Physics Division, National Center for Theoretical Sciences, Taipei 10617, Taiwan.}
+
+\begin{abstract}
+    Linear response theory (LRT) provides a powerful framework for predicting the response of a system to small perturbations from information in its steady state. Here, we develop a steady-state and time-dependent linear response framework for noisy network dynamics near stable fixed points. The network is modeled as coupled stochastic variables with intrinsic node dynamics, weighted and directed interactions, and Gaussian white noise. By linearizing the dynamics around the noise-free fixed point. The theory is formulated for small perturbations in intrinsic node parameters, connection weights, and noise strengths, and applies to both equilibrium steady states and nonequilibrium steady states, where detailed balance is broken by asymmetric couplings and nonuniform noise strengths. We derive explicit response functions and verify them by measuring the change in equal-time covariance $\langle \delta x_i \delta x_j \rangle$ before and after the perturbation is appiled through Langevin simulations. We further show that the response depends on network structure, such as weighted degrees, and extend the formalism to time-dependent parameter changes. Our results provide a unified description of steady-state and time-dependent response in noisy network systems, and provide a predictive framework for studying network disruption and nonequilibrium response in complex interacting systems.
+\end{abstract}
+
+\maketitle
+
+\input{Section/Introduction.tex}
+
+
+\end{document}

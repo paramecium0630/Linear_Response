@@ -1,0 +1,32 @@
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.idx
+*.ilg
+*.ind
+*.nav
+*.snm
+*.vrb
+
+# Build directories
+build/
+out/
+
+# Generated PDFs
+*.pdf
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+*~
