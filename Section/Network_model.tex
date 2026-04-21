@@ -1,0 +1,39 @@
+\section{Noisy network dynamics and linearization near a stable fixed point}
+\quad We consider a network of $N$ nodes, where the state of node i is described by a continuous variable $x_i(t)$. The intrinsic dynamics of each node is governed by a function $f_i(x_i;r_i)$, where $r_i$ denotes a node-specific parameter. Nodes $i$ and $j$ are connected by directed and weighted links described by the matrix ${\bf W}$. The noisy network dynamics are governed by
+\begin{equation}
+    \dot{x}_i = f_i(x_i;r_i) + \sum_{j\neq i} W_{ij} h(x_i, x_j) + \eta_i(t),\;i=1,2,...,N,
+\end{equation}
+where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
+\begin{equation}
+    \dot{\vec{x}} = \vec{F}(\vec{x};\vec{p}) + \vec{\eta}(t),
+\end{equation}
+with
+\begin{equation}
+    F_j(\vec{x}; r_j, {\bf W}) = f_j(x_j;r_j) + \sum_{k} W_{jk} h(x_j,x_k).
+\end{equation}
+Here the parameters are assumed to be externally tunable and time-independent. Such a formulation is applicable to a wide range of noisy network systems. For example, in neuroscience, $x_i(t)$ may represent the membrane potential and $W_{ij}$ the strength and direction of synaptic connections; in ecological systems, $x_i(t)$ may represent the population of species $i$, coupled to other species through interaction terms.\par
+We assume that the system fluctuates around a noise-free solution $\vec{X}$. To analyze fluctuations near a stable fixed point, we introduce the deviation
+\begin{equation}
+    \Delta \vec{x} \equiv \vec{x} - \vec{X},
+\end{equation}
+and linearize the deterministic force around $\vec{X}$. The Jacobian matrix
+\begin{equation}
+    \mathbf{Q} = \nabla \vec{F}\big|_{\vec{X}}
+\end{equation}
+encodes both the network topology and the local dynamics, and is asymmetric in general. Up to linear order in $\Delta \vec{x}$, the stochastic dynamics becomes
+\begin{equation}
+    \Delta \dot{\vec{x}} = {\bf Q}\Delta \vec{x} + \vec{\eta}(t),
+\end{equation}
+with the Jacobian matrix
+\begin{equation}
+    Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X+i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
+\end{equation}
+We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigenvalues of $\mathbf{Q}$ have non-negative real parts. The noise is taken to be additive Gaussian white noise with covariance matrix
+\begin{equation}
+    \langle \vec{\eta}(t) \vec{\eta}^\intercal(t') \rangle = \boldsymbol{\sigma} \delta (t-t'),\;\langle \vec{\eta}(t) \rangle = 0,
+\end{equation}
+where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. In the examples studied below, we mainly use the linear intrinsic dynamics $f_i = r_i(1-x_i)$ and the Logistic one $f_i = r_i x_i(1-x_i)$, together with the coupling function $h(x_i,x_j) = x_j-x_i$, for which the nodes tend to synchronize. At steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
+\begin{equation}
+    \boldsymbol{\sigma} = \mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
+\end{equation}
+This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT.
