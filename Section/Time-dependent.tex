@@ -1,0 +1,37 @@
+\section{Time-Dependent Linear Response Theory in Noisy Network Dynamics}
+\subsection{General Formula for Time-Dependent Linear Response Function}
+\quad We consider the non-steady response induced by a time-dependent change in network parameters $\vec{p}\rightarrow\vec{p}+\delta \vec{p}(t)$, and assume the system is at a steady state with $\delta \vec{p} = 0$ at $t \le 0$, the non-steady (linear) response function of an observable $\mathbf{B}(t)$ is defined as
+\begin{equation}
+    \langle \mathbf{B}(t) \rangle_{\vec{p}+\delta \vec{p}(t)} = \langle \mathbf{B}(0) \rangle_{ss,\vec{p}} + \int_0^t dt' \boldsymbol{\chi}(t-t') \delta \dot{\vec{p}}(t').
+    \label{time-dependent_response}
+\end{equation}
+One can define the conjugate force $\vec{\mathcal{F}}(t)$ in the same way as in (\ref{conjugate_force}). The time-dependent linear response function is given by
+\begin{eqnarray}
+    \boldsymbol{\chi}(t) &=&\langle \nabla_p{\mathbf{B}} \rangle_{ss,{\vec p}} + \int_0^t dt'\langle {\mathbf {B}}(t-t'){\dot{\vv {\mathscr F}}}^\intercal\rangle_{ss,{\vec p}} \nonumber\\
+    &=& \boldsymbol{\chi} ^{(ss)}- \langle \delta{\mathbf B}(t)\delta{\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}}=\boldsymbol{\chi} ^{(ss)}- \langle \delta{\mathbf B}(t){\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}}.
+    \label{chineqm}
+\end{eqnarray}
+Then the time-dependent relaxation of $\mathbf{B}(t)$ is given by
+\begin{equation}
+    \langle \mathbf{B}(t)\rangle_{{\vec p}+\delta{\vec p}(t)}= \langle \mathbf{ B}(0)\rangle_{ss,{\vec p}}+\boldsymbol{\chi}^{(ss)}\delta {\vec p}-\int_0^t dt'\langle \delta\mathbf{ B}(t-t'){\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}} \delta{\dot {\vec p}}(t').
+    \label{Bnoneqm}
+\end{equation}
+For the noisy network dynamics, let the time-lagged covariance matrix
+\begin{equation}
+    (\mathbf{K}_\tau)_{ij} \equiv \langle \delta x_i(\tau) \delta x_j(0) \rangle.
+    \label{time-lagged_covariance}
+\end{equation}
+Then one has 
+\begin{equation}
+    \langle \delta x_i(\tau) \mathcal{F}_\alpha(0) \rangle = \sum_\ell \frac{\partial X_\ell}{\partial p_\alpha} (e^{\tau \mathbf{Q}})_{i\ell}.    
+\end{equation}
+This relation shows that the relaxation response is controlled by both the shift of the noise-free fixed point.
+\subsection{Response function for linear network dynamics}
+\quad We next consider the simpler case of linear network dynamics, with $f_i(x_i;r_i) = r_i(a_i-x_i)$, and a coupling function $h$ that is also linear in $x_i$. In this case, the system can be solved explicitly, and $\langle x_i \rangle = X_i$. The time-dependent response of the mean state variable is then 
+\begin{equation}
+    \chi_{i\alpha}(t)=\left(e^{t{\bf Q}}{\bf Q}^{-1} \nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}-\left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{i\alpha}. \label{chinsslinear}
+\end{equation}
+For the deterministic force, the time-dependent response function is
+\begin{equation}
+\chi_{i\alpha}(t)=\left(e^{t{\bf Q}}\nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}.\label{chitforcelinear}
+\end{equation}

@@ -1,0 +1,77 @@
+\section{Explicit Response Formula}
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, since it directly characherizes the fluctuations of the noisy network dynamics. We also present the corresponding response functions for the different types of parameter perturbations.
+
+\subsection{Response due to Change in the Intrinsic Node Parameter $r$}
+\quad We first consider the perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. From the general formula of the conjugate force, one obtains the steady-state response of the equal -time covariance matrix
+\begin{equation}
+    \chi_{ij\alpha} = \langle \delta x_i \delta x_j \mathcal{F}_\alpha \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_\alpha \rangle.
+    \label{response_Ko_r}
+\end{equation}
+By using the dependence of $\mathbf{Q}$ on $r_\alpha$, the response function can be written as
+\begin{eqnarray}
+    \chi_{ij\alpha}^{(ss)} &=& \frac{\partial f'_\alpha}{\partial r_\alpha} \Big|_{\vec{X}}\left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij}-\frac{\partial f_\alpha}{\partial r_\alpha} \Big|_{\vec{X}} \sum_s Q^{-1}_{s\alpha} \Bigg[ f_s''\left( \frac{\partial \mathbf{K}_0}{\partial Q_{ss}} \right)_{ij}\nonumber\\
+    &+& \sum_n W_{sn} \partial_1^2 h(X_s, X_n) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{ss}} \right)_{ij}+\sum_\mu W_{\mu s} \partial_1 \partial_2 h(X_\mu, X_s) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\mu\mu}} \right)_{ij}\nonumber\\
+    &+& \sum_\nu W_{s\nu} \partial_1\partial_2 h(X_s, X_\nu) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{s\nu}} \right)_{ij} + \sum_\mu W_{\mu s} \partial^2_2 h(X_\mu, X_s) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\mu s}} \right)_{ij} \Bigg].
+\end{eqnarray}
+For the simple cases of $f_i(x_i) = r_i(a_i-x_i)$ with linear $h$, or Logistic $f_i(x_i) = r_i x_i (1-x_i)$ with synchronizing coupling and $h(X_i, X_j) = 0$, the above result simplifies significantly to 
+\begin{equation}
+    \chi_{ij\alpha}^{(ss)} = -\left(\frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij}.
+\end{equation}
+This form shows that the response function of the covariance matrix is directedly controlled by the diagonal element $Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j}$, namely the node parameter and the weighted degree of node $\alpha$.
+
+\subsection{Response due to Change in the Connection Weight $W$}
+\quad We next consider the perturbation of a directed connection weight $W_{\alpha\beta}$. The corresponding response function of the covariance matrix is
+\begin{equation}
+    \chi_{ij(\alpha\beta)} = \langle \delta x_i \delta x_j \mathcal{F}_{\alpha\beta} \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_{\alpha\beta} \rangle.
+    \label{response_Ko_W}
+\end{equation}
+Again, by using the dependence of $\mathbf{Q}$ on $W_{\alpha\beta}$, the explicit formula is
+\begin{eqnarray}
+    \chi_{ij\alpha\beta}^{(ss)} &=& \partial_1 h(X_\alpha, X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij} + \partial_2 h(X_\alpha, X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij}\nonumber\\
+    &-& h(X_\alpha,X_\beta) \sum_s Q^{-1}_{s\alpha} \Bigg[ \Bigg( f''_s + \sum_n W_{sn} \partial^2_1 h(X_s, X_n) \Bigg) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{ss}} \right)_{ij}\nonumber\\
+    &+& \sum_\mu W_{\mu s} \partial_1\partial_2 h(X_\mu, X_s) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\mu\mu}} \right)_{ij} + \sum_\nu W_{s\nu} \partial_1\partial_2 h(X_s, X_\nu) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{s\nu}} \right)_{ij}\nonumber\\
+    &+& \sum_\mu W_{\mu s} \partial_2^2 h(X_\mu, X_s) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\mu s}} \right)_{ij} \Bigg].
+\end{eqnarray}
+For systems that can achieve a fully synchronized noise-free state with synchronizing coupling function $h(X_i, X_j)=0$, the formula reduces to
+\begin{equation}
+    \chi_{ij(\alpha\beta)} = \partial_1 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij} + \partial_2 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij},
+\end{equation}
+which makes the role of the perturbed connection especially transparent. In this case, the response is determined by two contributions: the change in the local diagonal part $Q_{\alpha\alpha}$, and the change in the directed off-diagonal coupling $Q_{\alpha\beta} (=W_{\alpha\beta})$. For an undirected network, since $W_{\alpha\beta}=W_{\beta\alpha}$, the total response is the sum of the two directed contributions associated with $W_{\alpha\beta}$ and $W_{\beta\alpha}$.
+
+\subsection{Response due to Change in the Noise Strength $\sigma$}
+\quad Finally, we consider the perturbation of a noise strength. In contrast to the previous two cases, a change in $\sigma_{\alpha\alpha}$ does not alter the deterministic force, and therefore does not shift the fixed point. The corresponding response function gives
+\begin{equation}
+    \chi_{ij(\alpha\alpha)} = \langle \delta x_i \delta x_j \mathcal{F}_{\alpha\alpha} \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_{\alpha\alpha} \rangle = \left( \frac{\partial \mathbf{K}_0}{\partial \sigma_{\alpha\alpha}} \right)_{ij}.
+\end{equation}
+This result emphasizes that a perturbation of the noise strength affects the steady-state fluctuations directly, without changing the deterministic fixed point.
+
+\subsection{Evaluation of $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$ in nonequilibrium steady states}
+\quad The derivative of $\mathbf{K}_0$ with respect to $\mathbf{Q}$ is determined from the steady-state Lyapunov equation due to the dependence of $\mathbf{K}_0(\mathbf{Q})$. The derivatives of $\mathbf{K}_0$ with respect to the matrix elements of $\mathbf{Q}$ can be obtained by differentiating the Lyapunov equation
+\begin{equation}
+    \mathbf{Q} \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} + \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{Q}^\intercal = \mathbf{M}^{(\alpha,\beta)},\; (\mathbf{M}^{(\alpha,\beta)})_{ij} \equiv -(\mathbf{K}_0)_{i\beta} \delta_{j\alpha} - (\mathbf{K}_0)_{j\beta} \delta_{i\alpha}.
+    \label{derivative_Ko}
+\end{equation}
+Also, the derivative of the inverse of the covariance matrix gives
+\begin{equation}
+    \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
+\end{equation}
+They are useful for calculating various response functions with the terms involving $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$.
+
+\subsection{Equilibrium simplification for networks with symmetric $\mathbf{Q}\boldsymbol{\sigma}$}
+\quad The above formulas further simplify when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
+\begin{equation}
+    \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = -Q^{-1}_{i\alpha} (\mathbf{K}_0)_{j\beta} = \frac{1}{2} Q^{-1}_{i\alpha} (\mathbf{Q}^{-1}\boldsymbol{\sigma})_{j\beta}.
+\end{equation}
+For uniform diagonal noise matrix, this becomes
+\begin{equation}
+    \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = \frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
+\end{equation}
+This equilibrium form is especially useful because the explicit dependence of $\mathbf{K}_0$ on $\mathbf{Q}$ is simple, so the response functions can be written directly in terms of $\mathbf{Q}^{-1}$. Then, the response function of $\mathbf{K}_0$ due to the node parameter change is simplified as
+\begin{equation}
+    \chi_{ij(\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha},
+\end{equation}
+and the response function for the connection weight change gives
+\begin{equation}
+    \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
+\end{equation}
+These results provide a simple reference form for comparison with the nonequilibrium steady-state response.

@@ -31,7 +31,7 @@ with the Jacobian matrix which depends on the parameters
 \begin{equation}
     Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X+i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
 \end{equation}
-We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigenvalues of $\mathbf{Q}$ have non-negative real parts. The noise is taken to be additive Gaussian white noise with covariance matrix
+We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigenvalues of $\mathbf{Q}$ have non-positive real parts. The noise is taken to be additive Gaussian white noise with covariance matrix
 \begin{equation}
     \langle \vec{\eta}(t) \vec{\eta}^\intercal(t') \rangle = \boldsymbol{\sigma} \delta (t-t'),\;\langle \vec{\eta}(t) \rangle = 0,
 \end{equation}

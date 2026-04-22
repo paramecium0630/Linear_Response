@@ -11,7 +11,7 @@ where the Jacobian matrix $\bf Q$ describes deterministic forces, and $\bf{\sigm
 \end{equation}
 If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
 \begin{equation}
-    \boldsymbol{\sigma} = \mathbf{Q K}_0 + \mathbf{K}_0 \mathbf{Q}^\intercal.
+    \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
 This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
@@ -54,7 +54,12 @@ The steady-state response function is then
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \int d\vec{x} \mathbf{B} \nabla_{\vec{p}} \psi_{ss}.
     \label{response_function}
 \end{equation}
-Defining the conjugate force with respect to parameters $\vec{F} \equiv -\nabla_{\vec{p}} \Phi$, one obtains
+Defining the conjugate force with respect to parameters
+\begin{equation}
+    \vec{\mathcal{F}} \equiv -\nabla_{\vec{p}} \Phi,
+    \label{conjugate_force}
+\end{equation} 
+one obtains
 \begin{equation}
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathcal{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}
