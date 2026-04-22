@@ -1,0 +1,62 @@
+\section{General steady-state linear response framework}
+\quad The linearized network dynamics in (\ref{linearized_dynamics}) can be formulated in terms of the Fokker-Planck equation
+\begin{equation}
+    \frac{\partial \psi (\vec{x},t;\vec{p})}{\partial t} = -\nabla \cdot (\mathbf{Q} \delta \vec{x} \psi (\vec{x},t; \vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p})),
+    \label{Fokker-Planck}
+\end{equation}
+where the Jacobian matrix $\bf Q$ describes deterministic forces, and $\bf{\sigma}$ is the diffusion matrix. Notice that the probability distribution $\psi (\vec{x},t;\vec{p})$ also depends on the parameters. The probability current is given by
+\begin{equation}
+    \vec{J}(\vec{x},t; \vec{p}) = \mathbf{Q} \delta \vec{x} \psi(\vec{x},t;\vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p}).
+    \label{probability_current}
+\end{equation}
+If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
+\begin{equation}
+    \boldsymbol{\sigma} = \mathbf{Q K}_0 + \mathbf{K}_0 \mathbf{Q}^\intercal.
+    \label{Lyapunov_eq}
+\end{equation}
+This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
+\begin{equation}
+    \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
+    \label{steady-state prob}
+\end{equation}
+which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$. The condition for a steady state is zero divergence of the probability current $\nabla \cdot \vec{J}_{ss} = 0$. From (\ref{steady-state prob}), the steady-state probability current gives
+\begin{equation}
+    \vec{J}_{ss} = \left( \mathbf{Q} + \frac{1}{2}\boldsymbol{\sigma} \mathbf{K}_0^{-1} \right) \delta \vec{x} \psi_{ss}.
+\end{equation}
+Even when a stationary Gaussian distribution exists, the system is not necessarily at equilibrium. The steady-state condition only implies that the probability current is divergence-free, not that it vanishes pointwise. Equilibrium requires $\vec{J}_{ss}$ vanishes, and the condition is equivalent to
+\begin{equation}
+    \mathbf{Q} + \frac{1}{2} \boldsymbol{\sigma} \mathbf{K}_0^{-1} = 0.
+\end{equation}
+With (\ref{Lyapunov_eq}), it gives the condition is equivalent to requiring $\mathbf{Q}\boldsymbol{\sigma}$ to be symmetric. This includes the case of symmetric $\mathbf{Q}$ with uniform diagonal noise matrix, but it is more general and does not require $\mathbf{Q}$ itself to be symmetric. On the other hand, $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$ occurs when the couplings are asymmetric or the noise strengths are nonuniform across components. Both mechanisms break time-reversal symmetry and generate persistent probability current, even though the distribution remains stationary.\par
+We develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
+\begin{equation}
+    \vec{F}(\vec{X}; \vec{p}) = 0.
+\end{equation}
+When the parameters change as $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the fixed point shifts from $\vec{X}$ to $\vec{X}+\delta \vec{X}$. Expanding
+\begin{equation}
+    \vec{F}(\vec{X}+\delta \vec{X}; \vec{p}+ \delta \vec{p}) = 0
+\end{equation}
+to the linear order gives
+\begin{equation}
+    \nabla \vec{F}\big|_{\vec{X}; \vec{p}} \delta \vec{X} + \nabla_{\vec{p}}\vec{F}\big|_{\vec{X}; \vec{p}} \delta \vec {p} = 0.
+\end{equation}
+With $\mathbf{Q}\equiv\nabla\vec{F}\big|_{\vec{X}}$, and assuming $\mathbf{Q}^{-1}$ exists, one obtains
+\begin{equation}
+    \frac{\partial X_i}{\partial p_\alpha} = -(\mathbf{Q}^{-1} \nabla_{\vec{p}} \vec{F}\big|_{\vec{X}},\vec{p})_{i\alpha}.
+\end{equation}
+This relation shows that the shift of the fixed point induced by a parameter perturbation is controlled by the network structure and local dynamics through $\mathbf{Q}$. For an observable $\mathbf{B}(\vec{x}; \vec{p})$, the steady-state linear response is defined by
+\begin{equation}
+    \langle \mathbf{B} \rangle_{ss, \vec{p}+\delta \vec{p}} = \langle \mathbf{B} \rangle_{ss, \vec{p}} + \boldsymbol{\chi} \delta \vec{p}.
+    \label{response}
+\end{equation}
+The steady-state response function is then
+\begin{equation}
+    \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \int d\vec{x} \mathbf{B} \nabla_{\vec{p}} \psi_{ss}.
+    \label{response_function}
+\end{equation}
+Defining the conjugate force with respect to parameters $\vec{F} \equiv -\nabla_{\vec{p}} \Phi$, one obtains
+\begin{equation}
+    \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathcal{F}}^\intercal \rangle_{ss, \vec{p}}.
+    \label{response_function2}
+\end{equation}
+This is the general steady-state linear response formula used throughout this work. Importantly, it does not require equilibrium. Instead, It only requires that the system has reached a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$ and the connection weight $W_{\alpha\beta}$.
