@@ -16,7 +16,7 @@ If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_
 \end{equation}
 This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
 \begin{equation}
-    \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
+    \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
 \end{equation}
 which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$. The condition for a steady state is zero divergence of the probability current $\nabla \cdot \vec{J}_{ss} = 0$. From (\ref{steady-state prob}), the steady-state probability current gives
