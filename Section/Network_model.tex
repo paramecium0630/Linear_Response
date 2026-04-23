@@ -4,7 +4,7 @@
     \dot{x}_i = f_i(x_i;r_i) + \sum_{j\neq i} W_{ij} h(x_i, x_j) + \eta_i(t),\;i=1,2,...,N,
     \label{noisy_network}
 \end{equation}
-where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
+where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$, the adjacency matrix or the connection weights are in general asymmetric for directed networks. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
 \begin{equation}
     \dot{\vec{x}} = \vec{F}(\vec{x};\vec{p}) + \vec{\eta}(t),
     \label{deterministic_force}
@@ -14,7 +14,7 @@ with
     F_j(\vec{x}; r_j, {\bf W}) = f_j(x_j;r_j) + \sum_{k} W_{jk} h(x_j,x_k).
 \end{equation}
 Here the parameters are assumed to be externally tunable and time-independent. Such a formulation is applicable to a wide range of noisy network systems. For example, in neuroscience, $x_i(t)$ may represent the membrane potential and $W_{ij}$ the strength and direction of synaptic connections; in ecological systems, $x_i(t)$ may represent the population of species $i$, coupled to other species through interaction terms.\par
-We assume that the system fluctuates around a noise-free solution $\vec{X}$, where $\vec{F}(\vec{X}) = 0$. To analyze fluctuations near a stable fixed point, we introduce the deviation
+We assume that the system fluctuates around a noise-free solution $\vec{X}$, where $\vec{F}(\vec{X}) = 0$ in the presence of noises. To analyze fluctuations near a stable fixed point, we introduce the deviation
 \begin{equation}
     \Delta \vec{x} \equiv \vec{x} - \vec{X},
 \end{equation}

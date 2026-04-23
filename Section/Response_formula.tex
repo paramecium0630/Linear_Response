@@ -16,6 +16,7 @@ By using the dependence of $\mathbf{Q}$ on $r_\alpha$, the response function can
 For the simple cases of $f_i(x_i) = r_i(a_i-x_i)$ with linear $h$, or Logistic $f_i(x_i) = r_i x_i (1-x_i)$ with synchronizing coupling and $h(X_i, X_j) = 0$, the above result simplifies significantly to 
 \begin{equation}
     \chi_{ij\alpha}^{(ss)} = -\left(\frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij}.
+    \label{chiKodr_ss}
 \end{equation}
 This form shows that the response function of the covariance matrix is directedly controlled by the diagonal element $Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j}$, namely the node parameter and the weighted degree of node $\alpha$.
 
@@ -35,6 +36,7 @@ Again, by using the dependence of $\mathbf{Q}$ on $W_{\alpha\beta}$, the explici
 For systems that can achieve a fully synchronized noise-free state with synchronizing coupling function $h(X_i, X_j)=0$, the formula reduces to
 \begin{equation}
     \chi_{ij(\alpha\beta)} = \partial_1 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij} + \partial_2 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij},
+    \label{chiKodW_ss}
 \end{equation}
 which makes the role of the perturbed connection especially transparent. In this case, the response is determined by two contributions: the change in the local diagonal part $Q_{\alpha\alpha}$, and the change in the directed off-diagonal coupling $Q_{\alpha\beta} (=W_{\alpha\beta})$. For an undirected network, since $W_{\alpha\beta}=W_{\beta\alpha}$, the total response is the sum of the two directed contributions associated with $W_{\alpha\beta}$ and $W_{\beta\alpha}$.
 
@@ -69,9 +71,11 @@ For uniform diagonal noise matrix, this becomes
 This equilibrium form is especially useful because the explicit dependence of $\mathbf{K}_0$ on $\mathbf{Q}$ is simple, so the response functions can be written directly in terms of $\mathbf{Q}^{-1}$. Then, the response function of $\mathbf{K}_0$ due to the node parameter change is simplified as
 \begin{equation}
     \chi_{ij(\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha},
+    \label{chiKodr_eq}
 \end{equation}
 and the response function for the connection weight change gives
 \begin{equation}
     \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
+    \label{chiKodW_eq}
 \end{equation}
 These results provide a simple reference form for comparison with the nonequilibrium steady-state response.

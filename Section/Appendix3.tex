@@ -1,0 +1,36 @@
+\section*{Appendix C: Solution of the Lyapunov Equation by Spectral decomposition}\label{sec:AppendixC}
+     Consider the Lyapunov Equation for the unknown ${\bf K}$ of the form
+ \begin{equation}
+  {\bf Q} {\bf K}+ {\bf K} {\bf Q}^\intercal={\bf S}\label{lyap}
+  \end{equation}    
+  where $ {\bf Q}$ and ${\bf S}$ are given matrices and ${\bf S}$ is symmetric.
+Assuming ${\bf Q}$ can be diagonalized in terms of its eigenvalues $\lambda_1,\lambda_2,\cdots,\lambda_N$ and  eigenvectors ${\vec u_1},{\vec u_2},\cdots,{\vec u_N}$, i.e. ${\bf Q}{\vec u_i}=\lambda_i{\vec u_i}$ and ${\bf P}^{-1}{\bf Q}{\bf P}=\boldsymbol{\Lambda}\equiv\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where ${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ is the  matrix of the eigenvectors.
+Then by defining ${\tilde {\bf K}}={\bf P}^{-1}{\bf K}{\bf P}^{-\intercal}$, (\ref{lyap}) gives
+\begin{eqnarray}
+& &  \boldsymbol{\Lambda}{\tilde {\bf K}}+ {\tilde {\bf K}}\boldsymbol{\Lambda}  ={\bf P}^{-1}{\bf S}{\bf P}^{-\intercal}\\
+&\implies& {\tilde {\bf K}}_{ij}=\frac{({\bf P}^{-1}{\bf S}{\bf P}^{-\intercal})_{ij}}{\lambda_i+\lambda_j}.\label{Ktil}
+\end{eqnarray}
+Hence the solution of the Lyapunov Eq. (\ref{lyap}) is
+\begin{equation}
+ {\bf K}={\bf P}  {\tilde {\bf K}}{\bf P}^\intercal
+\end{equation}
+where ${\tilde   {\bf K}}$ is given by (\ref{Ktil}).
+Note that for the noisy network that fluctuates about some stable noise-free solution, the real part of all the eigenvalues are negative, and hence $\lambda_i+\lambda_j\neq 0$ in (\ref{Ktil}).
+
+The above solution can also be written in terms of the spectral decomposition of ${\bf Q}$ with
+\begin{equation}
+    {\bf Q}=\sum_{\ell=1}^N \lambda_\ell {\bf M}^{(\ell)},
+\end{equation}
+where the matrices ${\bf M}^{(\ell)}$ formed by   is  given  by 
+\begin{equation}
+{\bf M}^{(\ell)}\equiv  {\vec u_\ell} {\vv v_\ell}^\intercal ,\quad \ell=1,2,\cdots,N  
+\end{equation}
+where $ {\vec v_\ell}$ are the vectors forming ${\bf P}^{-\intercal}$: ${\bf P}^{-\intercal}=({\vec v_1},{\vec v_2},\cdots,{\vec v_N})$ and $ {\vv v_i}^\intercal  {\vec u_j}=\delta_{ij}$, $\sum_{j=1}^N{\vec v_j} {\vv u_j}^\intercal={\bf I}$.
+In terms of ${\bf P}$ and its inverse, the elements of ${\bf M}$ are given by
+\begin{equation}
+    M_{ij}^{(\ell)}=P_{i\ell}P^{-1}_{\ell j}
+\end{equation}
+Then the solution of $ {\bf K}$  is given by
+\begin{equation}
+ {\bf K}=\sum_{\ell,m=1}^N \frac{ {\bf M}^{(\ell)}{\bf S} {{\bf M}^{(m)}}^\intercal }{\lambda_\ell+\lambda_m}.
+\end{equation}

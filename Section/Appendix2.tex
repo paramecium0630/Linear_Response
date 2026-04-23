@@ -1,1 +1,77 @@
-\section{Solution of the Lyapunov Equation by Spectral Decomposition}
+\section*{Appendix B: Noisy network reconstruction formulas}\label{sec:AppendixB}
+Consider a network with $N$ nodes whose intrinsic 1-dimensional dynamics, $x_i(t)$,  is described by the nonlinear function $f_i(x_i;r_i)$, where $r_i$ denotes the node parameter. Nodes $i$ and $j$ are connected by directed and weighted links given by the matrix ${\bf W}$. The dynamics are governed by
+ \begin{eqnarray}
+{\dot {\vec x}}& =&{\vec { F}}({\vec x})  +{\vec \eta}(t) \\
+{ F}_i({\vec x})&=&f_i(x_i;r_i)+\sum_{j\neq i}^N W_{ij} h(x_i, x_j)
+\label{xiapp}
+\end{eqnarray}
+where ${\vec { F}}({\vec x})$ is the force that drives the autonomous deterministic dynamics and $\eta_i$ is zero-mean Gaussian white noise that acts on the node $i$.  In many situations, the weighted matrix takes the form $W_{ij}= g_{ij} A_{ij}$,  with the adjacency matrix of elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$.
+$h$ is a coupling function that describes the interaction between nodes $i$ and $j$. Furthermore, we assume that the system approaches some asymptotic dynamics in the presence of noises, and $x_i(t)$  fluctuates around its mean value $\langle x_i\rangle$ (local maximum of the probability density function $\psi_{ss}({\vec x})$  which is close to the noise-free solution $X_i$. Then up to linear order in $\Delta{\vec x}\equiv{\vec x}-{\vec X}  $, one has
+ \begin{eqnarray}
+\Delta{\dot{\vec x}} &=&{\bf Q}\Delta{\vec x} +{\vec \eta}(t)+{\cal O}(\Delta x ^2),\quad{\hbox{where }}\label{deltax}\\
+ Q_{ij}&\equiv& W_{ij}\partial_2h(X_i,X_j)+\left[  f_i'(X_i;r_i)+ \sum_mW_{im} \partial_1 h(X_i,X_m) \right]\delta_{ij}.
+\label{QApp}
+\end{eqnarray}
+It can be shown that
+\begin{eqnarray}
+    \frac{\partial Q^{-1}_{ij}}{\partial r_\alpha}&=& Q^{-1}_{i\alpha} Q^{-1}_{\alpha j}.
+\end{eqnarray}
+For stable noise-free fixed points, the real parts of all eigenvalues of ${\bf Q}$ cannot be positive.
+The symmetric noise covariance matrix $\boldsymbol{\sigma}$ is given by:
+\begin{equation}
+\overline{{\vec \eta(t)} {\vv \eta^\intercal(t')}} = \boldsymbol{\sigma}\delta(t-t'); \qquad \overline{{\vec \eta(t)}}=0,
+\end{equation}
+where the $\overline{\cdots}$ stands for ensemble average over the noise, which can be obtained in practice by
+time-average over the asymptotic dynamics over an extended period of time, $\langle\cdots\rangle$. For steady-state noise-free dynamics, ${\bf Q}$ is time-independent, and  the linearized motion in (\ref{deltax}) can be solved to give
+\begin{equation}
+    \Delta{\vec x}(t)=e^{ t{\bf Q}}\Delta{\vec x}(0)+\int^t_0 dt' e^{ (t-t'){\bf Q}}{\vec \eta}(t') \xrightarrow{t\to\infty}\int^t_0 dt' e^{ (t-t'){\bf Q}}{\vec \eta}(t').\label{Deltaxt}
+\end{equation}
+On the other hand, the deviation or fluctuation of $x_i$ about its mean value is denoted by $\delta x_i\equiv x_i- \langle x_i \rangle$, and hence  $\langle \delta x_i \rangle\equiv 0$. Since by definition $\langle \vec x\rangle =\vec X + \langle \Delta \vec x\rangle$, and from (\ref{Deltaxt}) $ \langle \Delta \vec x\rangle=0 $ to linear order, thus $\langle \vec x\rangle =\vec X +{\cal O}(\delta x ^2) $, i.e. $ \Delta{\vec x}$ and $\delta{\vec x}$ in general differ by ${\cal O}(\delta x ^2)  $. In two special cases, the local probability maximum coincides with the noisy-free fixed point, $\langle \vec x\rangle =\vec X$.
+First is the case of linear  ${\vec{ F}}({\vec x}) $ (both $f_i(x_i)$ and the coupling function $h$ are linear), the resulting Langevin system is linear, then it can be easily shown that the steady-state average of ${\vec x}$ coincides with the stable fixed point: $\langle \vec x\rangle={\vec X}$ and hence  $ \delta{\vec x}=\Delta{\vec x}$. In this case, $\langle {\vec { F}}({\vec x})\rangle = {\vec { F}}(\langle{\vec x}\rangle)= {\vec { F}}({\vec X})=0$.
+The second is the equilibrium case such as ${\vec{ F}}({\vec x})=-\nabla U({\vec x})$ and $\boldsymbol{\sigma}=2c{\bf I}$, the equilibrium probability distribution is Boltzmann $\psi_{eqm}\sim e^{-U({\vec x})/c}$, which implies the local peak of $\psi_{eqm} $ is ${\vec X}$.
+Also for the more general equilibrium condition for noisy network dynamics, ${\bf Q}\boldsymbol{\sigma}$ is symmetric (which implies $\boldsymbol{\sigma}^{-1}{\bf Q}$ is also symmetric), then one can construct $ U({\vec x})=-\frac{\Delta{\vec x}^\intercal\boldsymbol{\sigma}^{-1}{\bf Q}\Delta{\vec x}}{2}$, which has a minimum at ${\vec X}$.
+
+On the other hand, the interplay of nonlinearity in  ${\vec{ F}}({\vec x})$ and the non-equilibrium condition gives rise to a shift of the local maximum of $\psi_{ss}({\vec x})$ from ${\vec X}$ \cite{kwonAo2011}, and one has $\langle{\vec x}\rangle={\vec X} + \langle \Delta \vec x\rangle$ with $\langle \Delta \vec x\rangle\sim {\cal O}(\delta x^2)$ as discussed in above.
+Although $ \delta{\vec x}$ and $\Delta{\vec x}$  in general differ by $ {\cal O}(\delta x^2)$, their corresponding  time-lag correlation functions  (in the long-time limit for the steady-state) agree much better, as shown below :
+\begin{eqnarray}
+    {\bf K}_\tau&\equiv& \langle \delta{\vec x}(\tau)\delta{\vec x}^\intercal(0)\rangle \\
+ &=&  \langle{\vec x}(\tau){\vec x}(0)^\intercal\rangle -  \langle{\vec x}(\tau)\rangle  \langle{\vec x}^\intercal(0)\rangle \label{ktau2} \\
+  &=&  {\bf C}_\tau -  \langle\Delta{\vec x}\rangle  \langle\Delta{\vec x}^\intercal\rangle\label{ktau3}
+\end{eqnarray}
+where $ {\bf C}_\tau\equiv \langle\Delta{\vec x}(\tau) \Delta{\vec x}^\intercal(0)\rangle$. $ {\bf K}_\tau $ and $ {\bf C}_\tau $  differ by $ {\cal O}(\delta x^4)$, and hence  $ {\bf C}_\tau $ can be well approximated by $ {\bf K}_\tau $.
+
+From the network reconstruction perspective, $ {\bf K}_\tau $ is measured experimentally or in simulations using (\ref{ktau2}) by recording the time-series data of $x_i(t)$. On the other hand, theoretical results relating the correlation function $ {\bf C}_\tau$ to ${\bf Q}$ and $\boldsymbol{\sigma}$ can be derived using  the linearized approximation (\ref{Deltaxt}), 
+\begin{eqnarray}
+  {\bf C}_\tau&=&e^{\tau{\bf Q}} {\bf C}_0\\
+  \boldsymbol{\sigma}&=&-{\bf Q}{\bf C}_0-{\bf C}_0 {\bf Q}^\intercal.\label{QCCQ}
+\end{eqnarray}
+Adopting the approximation of  $ {\bf C}_\tau \simeq   {\bf K}_\tau $,
+ one obtains the reconstruction formula 
+\begin{eqnarray}
+  {\bf K}_\tau&=&e^{\tau{\bf Q}} {\bf K}_0,\hbox{ and hence }  {\bf Q}=\frac{1}{\tau}\ln ( {\bf K}_\tau{\bf K}_0^{-1})\label{Ktau}\\
+  \boldsymbol{\sigma}&=&-{\bf Q}{\bf K}_0-{\bf K}_0 {\bf Q}^\intercal,\label{FDRApp}
+\end{eqnarray}
+constituting the framework for network reconstruction for general directed networks.
+(\ref{Ktau}) can be used to reconstruct ${\bf Q}$ and (\ref{FDRApp}) is the generalized fluctuation-dissipation relation for the reconstruction of the noise matrix, which is in the form of the Lyapunov equation for ${\bf K}_0$ and its (unique) solution is given by
+\begin{equation}
+{\bf K}_0=\int_0^\infty dt e^{t{\bf Q}} \boldsymbol{\sigma}e^{t{\bf Q}^\intercal}.\label{Lynsoln}
+\end{equation}
+For the equilibrium or linear ${ F}({\vec x})$ cases,  since there is no difference between  $ {\bf K}_\tau $ and $ {\bf C}_\tau $, one expects a more accurate network reconstruction performance.
+In addition, ${\bf Q} $ and $ \boldsymbol{\sigma} $ can also be efficiently reconstructed from the time-series data using Stochastic force Inference \cite{ChengLai2022}.
+
+
+For the equilibrium case of symmetric ${\bf Q}\boldsymbol{\sigma}$, one can show easily
+\begin{equation}
+  \boldsymbol{\sigma}=-2   {\bf Q} {\bf K}_0.\label{FDRsym}
+  \end{equation}
+Notice that the RHSs of (\ref{FDRApp}) and (\ref{FDRsym}) are the same for diagonal elements, and hence their differences will show up
+only on the off-diagonal predictions of $\sigma_{ij}$. To distinguish them, one can plot the off-diagonal elements of ${\bf K}_0 {\bf Q}^\intercal $ vs.
+$ {\bf Q} {\bf K}_0 $.
+
+The fluctuations of the noisy network dynamics are time-reversal symmetric iff, i.e. $  {\bf K}_\tau= {\bf K}_\tau^\intercal $ symmetric for all $\tau$.
+One can easily show that the following are equivalent conditions for time-reversal symmetric dynamics (i.e. equilibrium)
+\begin{eqnarray}
+     {\bf K}_\tau&=& {\bf K}_\tau^\intercal\\
+     {\bf K}_0 {\bf Q}^\intercal&=& {\bf Q} {\bf K}_0=-\frac{\boldsymbol{\sigma}}{2}\\
+   {\bf Q} \boldsymbol{\sigma} &=&  \boldsymbol{\sigma}{\bf Q}^\intercal.
+\end{eqnarray}

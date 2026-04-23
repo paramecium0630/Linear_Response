@@ -33,5 +33,73 @@ This relation shows that the relaxation response is controlled by both the shift
 \end{equation}
 For the deterministic force, the time-dependent response function is
 \begin{equation}
-\chi_{i\alpha}(t)=\left(e^{t{\bf Q}}\nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}.\label{chitforcelinear}
+    \chi_{i\alpha}(t)=\left(e^{t{\bf Q}}\nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}.
+    \label{chitforcelinear}
+\end{equation}
+For the equal-time covariance matrix, its time-dependent response function is
+\begin{equation}
+    \chi_{ij\alpha}(t) = \chi_{ij\alpha}^{(ss)} - \sum_{\ell,m} \left((e^{t\mathbf{Q}})_{i\ell}\chi_{\ell m\alpha}^{(ss)}(e^{t\mathbf{Q}^\intercal})_{mj}\right).
+    \label{chitKolinear}
+\end{equation}
+
+\subsection{Non-steady Response due to the time-dependent perturbation in a node parameter}
+\quad Considering the response due to the change of a single node parameter $\delta r_\alpha(t)$, we first
+illustrate the calculation of the time-dependent relaxation response of the mean position $\langle x_i(t) \rangle$ for the linear deterministic force $f_i(x_i;r_i) = r_i(a_i-x_i)$ and the linear coupling function $h(x_i,x_j)=x_j-x_i$. The time-dependent response of $x_i$ is
+\begin{equation}
+    \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\int_0^tdt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1}  \right)_{i\alpha}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinear}
+\end{equation}
+The integral in (\ref{xi(t)drlinear}) can evaluated by finding the eigenvalues and eigenvector of ${\bf Q}$:  ${\bf P}^{-1}{\bf Q}{\bf P}=\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where $\lambda_i$ are the eigenvalues and ${\bf P}$ is the matrix of eigenvectors:
+${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ , ${\bf Q}{\vec u_i}=\lambda_i{\vec u_i}$. The inverse of ${\bf P}$ is given by ${\bf P}^{-\intercal}=({\vec v_1},{\vec v_2},\cdots,{\vec v_N})$, with  $ {\vv v_i}^\intercal  {\vec u_j}=\delta_{ij}$, $\sum_{j=1}^N{\vec v_j} {\vv u_j}^\intercal={\bf I}$.
+ ${\bf Q}$ can be spectral decomposed as ${\bf Q}=\sum_{m=1}^N\lambda_m {\vec u_m}{\vec v_m}^\intercal$. Then in terms of the components of the vectors ${\vec u_i}^\intercal=(u_{i1},u_{i2},\cdots,u_{iN})$ and ${\vec v_i}^\intercal=(v_{i1},v_{i2},\cdots,v_{iN})$,  (\ref{xi(t)drlinear}) can be expressed as
+ \begin{equation}
+    \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\sum_k\frac{u_{ik}v_{\alpha k}}{\lambda_k}\int_0^tdt'e^{(t-t')\lambda_k}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinearb}
+\end{equation}
+As an example, for a time-dependent change of $\delta r_\alpha$ in an interval of $\tau$ such as 
+\begin{equation}
+     \delta r_\alpha(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau\\
+     b &t>\tau
+     \end{cases},\label{dra(t)cos}
+\end{equation}
+then the time-dependent relaxation response is
+\begin{equation}
+      \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (a_\alpha-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)-&Q^{-1}_{i\alpha} (1-\cos\frac{\pi t}{\tau})\bigg] \\
+     & 0\leq t\leq\tau\\
+     X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha}+\frac{b}{2} (a_\alpha-X_\alpha)\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}[ e^{\lambda_kt}+e^{\lambda_k(t-\tau)}]}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)} &t>\tau
+     \end{cases}.
+\end{equation}
+Note that as $t\to\infty$, since $\lambda_k<0$,  $\langle x_i(t)\rangle$ approaches to the  new noise-free fixed point $  X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha} $ exponentially with a time scale determined by the spectrum $\{\lambda_k \}$ of ${\bf Q}$.
+For the force response in the case linear network dynamics due to $\delta r_\alpha(t)$, we have$ \langle \delta f_i  {\mathscr F}_\alpha\rangle=r_i \partial X_i/\partial r_\alpha=r_i(a_\alpha-X_\alpha) Q_{i\alpha}^{-1}$,   one obtains the  force relaxation response function from (\ref{chitforcelinear})
+\begin{equation}
+\chi_{i\alpha}(t)=(a_\alpha-X_\alpha)(e^{t{\bf Q}})_{i\alpha}.
+\end{equation}
+With a given time-dependent driving $ \delta r_\alpha(t)$ in the duration $0\leq t\leq\tau$, with $ \delta r_\alpha(0)=0$ and $ \delta {\dot r}_\alpha(t>\tau)=0$,the mean force relaxation response can be calculated to give
+\begin{equation}
+\langle { F}_i(t)\rangle = \begin{cases}  (a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^tdt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, &0\leq t\leq\tau\\
+(a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^\tau dt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, & t>\tau
+\end{cases}
+\end{equation}
+\begin{equation}
+\langle { F}_i(t)\rangle= \begin{cases} \frac{b}{2}(a_\alpha-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2}\left[ e^{\lambda_k t} - \text{cos}\left( \frac{\pi t}{\tau} \right) - \frac{\lambda_k \tau}{\pi}\text{sin}\left( \frac{\pi t}{\tau} \right) \right], &0\leq t\leq\tau\\
+\frac{b}{2}(a_\alpha-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
+\end{cases}.
+\end{equation}
+The behaviors of the ensemble average of $\vec{x}(t)$ and $\vec{F}(t)$ do not depend on the noise strength on each node, which are only related to $\bf{Q}$. From equ. (\ref{chitKolinear}), the time-dependent response function for ${\bf K}(t,t)$ due to the change in $r_\alpha(t)$ is given by:
+\begin{equation}
+    {\bf K}_{ij}(t,t) = ({\bf K_0})_{ij} +\chi_{ij\alpha}^{ss} \delta r_\alpha(t)+\int_0^t dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t),
+\end{equation}
+where the integral can be calculated by using the spectral decomposition of $\bf Q$. 
+\begin{eqnarray}
+    &&\int_0^{min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t)\\
+    &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right)_{ij} \int_0^{min(t,\tau)} dt' e^{(t-t')(\lambda_m+\lambda_\ell)} \delta \dot{r}_\alpha(t').
+\end{eqnarray}
+Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
+\begin{eqnarray}
+    I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
+    &=&\begin{cases} \frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau}-e^{-(\lambda_m+\lambda_\ell)t}\left(\frac{\pi}{\tau}\text{cos}(\frac{\pi t}{\tau})+(\lambda_m+\lambda_\ell)\text{sin}\left(\frac{\pi t}{\tau}\right)\right) \right],\;t \le \tau \\
+    -\frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau} - \frac{\pi}{\tau}e^{-(\lambda_m+\lambda_\ell)\tau} \right],\;t > \tau
+     \end{cases}.
+\end{eqnarray}
+Then the evolution of ${\bf K_0}(t)$ due to the time-dependent change of $r_\alpha$ is
+\begin{equation}
+    {\bf K}_{ij}(t)=({\bf K_0})_{ij}-\left( \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \right)_{ij}\delta r_\alpha(t) + \sum_{m,\ell} u_{im}u_{j\ell} \left( \vec{v}^\intercal_m \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \vec{v}_\ell \right) I_{m\ell}(t).
 \end{equation}
