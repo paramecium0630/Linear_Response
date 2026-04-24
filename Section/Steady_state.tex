@@ -1,4 +1,5 @@
 \section{General steady-state linear response framework}
+\subsection{Steady-state probability distribution}
 \quad The linearized network dynamics in (\ref{linearized_dynamics}) can be formulated in terms of the Fokker-Planck equation
 \begin{equation}
     \frac{\partial \psi (\vec{x},t;\vec{p})}{\partial t} = -\nabla \cdot (\mathbf{Q} \delta \vec{x} \psi (\vec{x},t; \vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p})),
@@ -32,6 +33,7 @@ With (\ref{Lyapunov_eq}), it gives the condition is equivalent to requiring $\ma
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
 \end{equation}
 On the other hand, $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$ occurs when the couplings are asymmetric or the noise strengths are nonuniform across components. Both mechanisms break time-reversal symmetry and generate persistent probability current, even though the distribution remains stationary.\par
+\subsection{Steady-state linear response in noisy network dynamics}
 We develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
 \begin{equation}
     \vec{F}(\vec{X}; \vec{p}) = 0.
@@ -60,12 +62,12 @@ The steady-state response function is then
 \end{equation}
 Defining the conjugate force with respect to parameters
 \begin{equation}
-    \vec{\mathcal{F}} \equiv -\nabla_{\vec{p}} \Phi,
+    \vec{\mathscr{F}} \equiv -\nabla_{\vec{p}} \Phi,
     \label{conjugate_force}
 \end{equation} 
 one obtains
 \begin{equation}
-    \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathcal{F}}^\intercal \rangle_{ss, \vec{p}}.
+    \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathscr{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}
 \end{equation}
-This is the general steady-state linear response formula used throughout this work. Importantly, it does not require equilibrium. Instead, It only requires that the system has reached a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$ and the connection weight $W_{\alpha\beta}$.
+This is the general steady-state linear response formula used throughout this work. Importantly, it does not require equilibrium. Instead, It only requires that the system fluctuates around a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$ and the connection weight $W_{\alpha\beta}$.

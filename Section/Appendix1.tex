@@ -1,1 +1,136 @@
-\section*{Appendix A: Detailed Derivation of the Linear Response Function}\label{sec:AppendixA}
+\section*{Appendix A: Detailed derivation of the conjugate force}\label{sec:AppendixA}
+\subsection{General formula for the conjugate force}
+\quad From the effective potential in (\ref{steady-state prob}), the conjugate force is defined as $\vec{\mathscr{F}} \equiv -\nabla_p \Phi$. Then we have $\nabla_p \ln{\psi_{ss}} = \delta \vec{\mathscr{F}}$. Considering that the effective potential $\Phi(\vec{x}; \vec{p}, \vec{X}(\vec{p}))$ depends on the fixed point and the fixed point has the dependence on $\vec{p}$, one gets
+\begin{equation}
+    \mathscr{F}_\alpha = -\frac{\partial \Phi}{\partial p_\alpha} - \sum_s \frac{\partial \Phi}{\partial X_s} \frac{\partial X_s}{\partial p_\alpha} = -\frac{\partial \Phi}{\partial p_\alpha} + \sum_s \frac{\partial \Phi}{\partial X_s} \left[ \mathbf{Q}^{-1} \nabla_p \vec{F} \right]_{s\alpha}.
+    \label{scriptF}
+\end{equation} 
+Then the dependence of $\Phi$ on the fixed point is
+\begin{eqnarray}
+    \frac{\partial \Phi}{\partial X_s} &=& \frac{\partial }{\partial X_s} \left( \frac{1}{2} \sum_{j,k} ({\bf K}_0^{-1})_{jk} \delta x_j \delta x_k \right)\\
+    &=&-\sum_{k}({\bf K}_0^{-1})_{sk}\delta x_k + \frac{1}{2}\sum_{j,k} \sum_{m,\ell} \frac{\partial ({\bf K}_0^{-1})_{jk}}{\partial Q_{m\ell}}\frac{\partial Q_{m\ell}}{\partial X_s} \delta x_j \delta x_k\nonumber\\
+    &=& -\sum_{k}({\bf K}_0^{-1})_{sk}\delta x_k +\frac{1}{2}\sum_{j,k} \Bigg\{\frac{\partial ({\bf K}_0^{-1})_{jk}}{\partial Q_{ss}} [f''_s(X_s;r_s)+\sum_{\ell} W_{s\ell}\partial^2_{1}h(X_s,X_\ell)]\nonumber\\ &+&\sum_{\ell}\frac{\partial ({\bf K}_0^{-1})_{jk}}{\partial Q_{\ell s}} W_{\ell s} \partial_{1}\partial_2 h(X_\ell,X_s) + \sum_{\ell}\frac{\partial ({\bf K}_0^{-1})_{jk}}{\partial Q_{s\ell}} W_{s \ell}  \partial_{1}\partial_2 h(X_s,X_\ell)\nonumber\\
+    &+&\sum_{\ell} \frac{\partial ({\bf K}_0^{-1})_{jk}}{\partial Q_{\ell s} }W_{\ell s} \partial^2_{2}h(X_\ell,X_s) \Bigg\} \delta x_j \delta x_k\nonumber.
+    \label{pphipX}
+\end{eqnarray}
+For general NESS dynamics, the steady-state probability distribution is Gaussian near its mean $\langle \vec{x} \rangle$ with $\Phi = \frac{1}{2} \delta \vec{x}^\intercal \mathbf{K}^{-1}_0 \delta \vec{x} = \frac{1}{2} (\vec{x}-\langle \vec{x} \rangle)^\intercal \mathbf{K}^{-1}_0 (\vec{x}-\langle \vec{x} \rangle)$. Note that $\langle {\vec x} \rangle$ depends on the parameters ${\vec p} $ through $\psi_{ss}$, whose dependence is not possible to calculate explicitly for the high dimensional nonlinear Langevin systems. Nevertheless, the conjugate force ${\vec{\mathscr F}}$ and  correlations such as $\langle\delta \mathbf{B} \delta\vec{\mathscr F}\rangle_{ss,{\vec p}}$ can be explicitly computed from (\ref{scriptF}) using the functional dependence of ${\bf K}_0^{-1}$ on ${\vec p} $. From the Lyapunov equation (\ref{Lyapunov_eq}), one can see that ${\bf K}_0^{-1}={\bf K}_0^{-1}({\bf Q}({\vec p},{\vec X}({\vec p}))$. Hence the conjugate force corresponding to the parameter $p_\alpha$ can be derived to be
+
+\begin{eqnarray}
+{\mathscr F}_\alpha&=& -\sum_{m s} \left({\bf Q}^{-1} \nabla_p{\vec { F}} \right|_{\vec X})_{s\alpha}({\bf K}_0^{-1})_{sm}\delta x_m 
+- {1\over 2}  \sum_{m,\ell}\sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}  \delta x_m \delta x_\ell\label{Falp}\\
+& &+{1\over 2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} \right|_{\vec X})_{s\alpha} \sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
+ & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
+ & &+ \sum_\nu W_{s\nu}\partial_1\partial_2h(X_s,X_\nu)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}}  + \sum_\mu W_{\mu s}\partial^2_2h(X_\mu,X_s) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} 
+\Biggr\} \delta x_m \delta x_\ell.\nonumber
+\end{eqnarray}
+One can derive or verify from (\ref{Falp}) that
+\begin{equation}
+    \frac{\partial X_s}{\partial p_\alpha} =\langle \delta x_s {\mathscr F}_\alpha\rangle.
+\end{equation}
+By using (\ref{inverse_partialKo}), we can write down the ensemble average of the conjugate force
+\begin{eqnarray}
+ \langle{{\mathscr F}_\alpha}\rangle &=&{1\over 2}\sum_{\mu\nu} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \right) \frac{\partial Q_{\mu\nu}}{\partial p_\alpha} -{1\over 2} \sum_s \left({\bf Q}^{-1} \nabla_{\bf p} \vec{F} \Big|_{\vec{X}} \right)_{s\alpha} \Biggl\{
+f_s''\bigg|_{\vec X} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{ss}} \right) \label{avescrF}\\
+& &\sum_n W_{sn}\partial_1^2h(X_s,X_n) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{ss}} \right) +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s)\text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)+ \nonumber\\
+ & &+ \sum_\nu W_{s\nu}\partial_1 \partial_2 h(X_s,X_\nu) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{s\nu}} \right) + \sum_\mu  W_{\mu s}\partial^2_2h(X_\mu,X_s) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right) \Biggr\}.\nonumber
+\end{eqnarray}
+
+\subsection{Conjugate force for the change in the intrinsic node parameter r}
+\quad Consider perturbations to a intrinsic node parameter $r_\alpha$.
+\begin{equation}
+    \left({\bf Q}^{-1} \nabla_r{\vec {F}}|_{\vec X} \right)_{s\alpha} =
+    Q_{s\alpha}^{-1}\frac{\partial f_\alpha}{\partial r_\alpha} \bigg|_{\vec X},\quad
+    \frac{\partial Q_{\mu\nu}}{\partial r_\alpha}=\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}\delta_{\mu\alpha}\delta_{\mu\nu},\label{QgradF}
+\end{equation}
+and ${\mathscr F}_\alpha$  can then be calculated from (\ref{Falp}) to give
+\begin{eqnarray}
+    {\mathscr F}_\alpha&=& \sum_{m,\ell  } \frac{\partial X_\ell}{\partial r_\alpha}({\bf K}_0^{-1})_{\ell m}\delta x_m 
+    - {1\over 2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}  \sum_{m,\ell} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\alpha\alpha}}  \delta x_m \delta x_\ell\\
+    & &+{1\over 2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\\
+    & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
+    & &+ \sum_\nu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}} W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} W_{\mu s}\partial^2_2h(X_\mu,X_s) 
+    \Biggr\} \delta x_m \delta x_\ell .\nonumber
+\end{eqnarray}
+Average quantities involving ${\mathscr F}_\alpha$  can then be calculated. For example, one can obtain
+\begin{eqnarray}
+ \langle{{\mathscr F}_\alpha}\rangle &=&-{1\over 2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\alpha\alpha}}  {\bf K}_0\right)   +{1\over 2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1} \Biggl\{
+f_s''\bigg|_{\vec X} \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) \label{avescrFr}\\
+& &\sum_n W_{sn}\partial_1^2h(X_s,X_n) \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s)\text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\mu}}  {\bf K}_0\right)+ \nonumber \\
+ & &+ \sum_\nu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{s\nu}}  {\bf K}_0\right) W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu s}}  {\bf K}_0\right) W_{\mu s}\partial^2_2h(X_\mu,X_s)  
+   \Biggr\},\nonumber
+\end{eqnarray}
+where $ \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\nu}}  $ denotes  the matrix whose $i,j$ elements are  $\frac{\partial ({\bf K}_0^{-1})_{ij}}{\partial Q_{\mu\nu}}$.\par
+To calculate the response function of some observables that have the dependence on $\delta \vec{x}$, we should consider the multiple point correlation of $\delta x$ and $\mathscr{F}_{\alpha}$ and higher-order correlations of $\delta x_i$ can be evaluated using the cumulant expansion of high dimensional Gaussian distribution. Then $\langle \delta x_i \delta x_j...\mathscr{F}_{\alpha}\rangle$ can be calculated by using the result of $\langle \delta x_i \delta x_j...\rangle$. Here we just show the results of the functions $\langle \delta x_i\mathscr{F}_\alpha\rangle$ and $\langle \delta x_i \delta x_j{\mathscr F}_\alpha\rangle$, which are given by
+\begin{equation}
+    \langle \delta x_i \mathscr{F}_{\alpha}\rangle = \frac{\partial X_i}{\partial r_\alpha},
+    \label{dxdr}
+\end{equation}
+\begin{eqnarray}
+\langle \delta x_i \delta x_j{\mathscr F}_\alpha\rangle&=& \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}\left[ ({\bf K}_0)_{ij}\text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}}\right)_{ij} \right]\nonumber\\
+& -&{1\over 2} \frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\Biggl\{ \left[ f
+_s''+  \sum_n W_{sn}\partial_1^2h(X_s,X_n)\right] \times\nonumber\\
+& &\left[ ({\bf K}_0)_{ij} \text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{ss}}\right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{ss}} \right)_{ij}\right] \nonumber\\
+&-&\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s) \left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)_{ij}\right] \nonumber\\
+&-& \sum_\nu W_{s\nu} \partial_1\partial_2h(X_s,X_\nu)  \left[ ({\bf K}_0)_{ij}\text{Tr} \left({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{s\mu}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{s\nu}} \right)_{ij}\right]    \nonumber\\
+& -&\sum_\mu W_{\mu s}  \partial_2^2 h(X_\mu,X_s)\left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)_{ij}\right]\Biggr\}.
+\label{dxdxscrF}
+\end{eqnarray}
+
+\subsection{Conjugate force for the change in the connection weight W}
+\quad We next consider perturbations to a network connection $W_{\alpha\beta}$, which directly modify the interaction topology. As we have done in the previous sections, we now compute the derivatives with respect to the directed connection $W_{\alpha\beta}$
+\begin{eqnarray}
+\left({\bf Q}^{-1} \nabla_W{\vec { F}} |_{\vec X}\right)_{s\alpha\beta} &=& 
+Q_{s\alpha}^{-1}h(X_\alpha, X_\beta)\label{QgradWF}\\
+\frac{\partial Q_{\mu\nu}}{\partial W{_{\alpha\beta}}}&=& \partial_1 h(X_\alpha, X_\beta)\delta_{\mu\nu}\delta_{\mu\alpha}+\partial_2h(X_\alpha, X_\beta)\delta_{\mu\alpha}\delta_{\nu\beta}.\label{dQdW}
+\end{eqnarray}
+${\mathscr F}_{\alpha\beta} \equiv -\partial \Phi / \partial W_{\alpha\beta}$ is the conjugate force when a connection weight $W_{\alpha\beta}$ is changed, and it can be calculated from (\ref{Falp}) to give
+\begin{eqnarray}
+{\mathscr F}_{\alpha\beta}&=& \sum_{m,\ell  } \frac{\partial X_\ell}{\partial W_{\alpha\beta}}({\bf K}_0^{-1})_{\ell m}\delta x_m 
+ -\frac{1}{2}\sum_{m,\ell} \biggl\{\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\alpha \alpha}}\partial_1 h(X_\alpha, X_\beta)+ \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\alpha \beta}}\partial_2h(X_\alpha, X_\beta)\biggr\} \delta x_m \delta x_\ell  \nonumber \\
+& &+\frac{ h(X_\alpha, X_\beta)}{2} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\\
+ & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
+ & &+ \sum_\nu W_{s\nu}\partial_1\partial_2h(X_s,X_\nu)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}}  + \sum_\mu  W_{\mu s}\partial^2_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} 
+\Biggr\} \delta x_m \delta x_\ell ,\nonumber
+\end{eqnarray}
+and its average is given by
+\begin{eqnarray}
+   \langle\mathscr{F}_{\alpha\beta}\rangle  &=&-\frac{1}{2}\biggl\{ \text{Tr}\left( \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\alpha \alpha}}{\bf K}_0\right) \partial_1 h(X_\alpha, X_\beta)+ \text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\alpha \beta}}{\bf K}_0\right)\partial_2h(X_\alpha, X_\beta)\biggr\} \nonumber\\
+    & &+\frac{h(X_\alpha, X_\beta)}{2}\sum_s Q_{s\alpha}^{-1}  \Biggl\{
+f_s'' \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) \label{avescrFab}\\
+& &\sum_n W_{sn}\partial_1^2h(X_s,X_n) \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s)\text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\mu}}  {\bf K}_0\right)+ \nonumber \\
+ & &+ \sum_\nu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{s\nu}}  {\bf K}_0\right) W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu s}}  {\bf K}_0\right) W_{\mu s}\partial^2_2h(X_\mu,X_s)  
+   \Biggr\}\nonumber .
+\end{eqnarray}
+Other relevant averages can also be calculated
+\begin{equation}
+\langle \delta x_i {\mathscr F}_{\alpha\beta}\rangle= \frac{\partial X_i}{\partial W_{\alpha\beta}} \label{dxscrFab},
+\end{equation} 
+\begin{eqnarray}
+    \langle \delta x_i  \delta x_j{\mathscr F}_{\alpha\beta}\rangle &=&\frac{1}{2}\Bigg\{ \partial_1h(X_\alpha,X_\beta)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \Bigg) + 2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \Bigg)_{ij} \Bigg]\\
+    &+&\partial_2h(X_\alpha,X_\beta)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}} \Bigg) + 2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}} \Bigg)_{ij} \Bigg]\Bigg\}\nonumber\\
+    &-&\frac{1}{2}h(X_\alpha,X_\beta)\sum_s Q^{-1}_{s\alpha}\Bigg\{ f_s''\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{ss}}\Bigg)+2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{ss}} \Bigg)_{ij} \Bigg]\nonumber\\
+    &+&\sum_\mu W_{\mu s}\partial_1\partial_2 h(X_\mu, X_s)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}}\Bigg)+2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \Bigg)_{ij} \Bigg]\nonumber\\
+    &+&\sum_n W_{sn}\partial_1^2 h(X_s, X_n)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{ss}}\Bigg)+2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{ss}} \Bigg)_{ij} \Bigg]\nonumber\\
+    &+&\sum_\nu W_{s\nu}\partial_1\partial_2 h(X_s, X_\nu)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{s\nu}}\Bigg)+2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{s\nu}} \Bigg)_{ij} \Bigg]\nonumber\\
+    &+&\sum_\mu W_{\mu s}\partial_2^2 h(X_\mu, X_s)\Bigg[ ({\bf K}_0)_{ij}\text{Tr}\Bigg({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{\mu s}}\Bigg)+2\Bigg( \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \Bigg)_{ij} \Bigg]\Bigg\}.\nonumber
+\end{eqnarray}
+For undirected networks, since $W_{\alpha\beta}=W_{\beta\alpha}$ and hence a change in the connection from node $\beta$ to node $\alpha$ will also change the connection from $\alpha$ to $\beta$ by the same amount.  Hence the response function of the undirected network  due to change of $W_{\alpha\beta}$ is simply given by the the sum of these two response functions due to the changes of $W_{\alpha\beta}$ and $W_{\beta\alpha}$ of the directed networks.
+
+\subsection{Conjugate force for the change in the noise strength $\sigma$}
+\quad Unlike perturbations to deterministic parameters, variations in noise intensity do not shift the fixed point but directly modify the steady-state fluctuations. Because the deterministic force does not depend on $\sigma$, then we have
+\begin{equation}
+    ({\bf Q}^{-1}\nabla_\sigma \vec{F}\big|_{\vec{X}})_{s\alpha} = 0.
+\end{equation}
+We easily obtain the conjugate force due to the change in noise strength
+\begin{eqnarray}
+    \mathscr{F}_{\alpha\alpha} &=& -\frac{\partial \Phi}{\partial \sigma_{\alpha\alpha}} = -\frac{1}{2} \sum_{\ell, m} \frac{\partial ({\bf K}_0^{-1})_{\ell m}}{\partial \sigma_{\alpha\alpha}} \delta x_\ell \delta x_m,\\
+    \langle \mathscr{F}_{\alpha\alpha} \rangle &=& \frac{1}{2} \text{Tr} \left( {\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial \sigma_{\alpha\alpha}} \right).
+\end{eqnarray}
+The fixed point does not change with noise strengths.
+\begin{equation}
+    \langle \delta x_i \mathscr{F}_{\alpha\alpha}\rangle = \frac{\partial X_i}{\partial \sigma_{\alpha\alpha}}=0.
+\end{equation}
+The multiple point correlation gives
+\begin{equation}
+    \langle \delta x_i \delta x_j \mathscr{F}_{\alpha\alpha} \rangle = \frac{1}{2} \left[ (\mathbf{K}_0)_{ij} \text{Tr}\left( \mathbf{K}_0^{-1}\frac{\partial \mathbf{K}_0}{\partial \sigma_{\alpha\alpha}} \right) + 2 \left( \frac{\partial \mathbf{K}_0}{\partial \sigma_{\alpha\alpha}} \right)_{ij} \right]
+\end{equation}

@@ -1,10 +1,10 @@
 \section{Explicit Response Formula}
-\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, since it directly characherizes the fluctuations of the noisy network dynamics. We also present the corresponding response functions for the different types of parameter perturbations.
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, since it directly characherizes the fluctuations of the noisy network dynamics, and the observable becomes $\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations.
 
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
 \quad We first consider the perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. From the general formula of the conjugate force, one obtains the steady-state response of the equal -time covariance matrix
 \begin{equation}
-    \chi_{ij\alpha} = \langle \delta x_i \delta x_j \mathcal{F}_\alpha \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_\alpha \rangle.
+    \chi_{ij\alpha} = \langle \delta x_i \delta x_j \mathscr{F}_\alpha \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle.
     \label{response_Ko_r}
 \end{equation}
 By using the dependence of $\mathbf{Q}$ on $r_\alpha$, the response function can be written as
@@ -23,7 +23,7 @@ This form shows that the response function of the covariance matrix is directedl
 \subsection{Response due to Change in the Connection Weight $W$}
 \quad We next consider the perturbation of a directed connection weight $W_{\alpha\beta}$. The corresponding response function of the covariance matrix is
 \begin{equation}
-    \chi_{ij(\alpha\beta)} = \langle \delta x_i \delta x_j \mathcal{F}_{\alpha\beta} \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_{\alpha\beta} \rangle.
+    \chi_{ij(\alpha\beta)} = \langle \delta x_i \delta x_j \mathscr{F}_{\alpha\beta} \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_{\alpha\beta} \rangle.
     \label{response_Ko_W}
 \end{equation}
 Again, by using the dependence of $\mathbf{Q}$ on $W_{\alpha\beta}$, the explicit formula is
@@ -43,7 +43,7 @@ which makes the role of the perturbed connection especially transparent. In this
 \subsection{Response due to Change in the Noise Strength $\sigma$}
 \quad Finally, we consider the perturbation of a noise strength. In contrast to the previous two cases, a change in $\sigma_{\alpha\alpha}$ does not alter the deterministic force, and therefore does not shift the fixed point. The corresponding response function gives
 \begin{equation}
-    \chi_{ij(\alpha\alpha)} = \langle \delta x_i \delta x_j \mathcal{F}_{\alpha\alpha} \rangle - (\mathbf{K}_0)_{ij} \langle \mathcal{F}_{\alpha\alpha} \rangle = \left( \frac{\partial \mathbf{K}_0}{\partial \sigma_{\alpha\alpha}} \right)_{ij}.
+    \chi_{ij(\alpha\alpha)} = \langle \delta x_i \delta x_j \mathscr{F}_{\alpha\alpha} \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_{\alpha\alpha} \rangle = \left( \frac{\partial \mathbf{K}_0}{\partial \sigma_{\alpha\alpha}} \right)_{ij}.
 \end{equation}
 This result emphasizes that a perturbation of the noise strength affects the steady-state fluctuations directly, without changing the deterministic fixed point.
 
@@ -56,6 +56,7 @@ This result emphasizes that a perturbation of the noise strength affects the ste
 Also, the derivative of the inverse of the covariance matrix gives
 \begin{equation}
     \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
+    \label{inverse_partialKo}
 \end{equation}
 They are useful for calculating various response functions with the terms involving $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$.
 
