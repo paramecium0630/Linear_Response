@@ -32,15 +32,14 @@ With (\ref{Lyapunov_eq}), it gives the condition is equivalent to requiring $\ma
 \begin{equation}
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
 \end{equation}
-On the other hand, $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$ occurs when the couplings are asymmetric or the noise strengths are nonuniform across components. Both mechanisms break time-reversal symmetry and generate persistent probability current, even though the distribution remains stationary.\par
+On the other hand, $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$ occurs when the couplings are asymmetric or the noise strengths are nonuniform across components. Both mechanisms break time-reversal symmetry and generate persistent probability current, even though the distribution remains stationary. To visualize the detailed balance condition, we measure the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$ when the network systems with different topologies reach a steady state through Langevin simulations ($dt=0.0005$). Fig. \ref{Ktauij}a and b show the asymmetry of $\mathbf{K}_{\tau},\;\tau = 0.01$ in four network conditions: (1) Undirected graph with uniform diagonal noise matrix, (2) undirected graph with nonuniform diagonal noise matrix, (3) directed graph with uniform diagonal noise matrix, and (4) directed graph with nonuniform diagonal noise matrix. The number of nodes is $N=100$, and the network dynamics is the intrinsic Logistic force $f_i = r_ix_i(1-x_i)$ with the coupling function $h(x_i,x_j) = x_j-x_i$. Except for the first case $\mathbf{W}=\mathbf{W}^\intercal$ with $\boldsymbol{\sigma} \propto \sigma_0 \mathbf{I}$, the other three cases show broken time-reversal symmetry, which we can tell from $(\mathbf{K}_{\tau})_{ij} \neq (\mathbf{K}_{\tau})_{ji}$.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/Ktauun_vs_Ktaunon.eps}}
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/Ktaudir_vs_Ktaunondir.eps}}
-    \caption{}
+    \caption{The time-lagged covariance $\mathbf{K}_{\tau}$ with $\tau=0.01$ is measured in Langevin simulations of linearized network dynamics at a steady state under different network topologies (symmetric/asymmetric $\mathbf{W}$) and noise strengths (uniform/nonuniform $\sigma_{ii}$). The consistency of $(\mathbf{K}_{\tau})_{ij}$ and $(\mathbf{K}_{\tau})_{ji}$ only shows in the undirected graph $\mathbf{W}=\mathbf{W}^\intercal$ with uniform diagonal noise matrix $\boldsymbol_{\sigma}$. For the other three cases, the directed couplings and heterogeneous noise strengths break detailed balance and then the network system reaches NESS.}
     \label{Ktauij}
 \end{figure}
-
 \subsection{Steady-state linear response in noisy network dynamics}
 We develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
 \begin{equation}
