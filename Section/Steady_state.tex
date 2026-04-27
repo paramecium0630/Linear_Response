@@ -15,7 +15,7 @@ If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
-This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
+This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
 \begin{equation}
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}

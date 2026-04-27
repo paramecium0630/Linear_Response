@@ -38,10 +38,11 @@ In Fig. \ref{chieqmlinear}b, the perturbed edge $(\alpha,\beta)$ is randomly cho
     \caption{The comparison between the equilibrium and the NESS response functions for the covariance matrix due to the perturbations of a single node and an edge: When the detailed balance condition is violated, the response must instead be computed from the full Lyapunov response equation.}
     \label{chieqcompare} 
 \end{figure}
+Similar to the equilibrium case, we compare the simulation results with the theoretical response functions for the NESS conditions: a directed graph with a uniform diagonal noise matrix in Fig. \ref{chiKodir} and an undirected graph with a nonuniform diagonal noise matrix in Fig. \ref{chiKonon}. In both two cases, the perturbed node and the perturbed edge are randomly chosen, and the perturbed values are $\delta r_\alpha = 0.5, 2$ and $\delta W_{\alpha\beta} = 0.5, 2$. The distributions of the network parameters are the same as the equilibrium cases in Fig. \ref{chieqmlinear} and Fig. \ref{chieqmlogistic}. As the figures show, the response functions of the equal-time covariance are valid for the directed graph and the heterogenous noise strengths, where detailed balance is broken. Note that in the directed graph, we apply a single edge perturbation; however, in the undirected graph, when one edge $W_{\alpha\beta}$ is perturbed, the other edge $W_{\beta\alpha}$ with the opposite direction is also perturbed with the same amount to maintain the undirected topology after the perturbation. In Fig. \ref{chiKodir}b, the perturbed edge is from node $\beta$ to node $\alpha$, and thus only node $\alpha$ is affected. There is a data point $\delta (\mathbf{K}_0)_{\alpha\alpha} / \delta W_{\alpha\beta}$ at the bottom left corner. In Fig. \ref{chiKonon}b, both the reciprocal edges are perturbed with the same amount of the perturbation value, so node $\alpha$ and $\beta$ are perturbed. There are two data points at the bottom left corner, which indicates the response of $(\mathbf{K}_0)_{\alpha\alpha}$ and $(\mathbf{K}_0)_{\beta\beta}$ decrease due to the increase of the coupling between them.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Steady/Directed/dKdr_dir.eps}}
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Steady/Directed/dKdW_dir.eps}}
+    \subfigure[]{\includegraphics*[width=.43\columnwidth]{Figure/Steady/Directed/dKdW_dir.eps}}
     \caption{The }
     \label{chiKodir} 
 \end{figure}
@@ -54,7 +55,14 @@ In Fig. \ref{chieqmlinear}b, the perturbed edge $(\alpha,\beta)$ is randomly cho
     \label{chiKonon} 
 \end{figure}
 
+\subsection{Multiple perturbations and robustness}
+\quad To further assess the robustness and scalability of the proposed framework, we focus on multiple perturbations: multiple nodes or edges are influenced simultaneously. Also, disruptions are generally unavoidable, which mean represent partial or complete loss of function of nodes and edges. The disruptions in networks are performed by removing nodes and edges. In our work, they are realized by decreasing the connection weights of chosen edges to zero. For disruptions of nodes, they become isolated nodes where all edges incident on them are removed (connection weights of all edges connected with the chosen nodes become zero). Moreover, we extend the validation to large-scale networks ($N \ge 10^3$) with different topologies, including Erdős-Rényi, Barabási-Albert, Watts-Strogatz, and ring lattices. Besides, in large-scale networks, both the steady-state covariance matrix $\mathbf{K}_0$ and its response functions are computed by solving Lyapunov equations derived from the linearized dynamics to avoid direct stochastic simulations and provides an efficient route to evaluate responses.
+\subsubsection{Perturbation of multiple nodes and edges}
+\quad After validating the response theory for single-parameter perturbations, we next examine whether the linear response functions can be superposed to predict multiple perturbations and whether this superposition remains informative when perturbation values approach the disruption regime. To quantify the network's response, we measure the change in the correlation matrix of the nodes' dynamics $\Delta \mathbf{K}_0 \equiv \mathbf{K}_0^{after}-\mathbf{K}_0^{before}$. The theoretical prediction of the response is
+\begin{eqnarray}
+    \Delta (\mathbf{K}_0)_{ij} = \sum_\alpha \chi_{ij\alpha} \delta r_\alpha,\;\text{for node perturbation},\\
+    \Delta (\mathbf{K}_0)_{ij} = \sum_\alpha \chi_{ij(\alpha\beta)} \delta W_{\alpha\beta},\;\text{for edge perturbation},
+\end{eqnarray}
+where the perturbation values can be different.
 \subsection{Structure-dependent response}
 
-\subsection{Multiple perturbations and robustness}
-\quad Now, we focus on different perturbation scenarios: multiple nodes or edges are influenced simultaneously.
