@@ -103,3 +103,48 @@ Then the evolution of ${\bf K_0}(t)$ due to the time-dependent change of $r_\alp
 \begin{equation}
     {\bf K}_{ij}(t)=({\bf K_0})_{ij}-\left( \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \right)_{ij}\delta r_\alpha(t) + \sum_{m,\ell} u_{im}u_{j\ell} \left( \vec{v}^\intercal_m \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \vec{v}_\ell \right) I_{m\ell}(t).
 \end{equation}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.4\columnwidth]{Figure/Time_dependent/graphN4-.eps}}
+    \subfigure[]{\includegraphics*[width=.4\columnwidth]{Figure/Time_dependent/graphN4-.eps}} 
+    \caption{Both graphs represent the same undirected square graph with four nodes and four edges, but the spatial arrangement of the nodes differs. (a) The four nodes are connected by edges like a string. (b) The four nodes form a cycle.}
+    \label{graphN4} 
+\end{figure}
+
+\subsection{Non-steady Response due to the time-dependent perturbation in a connection weight}
+\quad We illustrate the calculation of the time-dependent relaxation response for the simpler case of linear network dynamics when a single connection is perturbed. The relaxation response function of the mean position is given by
+\begin{eqnarray}
+    \langle x_i(t)\rangle_{{\bf W}+\delta W_{\alpha\beta}(t)}&=&X_i+ (X_\beta-X_\alpha)\bigg[\int_0^tdt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1} \right)_{i\alpha}\delta{\dot W}_{\alpha\beta}(t') -Q^{-1}_{i\alpha} \delta W_{\alpha\beta}(t)\bigg].\\
+    &=&X_i+ (X_\beta-X_\alpha)\bigg[\sum_{k} \frac{u_{ik}v_{\alpha k}}{\lambda_k} \int_0^t dt'e^{(t-t')\lambda_k}\delta{\dot W}_{\alpha\beta}(t') -Q^{-1}_{i\alpha} \delta W_{\alpha\beta}(t)\bigg].
+    \label{xi(t)dWlinear}
+\end{eqnarray}
+Then we apply the same protocol (\ref{dra(t)cos}) on the connection between node $\alpha$ and node $\beta$.
+\begin{equation}
+     \delta W_{\alpha\beta}(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau\\
+     b &t>\tau
+     \end{cases},\label{dWab(t)cos}
+\end{equation}
+Similarly, the time-dependent relaxation response of each node's state is
+\begin{equation}
+      \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (X_\beta-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)&-Q^{-1}_{i\alpha} \left(1-\cos\frac{\pi t}{\tau}\right)\bigg] \\
+     & 0\leq t\leq\tau\\
+     X_i-b (X_\beta-X_\alpha)Q^{-1}_{i\alpha}+\frac{b}{2} (X_\beta-X_\alpha)\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}[ e^{\lambda_kt}+e^{\lambda_k(t-\tau)}]}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)} &t>\tau
+     \end{cases}.
+\end{equation}
+The corresponding force response function is
+\begin{equation}
+    \chi_{i\alpha\beta}(t) = (X_\beta-X_\alpha) \left(e^{t{\bf Q}} \right)_{i\alpha},
+\end{equation}
+and
+\begin{equation}
+\langle { F}_i(t)\rangle= \begin{cases} \frac{b}{2}(X_\beta-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2}\left[ e^{\lambda_k t} - \text{cos}\left( \frac{\pi t}{\tau} \right) - \frac{\lambda_k \tau}{\pi}\text{sin}\left( \frac{\pi t}{\tau} \right) \right], &0\leq t\leq\tau\\
+\frac{b}{2}(X_\beta-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
+\end{cases}.
+\end{equation}
+The response function of the correlation function is
+\begin{eqnarray}
+    {\bf K}_{ij}(t,t) &=& ({\bf K_0})_{ij} + \chi_{ij\alpha\beta}^{ss} \delta W_{\alpha\beta}(t)+\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t)\nonumber\\
+    &=&({\bf K_0})_{ij}+\left[- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
+    &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left(- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right)_{ij} \vec{v}_\ell \right] I_{m\ell}(t).
+\end{eqnarray}
