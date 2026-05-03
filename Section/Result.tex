@@ -55,16 +55,29 @@ Similar to the equilibrium case, we compare the simulation results with the theo
     \label{chiKonon} 
 \end{figure}
 
-\subsection{Multiple perturbations and robustness}
-\quad To further assess the robustness and scalability of the proposed framework, we focus on multiple perturbations: multiple nodes or edges are influenced simultaneously. Also, disruptions are generally unavoidable, which mean represent partial or complete loss of function of nodes and edges. The disruptions in networks are performed by removing nodes and edges. In our work, they are realized by decreasing the connection weights of chosen edges to zero. For disruptions of nodes, they become isolated nodes where all edges incident on them are removed (connection weights of all edges connected with the chosen nodes become zero). Moreover, we extend the validation to large-scale networks ($N \ge 10^3$) with different topologies, including Erdős-Rényi, Barabási-Albert, Watts-Strogatz, and ring lattices. Besides, in large-scale networks, both the steady-state covariance matrix $\mathbf{K}_0$ and its response functions are computed by solving Lyapunov equations derived from the linearized dynamics to avoid direct stochastic simulations and provides an efficient route to evaluate responses.
-\subsubsection{Perturbation of multiple nodes and edges}
-\quad After validating the response theory for single-parameter perturbations, we next examine whether the linear response functions can be superposed to predict multiple perturbations and whether this superposition remains informative when perturbation values approach the disruption regime. To quantify the network's response, we measure the change in the correlation matrix of the nodes' dynamics $\Delta \mathbf{K}_0 \equiv \mathbf{K}_0^{after}-\mathbf{K}_0^{before}$. The theoretical prediction of the response is
-\begin{eqnarray}
-    \Delta (\mathbf{K}_0)_{ij} = \sum_\alpha \chi_{ij\alpha} \delta r_\alpha,\;\text{for node perturbation},\\
-    \Delta (\mathbf{K}_0)_{ij} = \sum_\alpha \chi_{ij(\alpha\beta)} \delta W_{\alpha\beta},\;\text{for edge perturbation},
-\end{eqnarray}
-where the perturbation values can be different.
-
+\subsection{Multiple perturbations and removal of network components}
+\quad After validating the linear-response theory for single-parameter perturbations, we next examine whether the response functions can be superposed to predict the effect of multiple simultaneous perturbations. We define the covariance change as
+\begin{equation}
+    \Delta (\mathbf{K}_0)_{ij} =
+    (\mathbf{K}_0^{\rm after})_{ij}-(\mathbf{K}_0^{\rm before})_{ij}.
+\end{equation}
+For a set of perturbed nodes
+\(\mathcal{P}_V=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}\), the first-order prediction is
+\begin{equation}
+    \Delta (\mathbf{K}_0)_{ij}
+    =
+    \sum_{\alpha\in\mathcal{P}_V}
+    \chi^{(r)}_{ij\alpha}\delta r_\alpha .
+\end{equation}
+Similarly, for a set of perturbed edges \(\mathcal{P}_E=\{(\alpha_1,\beta_1),(\alpha_2,\beta_2),\ldots, (\alpha_m,\beta_m)\}\), we use
+\begin{equation}
+    \Delta (\mathbf{K}_0)_{ij}
+    =
+    \sum_{(\alpha,\beta)\in\mathcal{P}_E}
+    \chi^{(W)}_{ij(\alpha\beta)}\delta W_{\alpha\beta}.
+\end{equation}
+The perturbation amplitudes \(\delta r_\alpha\) and \(\delta W_{\alpha\beta}\) are allowed to be different for different perturbed nodes or edges. To test this superposition property, we perform Langevin simulations on undirected and directed ER networks with nonuniform noise sources.  In each realization, multiple nodes or edges are randomly selected and perturbed simultaneously. The covariance change measured from the simulations is then compared with the first-order prediction obtained by summing the corresponding single-parameter response functions.  Agreement with the diagonal line in the scatter plots indicates that the covariance response remains additive within the linear regime.\par
+In Fig. \ref{MultipledKdr}, ten randomly selected nodes are perturbed with the same amount of perturbation values $\delta r_\alpha=0.5$, where the set of the perturbed nodes is denoted as $\mathcal{P}_V=\{ \alpha_1, \alpha_2, ..., \alpha_{10} \}$. For visual clarity, we separate the elements of the covariance matrix into diagonal and off-diagonal components. We also classify the elements according to whether their indices include nodes associated with the perturbation: diagonal elements are labeled as $\alpha\alpha$ or $ii,\;(i\notin \mathcal{P}_V)$, and off-diagonal elements as $i\alpha$ or $ij,\;(i,j \notin \mathcal{P}_V)$. The data points collapse onto the diagonal line, indicating quantitative agreement between the linear-response prediction and the numerical simulation for multiple node perturbations. In Fig. \ref{MultipledKdW}, twenty randomly selected undirected edges are perturbed with the same amount of values $\delta W_{\alpha\beta}=0.5$. The perturbed edges are represented as the set $\mathcal{P}_E = \{ (\alpha_k,\beta_k),\;k=1,2,...,20 \}$. Again, the data points are separated into the diagonal and offdiagonal elements. The elements are further classified as $\alpha\alpha$ or $ii,\;(i\neq \alpha)$ for the diagonal ones, and $i\alpha$ or $ij,\;(i,j\neq \alpha)$. Notice that the classification of edge perturbations is based on the receiving node $\alpha$, not on the source node $\beta$. The data points align along the diagonal, which proves the validation of the linear response framework on multiple edge perturbations.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdrii_non.eps}}
@@ -72,15 +85,13 @@ where the perturbation values can be different.
     \caption{The }
     \label{MultipledKdr} 
 \end{figure}
-
 \begin{figure}[H]
     \centering
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWii_non.eps}}
-    \subfigure[]{\includegraphics*[width=.44\columnwidth]{Figure/Multiple/MultipledKdWij_non.eps}}
+    \subfigure[]{\includegraphics*[width=.44\columnwidth]{Figure/Multiple/MultipledKdWii_non.eps}}
+    \subfigure[]{\includegraphics*[width=.46\columnwidth]{Figure/Multiple/MultipledKdWij_non.eps}}
     \caption{The }
     \label{MultipledKdW} 
 \end{figure}
-
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.42\columnwidth]{Figure/Multiple/MultipledKdWii_remove.eps}}
@@ -88,6 +99,26 @@ where the perturbation values can be different.
     \caption{The }
     \label{MultipledKdW_remove}
 \end{figure}
+We further consider removal events as a finite-amplitude stress test of the linear-response framework. Edge removal is implemented by setting \(W_{\alpha\beta}\to 0\), corresponding to \(\delta W_{\alpha\beta}=-W_{\alpha\beta}\). Node removal is implemented by isolating the selected node through the removal of all incoming and outgoing edges connected to it. Since these perturbations are not infinitesimal, the first-order prediction is not expected to be quantitatively exact. Instead, this comparison identifies the regime in which the linear response remains informative and the regime in which higher-order effects become important. Fig. \ref{MultipledKdW_remove} examines the removal of 40 directed edges in a directed ER network with nonuniform noise. The prediction is obtained by summing the single-edge response functions over all removed edges. The agreement with the diagonal line shows that, for this level of edge removal, the first-order response still captures the dominant covariance change, even in a nonequilibrium steady state generated by directed couplings and heterogeneous noise. Figure \ref{MultipledKdW_noderemove} considers the removal of a single node in an undirected network with nonuniform noise. Although only one node is removed, this operation simultaneously deletes all edges connected to that node and therefore represents a large structural perturbation. The visible deviations from the diagonal line are expected, especially for covariance elements involving the removed node or its neighbors. These deviations indicate the onset of higher-order response terms beyond the first-order response theory.
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWii_noderemove.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWij_noderemove.eps}}
+    \caption{The }
+    \label{MultipledKdW_noderemove}
+\end{figure}
+\subsection{Large-scale networks and topology dependence}
+\quad To assess the scalability and topological applicability of the linear response framework, we next consider large-scale networks with $N > 1000$. In this regime, direct Langevin simulations become computationally expensive for estimating steady-state $\mathbf{K}_0$. We therefore validate the linear response predictions by comparing them with covariance changes obtained from direct solutions of the Lyapunov equation before and after parameter perturbations. This procedure tests whether the first-order response formula remains quantitatively accurate in large networks and whether its performance depends on network topology. We consider the synthetic networks such as Erdős-Rényi, Barabási-Albert, Watts-Strogatz, and ring lattices, which represent random, scale-free, small-world, and local nearest-neighbor connectivity, respectively. In Fig. \ref{Response_for_large_undirected_network}, multiple perturbations of nodes and edges are applied in the four types of undirected network topologies with $N=1000$. 40 randomly selected nodes are perturbed with the perturbation values on the intercal ($\delta r$ in $[-1, 1]$), and 100 undirected edges are perturbed with the perturbation values on the intercal ($\delta W$ in $[-1, 1]$). The mean values of the node parameters $r_i$ and connection weights $W_{ij}$ are fixed at $5$ and they are sampled from a uniform distribution on $[2.5, 7.5]$ and a Gaussian distribution $\mathcal{N}(5,0.5)$. The data points collapse on the diagonal for the comparison between the analytic solution of $\mathbf{K}_0$ from the Lyapunov equation and the response functions, these results show that the linear response framework and the superposition are also valid for the linearized noisy network dynamics with different topologies.
 
-\subsection{Structure-dependent response}
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/ER_BA_undir_dr.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dr.eps}}
+    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Large_network/ER_BA_undir_dW.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dW.eps}}
+    \caption{The }
+    \label{Response_for_large_undirected_network}
+\end{figure}
+
+After verifying the quantitative agreement between the theoretical response functions and numerical measurements, we next ask how the magnitude of the response is controlled by network structure. In particular, we focus on the local variance response $\Delta (\mathbf{K}_0)_{\alpha\alpha}$ and the pairwise covariance response $\Delta (\mathbf{K}_0)_{\alpha\beta}$. The former quantifies how the fluctuation amplitude of the perturbed or directly affected node changes, and therefore provides a measure of local sensitivity or robustness. The latter quantifies how the dynamical correlation between two nodes is modified by a node or edge perturbation, and therefore captures how local perturbations are transmitted through network interactions. Together, these two quantities separate the self-response of a node from the correlation response between coupled nodes.
 
