@@ -106,10 +106,19 @@ Then the evolution of ${\bf K_0}(t)$ due to the time-dependent change of $r_\alp
 
 \begin{figure}[H]
     \centering
-    \subfigure[]{\includegraphics*[width=.4\columnwidth]{Figure/Time_dependent/graphN4-.eps}}
-    \subfigure[]{\includegraphics*[width=.4\columnwidth]{Figure/Time_dependent/graphN4-.eps}} 
-    \caption{Both graphs represent the same undirected square graph with four nodes and four edges, but the spatial arrangement of the nodes differs. (a) The four nodes are connected by edges like a string. (b) The four nodes form a cycle.}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/undirected_graph_N4.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/directed_graph_N4.eps}} 
+    \caption{We consider the undirected and directed graphs with four node which form a cycle for equilibrium and NESS response. The time-dependent response formulas of $\vec{x}(t)$, $\vec{F}(t)$, and $\mathbf{K}(t,t)$ are verified by performing Langevin simulations on the two graphs. The perturbations are applied on node 1 $\delta r_\alpha(t)$ and edge from node 2 to node 1 $\delta W_{12}(t)$ ($\delta W_{21}(t)$ changes for the undirected case).}
     \label{graphN4} 
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddr.eps}}
+    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_funddr.eps}} 
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Kounddr.eps}}
+    \caption{}
+    \label{Time-dependent_undirected_dr} 
 \end{figure}
 
 \subsection{Non-steady Response due to the time-dependent perturbation in a connection weight}
@@ -148,3 +157,21 @@ The response function of the correlation function is
     &=&({\bf K_0})_{ij}+\left[- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
     &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left(- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right)_{ij} \vec{v}_\ell \right] I_{m\ell}(t).
 \end{eqnarray}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddW.eps}}
+    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_funddW.eps}} 
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_KounddW.eps}}
+    \caption{}
+    \label{Time-dependent_undirected_dW} 
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdW.eps}}
+    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdW.eps}} 
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_KodirdW.eps}}
+    \caption{}
+    \label{Time-dependent_directed_dW} 
+\end{figure}

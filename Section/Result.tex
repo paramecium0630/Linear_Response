@@ -28,7 +28,7 @@ In Fig. \ref{chieqmlinear}b, the perturbed edge $(\alpha,\beta)$ is randomly cho
 \end{figure}
 
 \subsection{Nonequilibrium steady-state response}
-\quad  In our framework, a NESS arises when detailed balance is broken, which can occur either through asymmetric interactions (directed networks) or heterogeneous noise distributions. In contrast to equilibrium systems, where the steady state is characterized by vanishing probability currents, NESS exhibit persistent irreversible fluxes in phase space. The key question we address is whether the steady-state linear response framework remains predictive under such conditions. To highlight the difference between equilibrium and nonequilibrium responses, we compare the exact response with the equilibrium-like simplified formula of $\mathbf{K}_0$, as given in (\ref{chiKodr_eq}) and (\ref{chiKodW_eq}). In Fig. \ref{chieqcompare}, a single node and a single directed edge are perturbed by $\delta r_\alpha, \delta W_{\alpha\beta}=0.5$ in a directed ER random network with a uniform noise matrix. The vertical axis is the equilibrium response function $\chi^{eq}_{ij\alpha(\beta)}$ and the horizontal one is the exact response function $\chi^{ss}_{ij\alpha(\beta)}$ solved from the Lyapunov equation. 
+\quad  In our framework, a NESS arises when detailed balance is broken, which can occur either through asymmetric interactions (directed networks) or heterogeneous noise distributions. In contrast to equilibrium systems, where the steady state is characterized by vanishing probability currents, NESS exhibit persistent irreversible fluxes. The key question we address is whether the steady-state linear response framework remains predictive under such conditions. To highlight the difference between equilibrium and nonequilibrium responses, we compare the exact response with the equilibrium-like simplified formula of $\mathbf{K}_0$, as given in (\ref{chiKodr_eq}) and (\ref{chiKodW_eq}). In Fig. \ref{chieqcompare}, a single node and a single directed edge are perturbed by $\delta r_\alpha, \delta W_{\alpha\beta}=0.5$ in a directed ER random network with a uniform noise matrix. The vertical axis is the equilibrium response function $\chi^{eq}_{ij\alpha(\beta)}$ and the horizontal one is the exact response function $\chi^{ss}_{ij\alpha(\beta)}$ solved from the Lyapunov equation. 
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.4\columnwidth]{Figure/Else/chieqnondr.eps}}
@@ -43,7 +43,7 @@ Similar to the equilibrium case, we compare the simulation results with the theo
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Steady/Directed/dKdr_dir.eps}}
     \subfigure[]{\includegraphics*[width=.43\columnwidth]{Figure/Steady/Directed/dKdW_dir.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the steady-state response prediction for a directed ER random network with a uniform diagonal noise matrix, where detailed balance is broken by asymmetric couplings. (a) Response of $\mathbf{K}_0$ to perturbations of a single node parameter with $\delta r_\alpha = 0.5, 2$. (b) Response of $\mathbf{K}_0$ to perturbations of a single directed edge weight with $\delta W_{\alpha\beta} = 0.5, 2$. The collapse of the data points onto the diagonal confirms the validity of the NESS response function obtained from the Lyapunov equation.}
     \label{chiKodir} 
 \end{figure}
 
@@ -51,7 +51,7 @@ Similar to the equilibrium case, we compare the simulation results with the theo
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Steady/Undirected/dKdr_non.eps}}
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Steady/Undirected/dKdW_non.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the steady-state response prediction for an undirected ER random network with a nonuniform diagonal noise matrix, where detailed balance is broken by heterogeneous noise strengths. (a) Response of $\mathbf{K}_0$ to perturbations of a single node parameter with $\delta r_\alpha = 0.5, 2$. (b) Response of $\mathbf{K}_0$ to perturbations of a single undirected edge, where both $W_{\alpha\beta}$ and $W_{\beta\alpha}$ are increased by the same amount $\delta W_{\alpha\beta} = 0.5, 2$ to preserve the symmetric topology. The agreement with the diagonal validates the NESS response function in the presence of heterogeneous noise.}
     \label{chiKonon} 
 \end{figure}
 
@@ -82,21 +82,21 @@ In Fig. \ref{MultipledKdr}, ten randomly selected nodes are perturbed with the s
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdrii_non.eps}}
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdrij_non.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the superposed linear-response prediction for simultaneous perturbations of ten node parameters in an ER random network with nonuniform noise. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The grouping of data points distinguishes entries involving perturbed nodes from those that do not, and the collapse onto the diagonal confirms the additivity of the first-order response.}
     \label{MultipledKdr} 
 \end{figure}
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.44\columnwidth]{Figure/Multiple/MultipledKdWii_non.eps}}
     \subfigure[]{\includegraphics*[width=.46\columnwidth]{Figure/Multiple/MultipledKdWij_non.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the superposed linear-response prediction for simultaneous perturbations of twenty undirected edges in an ER random network with nonuniform noise. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The alignment of the data along the diagonal shows that the first-order responses to individual edge perturbations remain additive in the linear regime.}
     \label{MultipledKdW} 
 \end{figure}
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.42\columnwidth]{Figure/Multiple/MultipledKdWii_remove.eps}}
     \subfigure[]{\includegraphics*[width=.46\columnwidth]{Figure/Multiple/MultipledKdWij_remove.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the first-order prediction for the removal of 40 directed edges in a directed ER random network with nonuniform noise. The theoretical prediction is obtained by summing the single-edge response functions with $\delta W_{\alpha\beta}=-W_{\alpha\beta}$ for all removed edges. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The approximate collapse onto the diagonal shows that the linear response still captures the dominant effect of multiple edge removals.}
     \label{MultipledKdW_remove}
 \end{figure}
 We further consider removal events as a finite-amplitude stress test of the linear-response framework. Edge removal is implemented by setting \(W_{\alpha\beta}\to 0\), corresponding to \(\delta W_{\alpha\beta}=-W_{\alpha\beta}\). Node removal is implemented by isolating the selected node through the removal of all incoming and outgoing edges connected to it. Since these perturbations are not infinitesimal, the first-order prediction is not expected to be quantitatively exact. Instead, this comparison identifies the regime in which the linear response remains informative and the regime in which higher-order effects become important. Fig. \ref{MultipledKdW_remove} examines the removal of 40 directed edges in a directed ER network with nonuniform noise. The prediction is obtained by summing the single-edge response functions over all removed edges. The agreement with the diagonal line shows that, for this level of edge removal, the first-order response still captures the dominant covariance change, even in a nonequilibrium steady state generated by directed couplings and heterogeneous noise. Figure \ref{MultipledKdW_noderemove} considers the removal of a single node in an undirected network with nonuniform noise. Although only one node is removed, this operation simultaneously deletes all edges connected to that node and therefore represents a large structural perturbation. The visible deviations from the diagonal line are expected, especially for covariance elements involving the removed node or its neighbors. These deviations indicate the onset of higher-order response terms beyond the first-order response theory.
@@ -104,21 +104,20 @@ We further consider removal events as a finite-amplitude stress test of the line
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWii_noderemove.eps}}
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWij_noderemove.eps}}
-    \caption{The }
+    \caption{Comparison between Langevin simulations and the first-order prediction for the removal of a single node in an undirected ER random network with nonuniform noise. The prediction is obtained by summing the responses of all incident edge removals associated with the deleted node. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The visible deviations from the diagonal indicate the onset of higher-order effects for this large structural perturbation.}
     \label{MultipledKdW_noderemove}
 \end{figure}
-\subsection{Large-scale networks and topology dependence}
-\quad To assess the scalability and topological applicability of the linear response framework, we next consider large-scale networks with $N > 1000$. In this regime, direct Langevin simulations become computationally expensive for estimating steady-state $\mathbf{K}_0$. We therefore validate the linear response predictions by comparing them with covariance changes obtained from direct solutions of the Lyapunov equation before and after parameter perturbations. This procedure tests whether the first-order response formula remains quantitatively accurate in large networks and whether its performance depends on network topology. We consider the synthetic networks such as Erdős-Rényi, Barabási-Albert, Watts-Strogatz, and ring lattices, which represent random, scale-free, small-world, and local nearest-neighbor connectivity, respectively. In Fig. \ref{Response_for_large_undirected_network}, multiple perturbations of nodes and edges are applied in the four types of undirected network topologies with $N=1000$. 40 randomly selected nodes are perturbed with the perturbation values on the intercal ($\delta r$ in $[-1, 1]$), and 100 undirected edges are perturbed with the perturbation values on the intercal ($\delta W$ in $[-1, 1]$). The mean values of the node parameters $r_i$ and connection weights $W_{ij}$ are fixed at $5$ and they are sampled from a uniform distribution on $[2.5, 7.5]$ and a Gaussian distribution $\mathcal{N}(5,0.5)$. The data points collapse on the diagonal for the comparison between the analytic solution of $\mathbf{K}_0$ from the Lyapunov equation and the response functions, these results show that the linear response framework and the superposition are also valid for the linearized noisy network dynamics with different topologies.
+% \subsection{Large-scale networks and topology dependence}
+% \quad To assess the scalability and topological applicability of the linear response framework, we next consider large-scale networks with $N > 1000$. In this regime, direct Langevin simulations become computationally expensive for estimating steady-state $\mathbf{K}_0$. We therefore validate the linear response predictions by comparing them with covariance changes obtained from direct solutions of the Lyapunov equation before and after parameter perturbations. This procedure tests whether the first-order response formula remains quantitatively accurate in large networks and whether its performance depends on network topology. We consider the synthetic networks such as Erdős-Rényi, Barabási-Albert, Watts-Strogatz, and ring lattices, which represent random, scale-free, small-world, and local nearest-neighbor connectivity, respectively. In Fig. \ref{Response_for_large_undirected_network}, multiple perturbations of nodes and edges are applied in the four types of undirected network topologies with $N=1000$. 40 randomly selected nodes are perturbed with the perturbation values on the intercal ($\delta r$ in $[-1, 1]$), and 100 undirected edges are perturbed with the perturbation values on the intercal ($\delta W$ in $[-1, 1]$). The mean values of the node parameters $r_i$ and connection weights $W_{ij}$ are fixed at $5$ and they are sampled from a uniform distribution on $[2.5, 7.5]$ and a Gaussian distribution $\mathcal{N}(5,0.5)$. The data points collapse on the diagonal for the comparison between the analytic solution of $\mathbf{K}_0$ from the Lyapunov equation and the response functions, these results show that the linear response framework and the superposition are also valid for the linearized noisy network dynamics with different topologies.
 
-\begin{figure}[H]
-    \centering
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/ER_BA_undir_dr.eps}}
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dr.eps}}
-    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Large_network/ER_BA_undir_dW.eps}}
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dW.eps}}
-    \caption{The }
-    \label{Response_for_large_undirected_network}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/ER_BA_undir_dr.eps}}
+%     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dr.eps}}
+%     \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Large_network/ER_BA_undir_dW.eps}}
+%     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Large_network/WS_RING_undir_dW.eps}}
+%     \caption{The }
+%     \label{Response_for_large_undirected_network}
+% \end{figure}
 
-After verifying the quantitative agreement between the theoretical response functions and numerical measurements, we next ask how the magnitude of the response is controlled by network structure. In particular, we focus on the local variance response $\Delta (\mathbf{K}_0)_{\alpha\alpha}$ and the pairwise covariance response $\Delta (\mathbf{K}_0)_{\alpha\beta}$. The former quantifies how the fluctuation amplitude of the perturbed or directly affected node changes, and therefore provides a measure of local sensitivity or robustness. The latter quantifies how the dynamical correlation between two nodes is modified by a node or edge perturbation, and therefore captures how local perturbations are transmitted through network interactions. Together, these two quantities separate the self-response of a node from the correlation response between coupled nodes.
-
+% After verifying the quantitative agreement between the theoretical response functions and numerical measurements, we next ask how the magnitude of the response is controlled by network structure. In particular, we focus on the local variance response $\Delta (\mathbf{K}_0)_{\alpha\alpha}$ and the pairwise covariance response $\Delta (\mathbf{K}_0)_{\alpha\beta}$. The former quantifies how the fluctuation amplitude of the perturbed or directly affected node changes, and therefore provides a measure of local sensitivity or robustness. The latter quantifies how the dynamical correlation between two nodes is modified by a node or edge perturbation, and therefore captures how local perturbations are transmitted through network interactions. Together, these two quantities separate the self-response of a node from the correlation response between coupled nodes.

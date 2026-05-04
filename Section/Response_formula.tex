@@ -58,10 +58,10 @@ Also, the derivative of the inverse of the covariance matrix gives
     \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
     \label{inverse_partialKo}
 \end{equation}
-They are useful for calculating various response functions with the terms involving $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$.
+The higher orders of the derivative can be obtained by the similar manner.
 
 \subsection{Equilibrium simplification for networks with symmetric $\mathbf{Q}\boldsymbol{\sigma}$}
-\quad The above formulas further simplify when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
+\quad The above formulas are further simplified when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = -Q^{-1}_{i\alpha} (\mathbf{K}_0)_{j\beta} = \frac{1}{2} Q^{-1}_{i\alpha} (\mathbf{Q}^{-1}\boldsymbol{\sigma})_{j\beta}.
 \end{equation}
