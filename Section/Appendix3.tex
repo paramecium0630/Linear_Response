@@ -34,3 +34,27 @@ Then the solution of $ {\bf K}$  is given by
 \begin{equation}
  {\bf K}=\sum_{\ell,m=1}^N \frac{ {\bf M}^{(\ell)}{\bf S} {{\bf M}^{(m)}}^\intercal }{\lambda_\ell+\lambda_m}.
 \end{equation}
+
+\subsection*{Mode expansion for the time-dependent protocol integrals}
+\quad In Sec. \ref{sec:time-dependent}, the transient response to the cosine
+driving protocol is evaluated by the spectral decomposition of ${\bf Q}$. For the
+node perturbation, the integral in (\ref{xi(t)drlinear}) can be evaluated by finding
+the eigenvalues and eigenvector of ${\bf Q}$:  ${\bf P}^{-1}{\bf Q}{\bf P}=\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where $\lambda_i$ are the eigenvalues and ${\bf P}$ is the matrix of eigenvectors:
+${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ , ${\bf Q}{\vec u_i}=\lambda_i{\vec u_i}$. The inverse of ${\bf P}$ is given by ${\bf P}^{-\intercal}=({\vec v_1},{\vec v_2},\cdots,{\vec v_N})$, with  $ {\vv v_i}^\intercal  {\vec u_j}=\delta_{ij}$, $\sum_{j=1}^N{\vec v_j} {\vv u_j}^\intercal={\bf I}$.
+ ${\bf Q}$ can be spectral decomposed as ${\bf Q}=\sum_{m=1}^N\lambda_m {\vec u_m}{\vec v_m}^\intercal$. Then in terms of the components of the vectors ${\vec u_i}^\intercal=(u_{i1},u_{i2},\cdots,u_{iN})$ and ${\vec v_i}^\intercal=(v_{i1},v_{i2},\cdots,v_{iN})$,  (\ref{xi(t)drlinear}) can be expressed as
+ \begin{equation}
+    \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\sum_k\frac{u_{ik}v_{\alpha k}}{\lambda_k}\int_0^tdt'e^{(t-t')\lambda_k}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinearb}
+\end{equation}
+For the covariance response, the time-dependent integral can be written as
+\begin{eqnarray}
+    &&\int_0^{min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t)\\
+    &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right)_{ij} \int_0^{min(t,\tau)} dt' e^{(t-t')(\lambda_m+\lambda_\ell)} \delta \dot{r}_\alpha(t').
+\end{eqnarray}
+Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
+\begin{eqnarray}
+    I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
+    &=&\begin{cases} \frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau}-e^{-(\lambda_m+\lambda_\ell)t}\left(\frac{\pi}{\tau}\text{cos}(\frac{\pi t}{\tau})+(\lambda_m+\lambda_\ell)\text{sin}\left(\frac{\pi t}{\tau}\right)\right) \right],\;t \le \tau \\
+    -\frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau} - \frac{\pi}{\tau}e^{-(\lambda_m+\lambda_\ell)\tau} \right],\;t > \tau
+     \end{cases}.
+\end{eqnarray}
+The same spectral decomposition and protocol integral are used in Sec. \ref{sec:time-dependent} for the edge-perturbation case.

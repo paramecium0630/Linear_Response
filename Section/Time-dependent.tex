@@ -1,78 +1,117 @@
-\section{Time-Dependent Linear Response Theory in Noisy Network Dynamics}
+\section{Time-Dependent Linear Response Theory in Noisy Network Dynamics}\label{sec:time-dependent}
+We now extend the steady-state framework to time-dependent perturbations. We first derive a formal non-steady response identity for noisy network dynamics near a steady state and then specialize it to linearized network dynamics, where the
+transient responses of the mean state, deterministic force, and equal-time covariance can be written explicitly. Explicit closed-form results and numerical validation are then presented for linear network dynamics in both an equilibrium reference network and a nonequilibrium steady-state network.
 \subsection{General Formula for Time-Dependent Linear Response Function}
-\quad We consider the non-steady response induced by a time-dependent change in network parameters $\vec{p}\rightarrow\vec{p}+\delta \vec{p}(t)$, and assume the system is at a steady state with $\delta \vec{p} = 0$ at $t \le 0$, the non-steady (linear) response function of an observable $\mathbf{B}(t)$ is defined as
+\quad We consider the non-steady response induced by a time-dependent perturbation
+of the network parameters, $\vec{p}\rightarrow\vec{p}+\delta \vec{p}(t)$, and
+assume that the system is in the unperturbed steady state for $t\le 0$. The
+non-steady linear response function of an observable $\mathbf{B}(t)$ is then
+defined as
 \begin{equation}
     \langle \mathbf{B}(t) \rangle_{\vec{p}+\delta \vec{p}(t)} = \langle \mathbf{B}(0) \rangle_{ss,\vec{p}} + \int_0^t dt' \boldsymbol{\chi}(t-t') \delta \dot{\vec{p}}(t').
     \label{time-dependent_response}
 \end{equation}
-One can define the conjugate force $\vec{\mathcal{F}}(t)$ in the same way as in (\ref{conjugate_force}). The time-dependent linear response function is given by
+The conjugate force $\vec{\mathscr{F}}(t)$ is defined in the same way as in (\ref{conjugate_force}). The time-dependent linear response function is then
+given by
 \begin{eqnarray}
     \boldsymbol{\chi}(t) &=&\langle \nabla_p{\mathbf{B}} \rangle_{ss,{\vec p}} + \int_0^t dt'\langle {\mathbf {B}}(t-t'){\dot{\vv {\mathscr F}}}^\intercal\rangle_{ss,{\vec p}} \nonumber\\
     &=& \boldsymbol{\chi} ^{(ss)}- \langle \delta{\mathbf B}(t)\delta{\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}}=\boldsymbol{\chi} ^{(ss)}- \langle \delta{\mathbf B}(t){\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}}.
     \label{chineqm}
 \end{eqnarray}
-Then the time-dependent relaxation of $\mathbf{B}(t)$ is given by
+The corresponding time-dependent response of $\mathbf{B}(t)$ is
 \begin{equation}
     \langle \mathbf{B}(t)\rangle_{{\vec p}+\delta{\vec p}(t)}= \langle \mathbf{ B}(0)\rangle_{ss,{\vec p}}+\boldsymbol{\chi}^{(ss)}\delta {\vec p}-\int_0^t dt'\langle \delta\mathbf{ B}(t-t'){\vv {\mathscr F}}^\intercal(0)\rangle_{ss,{\vec p}} \delta{\dot {\vec p}}(t').
     \label{Bnoneqm}
 \end{equation}
-For the noisy network dynamics, let the time-lagged covariance matrix
+For the linearized noisy dynamics, both the time-lagged covariance $\mathbf{K}_\tau$ and the mixed correlation with the conjugate force are governed by $e^{\tau \mathbf{Q}}$. Using the time-dependent conjugate-force relation derived in Appendix~A, one obtains
 \begin{equation}
-    (\mathbf{K}_\tau)_{ij} \equiv \langle \delta x_i(\tau) \delta x_j(0) \rangle.
-    \label{time-lagged_covariance}
+    \langle \delta x_i(\tau)\mathscr{F}_\alpha(0)\rangle = \sum_\ell \frac{\partial X_\ell}{\partial p_\alpha}
+    (e^{\tau \mathbf{Q}})_{i\ell}.
 \end{equation}
-Then one has 
+
+This result shows that, within the linearized theory, the time-dependent response is determined by two ingredients: the parameter-induced shift of the noise-free fixed point and $e^{\tau\mathbf{Q}}$, which governs how the perturbation is transmitted through the network in time.
+\subsection{Linear-Dynamics Specialization}
+\quad We next consider the special case of linear network dynamics, with $f_i(x_i;r_i) = r_i(a_i-x_i)$ and a coupling function $h$ that is also linear in $x_i$. In this case the system can be solved explicitly, and $\langle x_i \rangle = X_i$. The time-dependent response of the mean state variable is
 \begin{equation}
-    \langle \delta x_i(\tau) \mathcal{F}_\alpha(0) \rangle = \sum_\ell \frac{\partial X_\ell}{\partial p_\alpha} (e^{\tau \mathbf{Q}})_{i\ell}.    
-\end{equation}
-This relation shows that the relaxation response is controlled by both the shift of the noise-free fixed point.
-\subsection{Response function for linear network dynamics}
-\quad We next consider the simpler case of linear network dynamics, with $f_i(x_i;r_i) = r_i(a_i-x_i)$, and a coupling function $h$ that is also linear in $x_i$. In this case, the system can be solved explicitly, and $\langle x_i \rangle = X_i$. The time-dependent response of the mean state variable is then 
-\begin{equation}
-    \chi_{i\alpha}(t)=\left(e^{t{\bf Q}}{\bf Q}^{-1} \nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}-\left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{i\alpha}. \label{chinsslinear}
+    \chi_{i\alpha}^{(x)}(t)=\left(e^{t{\bf Q}}{\bf Q}^{-1} \nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}-\left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{i\alpha}. \label{chinsslinear}
 \end{equation}
 For the deterministic force, the time-dependent response function is
 \begin{equation}
-    \chi_{i\alpha}(t)=\left(e^{t{\bf Q}}\nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}.
+    \chi_{i\alpha}^{(F)}(t)=\left(e^{t{\bf Q}}\nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}.
     \label{chitforcelinear}
 \end{equation}
 For the equal-time covariance matrix, its time-dependent response function is
 \begin{equation}
-    \chi_{ij\alpha}(t) = \chi_{ij\alpha}^{(ss)} - \sum_{\ell,m} \left((e^{t\mathbf{Q}})_{i\ell}\chi_{\ell m\alpha}^{(ss)}(e^{t\mathbf{Q}^\intercal})_{mj}\right).
+    \chi_{ij\alpha}^{(K)}(t) = \chi_{ij\alpha}^{(ss)} - \sum_{\ell,m} \left((e^{t\mathbf{Q}})_{i\ell}\chi_{\ell m\alpha}^{(ss)}(e^{t\mathbf{Q}^\intercal})_{mj}\right).
     \label{chitKolinear}
 \end{equation}
+These expressions provide the explicit linear-response kernels that will be tested numerically later. We next specify the simulation setting and then compare the predictions for node and edge perturbations in the linearized network model.
+\subsection{Simulation Setup and Validation Strategy}
+To validate the explicit time-dependent formulas derived for linearized network dynamics, we consider two four-node networks in Fig. \ref{graphN4}: an undirected network satisfying equilibrium conditions and a directed network realizing a nonequilibrium steady state. In both cases, the node parameters and nonzero coupling weights are fixed at $r_i=5$ and $W_{ij}=5$, respectively. The intrinsic dynamics is chosen as
+\begin{equation}
+    f_i(x_i)=r_i(a_i-x_i),
+\end{equation}
+with intrinsic target states $\vec{a}=(2,4,6,8)$, and the coupling function is diffusive,
+\begin{equation}
+    h(x_i,x_j)=x_j-x_i .
+\end{equation}
+For the undirected network, all nodes are affected by identical noise strengths, $\sigma_{ii}=0.01$, so that the system serves as an equilibrium reference case.  In contrast, the directed network contains four unidirectional edges and nonuniform noise strengths, thereby producing a nonequilibrium steady state.\par
+We perturb either the node parameter $r_1(t)$ or a single coupling weight $W_{12}(t)$, corresponding to the edge from node 2 to node 1 under our convention. For the undirected network, the same perturbation is applied to the edge connecting nodes 1 and 2. The time-dependent perturbation protocols are given in Eqs. \eqref{dra(t)cos} and \eqref{dWab(t)cos}, with amplitude $b=0.5$ and protocol duration $\tau=20$. The same protocol parameters are used for all time-dependent comparisons shown below. In the following subsections, we evaluate the corresponding explicit linear-response formulas for single-node and single-edge perturbations and compare them with direct Langevin simulations.
+
+The observables used for validation are the mean state $\langle x_i(t)\rangle$, 
+the mean force $\langle F_i(t)\rangle$, and the equal-time covariance matrix
+\begin{equation}
+    K_{ij}(t,t) = \left\langle \delta x_i(t)\delta x_j(t)\right\rangle .
+\end{equation}
+All ensemble averages are computed from $10^5$ independent trajectories over the time interval $0\leq t\leq 20$. Before the perturbation is applied at $t=0$, the system is first allowed to relax to its unperturbed steady state. In the
+time-series comparisons below, dashed curves denote direct Langevin simulations and solid curves denote the linear-response prediction. Since showing all components would be visually redundant for this four-node example, we display the representative quantities $\langle x_1(t)\rangle$, $\langle x_2(t)\rangle$, $\langle F_1(t)\rangle$, $\langle F_2(t)\rangle$, $K_{11}(t,t)$, and $K_{12}(t,t)$. The remaining components exhibit similarly good agreement, and some representative responses are shown for visual clarity.
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/undirected_graph_N4.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/directed_graph_N4.eps}} 
+    \caption{Four-node networks used to validate the time-dependent response formulas. (a) Undirected cycle with uniform noise, which serves as an equilibrium reference case. (b) Directed cycle with heterogeneous noise, which realizes a nonequilibrium steady state. In the numerical tests, we perturb either node $1$ through $\delta r_1(t)$ or the directed edge from node $2$ to node $1$ through $\delta W_{12}(t)$; for the undirected network, the reciprocal edge is changed by the same amount to preserve the symmetric topology.}
+    \label{graphN4} 
+\end{figure}
 
 \subsection{Non-steady Response due to the time-dependent perturbation in a node parameter}
-\quad Considering the response due to the change of a single node parameter $\delta r_\alpha(t)$, we first
-illustrate the calculation of the time-dependent relaxation response of the mean position $\langle x_i(t) \rangle$ for the linear deterministic force $f_i(x_i;r_i) = r_i(a_i-x_i)$ and the linear coupling function $h(x_i,x_j)=x_j-x_i$. The time-dependent response of $x_i$ is
+\quad We first consider a time-dependent perturbation of a single node parameter
+$\delta r_\alpha(t)$. We begin with the explicit response formulas for linear
+dynamics and then compare them with direct simulations. For the linear
+deterministic force $f_i(x_i;r_i) = r_i(a_i-x_i)$ and the linear coupling
+function $h(x_i,x_j)=x_j-x_i$, the time-dependent response of $x_i$ is
 \begin{equation}
     \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\int_0^tdt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1}  \right)_{i\alpha}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinear}
 \end{equation}
-The integral in (\ref{xi(t)drlinear}) can evaluated by finding the eigenvalues and eigenvector of ${\bf Q}$:  ${\bf P}^{-1}{\bf Q}{\bf P}=\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where $\lambda_i$ are the eigenvalues and ${\bf P}$ is the matrix of eigenvectors:
-${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ , ${\bf Q}{\vec u_i}=\lambda_i{\vec u_i}$. The inverse of ${\bf P}$ is given by ${\bf P}^{-\intercal}=({\vec v_1},{\vec v_2},\cdots,{\vec v_N})$, with  $ {\vv v_i}^\intercal  {\vec u_j}=\delta_{ij}$, $\sum_{j=1}^N{\vec v_j} {\vv u_j}^\intercal={\bf I}$.
- ${\bf Q}$ can be spectral decomposed as ${\bf Q}=\sum_{m=1}^N\lambda_m {\vec u_m}{\vec v_m}^\intercal$. Then in terms of the components of the vectors ${\vec u_i}^\intercal=(u_{i1},u_{i2},\cdots,u_{iN})$ and ${\vec v_i}^\intercal=(v_{i1},v_{i2},\cdots,v_{iN})$,  (\ref{xi(t)drlinear}) can be expressed as
- \begin{equation}
-    \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\sum_k\frac{u_{ik}v_{\alpha k}}{\lambda_k}\int_0^tdt'e^{(t-t')\lambda_k}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinearb}
-\end{equation}
-As an example, for a time-dependent change of $\delta r_\alpha$ in an interval of $\tau$ such as 
+For the cosine protocol introduced below, the convolution integrals can be evaluated explicitly by the spectral decomposition of ${\bf Q}$; the detailed steps are summarized in Appendix C. For the cosine protocol
 \begin{equation}
      \delta r_\alpha(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau\\
      b &t>\tau
      \end{cases},\label{dra(t)cos}
 \end{equation}
-then the time-dependent relaxation response is
+For completeness, we record the closed-form expressions for the cosine protocol,
+although the validation below does not rely on their detailed algebraic form.
+The time-dependent relaxation response is then
 \begin{equation}
       \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (a_\alpha-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)-&Q^{-1}_{i\alpha} (1-\cos\frac{\pi t}{\tau})\bigg] \\
      & 0\leq t\leq\tau\\
      X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha}+\frac{b}{2} (a_\alpha-X_\alpha)\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}[ e^{\lambda_kt}+e^{\lambda_k(t-\tau)}]}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)} &t>\tau
      \end{cases}.
 \end{equation}
-Note that as $t\to\infty$, since $\lambda_k<0$,  $\langle x_i(t)\rangle$ approaches to the  new noise-free fixed point $  X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha} $ exponentially with a time scale determined by the spectrum $\{\lambda_k \}$ of ${\bf Q}$.
-For the force response in the case linear network dynamics due to $\delta r_\alpha(t)$, we have$ \langle \delta f_i  {\mathscr F}_\alpha\rangle=r_i \partial X_i/\partial r_\alpha=r_i(a_\alpha-X_\alpha) Q_{i\alpha}^{-1}$,   one obtains the  force relaxation response function from (\ref{chitforcelinear})
+As $t\to\infty$, since $\lambda_k<0$, $\langle x_i(t)\rangle$ approaches the
+new noise-free fixed point $X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha}$
+exponentially, with a time scale determined by the spectrum $\{\lambda_k \}$ of
+${\bf Q}$. For the force response in linear network dynamics driven by
+$\delta r_\alpha(t)$, we use
+$ \langle \delta f_i  {\mathscr F}_\alpha\rangle=r_i \partial X_i/\partial r_\alpha=r_i(a_\alpha-X_\alpha) Q_{i\alpha}^{-1}$.
+The force relaxation response function then follows from
+(\ref{chitforcelinear}):
 \begin{equation}
-\chi_{i\alpha}(t)=(a_\alpha-X_\alpha)(e^{t{\bf Q}})_{i\alpha}.
+\chi_{i\alpha}^{(F)}(t)=(a_\alpha-X_\alpha)(e^{t{\bf Q}})_{i\alpha}.
 \end{equation}
-With a given time-dependent driving $ \delta r_\alpha(t)$ in the duration $0\leq t\leq\tau$, with $ \delta r_\alpha(0)=0$ and $ \delta {\dot r}_\alpha(t>\tau)=0$,the mean force relaxation response can be calculated to give
+For the driving protocol $\delta r_\alpha(t)$ over $0\leq t\leq\tau$, with
+$\delta r_\alpha(0)=0$ and $\delta {\dot r}_\alpha(t>\tau)=0$, the mean force
+response becomes
 \begin{equation}
 \langle { F}_i(t)\rangle = \begin{cases}  (a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^tdt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, &0\leq t\leq\tau\\
 (a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^\tau dt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, & t>\tau
@@ -83,58 +122,59 @@ With a given time-dependent driving $ \delta r_\alpha(t)$ in the duration $0\leq
 \frac{b}{2}(a_\alpha-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
 \end{cases}.
 \end{equation}
-The behaviors of the ensemble average of $\vec{x}(t)$ and $\vec{F}(t)$ do not depend on the noise strength on each node, which are only related to $\bf{Q}$. From equ. (\ref{chitKolinear}), the time-dependent response function for ${\bf K}(t,t)$ due to the change in $r_\alpha(t)$ is given by:
+The ensemble averages of $\vec{x}(t)$ and $\vec{F}(t)$ do not depend on the
+noise strengths and are determined solely by ${\bf Q}$. From Eq.
+(\ref{chitKolinear}), the time-dependent response of ${\bf K}(t,t)$ to the
+change in $r_\alpha(t)$ is
 \begin{equation}
     {\bf K}_{ij}(t,t) = ({\bf K_0})_{ij} +\chi_{ij\alpha}^{ss} \delta r_\alpha(t)+\int_0^t dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t),
 \end{equation}
-where the integral can be calculated by using the spectral decomposition of $\bf Q$. 
-\begin{eqnarray}
-    &&\int_0^{min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t)\\
-    &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right)_{ij} \int_0^{min(t,\tau)} dt' e^{(t-t')(\lambda_m+\lambda_\ell)} \delta \dot{r}_\alpha(t').
-\end{eqnarray}
-Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
-\begin{eqnarray}
-    I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
-    &=&\begin{cases} \frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau}-e^{-(\lambda_m+\lambda_\ell)t}\left(\frac{\pi}{\tau}\text{cos}(\frac{\pi t}{\tau})+(\lambda_m+\lambda_\ell)\text{sin}\left(\frac{\pi t}{\tau}\right)\right) \right],\;t \le \tau \\
-    -\frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau} - \frac{\pi}{\tau}e^{-(\lambda_m+\lambda_\ell)\tau} \right],\;t > \tau
-     \end{cases}.
-\end{eqnarray}
-Then the evolution of ${\bf K_0}(t)$ due to the time-dependent change of $r_\alpha$ is
+Using the same spectral decomposition, the covariance integral can also be
+evaluated explicitly, and the corresponding protocol integral $I_{m\ell}(t)$ is
+defined in Appendix C. The evolution of ${\bf K_0}(t)$ induced by the
+time-dependent change in $r_\alpha$ is
 \begin{equation}
     {\bf K}_{ij}(t)=({\bf K_0})_{ij}-\left( \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \right)_{ij}\delta r_\alpha(t) + \sum_{m,\ell} u_{im}u_{j\ell} \left( \vec{v}^\intercal_m \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}} \vec{v}_\ell \right) I_{m\ell}(t).
 \end{equation}
-
-\begin{figure}[H]
-    \centering
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/undirected_graph_N4.eps}}
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/directed_graph_N4.eps}} 
-    \caption{We consider the undirected and directed graphs with four node which form a cycle for equilibrium and NESS response. The time-dependent response formulas of $\vec{x}(t)$, $\vec{F}(t)$, and $\mathbf{K}(t,t)$ are verified by performing Langevin simulations on the two graphs. The perturbations are applied on node 1 $\delta r_\alpha(t)$ and edge from node 2 to node 1 $\delta W_{12}(t)$ ($\delta W_{21}(t)$ changes for the undirected case).}
-    \label{graphN4} 
-\end{figure}
-
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddr.eps}}
     \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_funddr.eps}} 
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Kounddr.eps}}
-    \caption{}
+    \caption{Comparison between Langevin simulations (dashed) and the time-dependent linear-response prediction (solid) for a node perturbation $\delta r_1(t)$ in the four-node undirected network of Fig. \ref{graphN4}a. (a) Mean state response $\langle x_i(t)\rangle-\langle x_i(0)\rangle$ for the components $i=1,2$. (b) Mean force response $\langle F_i(t)\rangle$ for $i=1,2$. (c) Equal-time covariance response for the components $K_{11}(t,t)$ and $K_{12}(t,t)$. The agreement over both the driving stage and the post-driving relaxation verifies the time-dependent response theory in the equilibrium case.}
     \label{Time-dependent_undirected_dr} 
 \end{figure}
-
+Figures \ref{Time-dependent_undirected_dr} and \ref{Time-dependent_directed_dr} compare these predictions with Langevin
+simulations for a perturbation of the node parameter $r_1(t)$. The curves resolve both stages of the response: the driven interval $0\le t\le \tau$, during which the observables follow the smooth protocol, and the subsequent
+relaxation for $t>\tau$, during which the system approaches the new steady state. Agreement for $\langle x_i(t)\rangle$ and $\langle F_i(t)\rangle$ verifies the predicted mean relaxation dynamics. Agreement for $K_{ij}(t,t)$ shows that the theory also captures the time evolution of fluctuations and correlations.
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdr.eps}}
+    \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdr.eps}} 
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Kodirdr.eps}}
+    \caption{Same comparison as in Fig. \ref{Time-dependent_undirected_dr}, but for the directed network in Fig. \ref{graphN4}b, which is in a nonequilibrium steady state. The observables are again (a) $\langle x_1(t)\rangle-\langle x_1(0)\rangle$ and $\langle x_2(t)\rangle-\langle x_2(0)\rangle$, (b) $\langle F_1(t)\rangle$ and $\langle F_2(t)\rangle$, and (c) $K_{11}(t,t)$ and $K_{12}(t,t)$. The close overlap between theory and simulation shows that the time-dependent response formulas remain valid even when detailed balance is broken.}
+    \label{Time-dependent_directed_dr} 
+\end{figure}
+Increasing $r_1$ strengthens the local restoring force on node 1 toward its intrinsic target $a_1$. Since the unperturbed state satisfies $X_1>a_1$ due to the couplings, the perturbation drives $\langle x_1(t)\rangle$ downward and
+gives a negative response in $\langle F_1(t)\rangle$. The stronger local relaxation also suppresses fluctuations around node 1, leading to a decrease in $K_{11}(t,t)$. In the undirected case, the perturbation is transmitted more
+directly to node 2, so both the coupled response and the covariance $K_{12}(t,t)$ decrease. In the directed case, node 2 is not directly affected by node 1, and its response can therefore differ in amplitude and transient shape.
 \subsection{Non-steady Response due to the time-dependent perturbation in a connection weight}
-\quad We illustrate the calculation of the time-dependent relaxation response for the simpler case of linear network dynamics when a single connection is perturbed. The relaxation response function of the mean position is given by
+\quad We next consider a time-dependent perturbation of a single connection weight. The derivation parallels the node-perturbation case, so we state the corresponding response formulas and then compare them with direct simulations.
+For linear network dynamics, the relaxation response of the mean position is
 \begin{eqnarray}
     \langle x_i(t)\rangle_{{\bf W}+\delta W_{\alpha\beta}(t)}&=&X_i+ (X_\beta-X_\alpha)\bigg[\int_0^tdt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1} \right)_{i\alpha}\delta{\dot W}_{\alpha\beta}(t') -Q^{-1}_{i\alpha} \delta W_{\alpha\beta}(t)\bigg].\\
     &=&X_i+ (X_\beta-X_\alpha)\bigg[\sum_{k} \frac{u_{ik}v_{\alpha k}}{\lambda_k} \int_0^t dt'e^{(t-t')\lambda_k}\delta{\dot W}_{\alpha\beta}(t') -Q^{-1}_{i\alpha} \delta W_{\alpha\beta}(t)\bigg].
     \label{xi(t)dWlinear}
 \end{eqnarray}
-Then we apply the same protocol (\ref{dra(t)cos}) on the connection between node $\alpha$ and node $\beta$.
+The same spectral decomposition described in Appendix C can be used to evaluate
+these convolution integrals explicitly. We again use the protocol
+(\ref{dra(t)cos}) on the connection between node $\alpha$ and node $\beta$:
 \begin{equation}
      \delta W_{\alpha\beta}(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau\\
      b &t>\tau
      \end{cases},\label{dWab(t)cos}
 \end{equation}
-Similarly, the time-dependent relaxation response of each node's state is
+The corresponding time-dependent response of each node state variable is
 \begin{equation}
       \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (X_\beta-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)&-Q^{-1}_{i\alpha} \left(1-\cos\frac{\pi t}{\tau}\right)\bigg] \\
      & 0\leq t\leq\tau\\
@@ -151,19 +191,22 @@ and
 \frac{b}{2}(X_\beta-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
 \end{cases}.
 \end{equation}
-The response function of the correlation function is
+The response function of the covariance is
 \begin{eqnarray}
     {\bf K}_{ij}(t,t) &=& ({\bf K_0})_{ij} + \chi_{ij\alpha\beta}^{ss} \delta W_{\alpha\beta}(t)+\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t)\nonumber\\
     &=&({\bf K_0})_{ij}+\left[- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
     &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left(- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right)_{ij} \vec{v}_\ell \right] I_{m\ell}(t).
 \end{eqnarray}
-
+Here the protocol integral $I_{m\ell}(t)$ is the same quantity defined in Appendix C. Figures \ref{Time-dependent_undirected_dW} and \ref{Time-dependent_directed_dW} show the corresponding validation for a
+time-dependent edge perturbation. The response is driven by the contrast $X_\beta-X_\alpha$ across the perturbed link, so the transient signals directly probe how a local change of coupling propagates through the network and modifies
+both the deterministic relaxation and the covariance dynamics.\par
+Increasing $W_{12}$ strengthens the pull of node 2 on node 1. Since the unperturbed state satisfies $X_2>X_1$, the perturbation drives $\langle x_1(t)\rangle$ upward and gives a positive response in $\langle F_1(t)\rangle$. In the undirected case, the same perturbation also acts on $W_{21}$, reduces the state difference between the two nodes, and enhances their correlation, so $K_{12}(t,t)$ increases while $K_{11}(t,t)$ decreases. In the directed case, the response of node 2 is not directly affected by $\delta W_{12}$, so its amplitude is smaller and its time dependence is set by the network propagation.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddW.eps}}
     \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_funddW.eps}} 
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_KounddW.eps}}
-    \caption{}
+    \caption{Comparison between Langevin simulations (dashed) and the time-dependent linear-response prediction (solid) for an edge perturbation in the four-node undirected network. The coupling on the link between nodes $1$ and $2$ is varied according to $\delta W_{12}(t)=\delta W_{21}(t)$. (a) Mean state response for $\langle x_1(t)\rangle-\langle x_1(0)\rangle$ and $\langle x_2(t)\rangle-\langle x_2(0)\rangle$. (b) Mean force response for $\langle F_1(t)\rangle$ and $\langle F_2(t)\rangle$. (c) Equal-time covariance response for $K_{11}(t,t)$ and $K_{12}(t,t)$. The agreement confirms the predicted transient and long-time response for a time-dependent perturbation of an undirected coupling.}
     \label{Time-dependent_undirected_dW} 
 \end{figure}
 
@@ -172,6 +215,6 @@ The response function of the correlation function is
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdW.eps}}
     \subfigure[]{\includegraphics*[width=.47\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdW.eps}} 
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_KodirdW.eps}}
-    \caption{}
+    \caption{Same comparison as in Fig. \ref{Time-dependent_undirected_dW}, but for a directed perturbation $\delta W_{12}(t)$ in the nonequilibrium network of Fig. \ref{graphN4}b. Panels (a)-(c) show components of the mean state, mean force, and equal-time covariance, respectively. The close agreement between simulation and prediction demonstrates that the time-dependent response theory also captures the propagation of directed coupling perturbations in a nonequilibrium steady state.}
     \label{Time-dependent_directed_dW} 
 \end{figure}

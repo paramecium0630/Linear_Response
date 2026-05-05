@@ -15,7 +15,7 @@ If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
-This relation directly links the steady-state fluctuation statistics to the network topology and noise structure, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
+This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
 \begin{equation}
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
@@ -57,7 +57,7 @@ With $\mathbf{Q}\equiv\nabla\vec{F}\big|_{\vec{X}}$, and assuming $\mathbf{Q}^{-
 \begin{equation}
     \frac{\partial X_i}{\partial p_\alpha} = -(\mathbf{Q}^{-1} \nabla_{\vec{p}} \vec{F}\big|_{\vec{X}},\vec{p})_{i\alpha}.
 \end{equation}
-This relation shows that the shift of the fixed point induced by a parameter perturbation is controlled by the network structure and local dynamics through $\mathbf{Q}$. For an observable $\mathbf{B}(\vec{x}; \vec{p})$, the steady-state linear response is defined by
+This relation shows that the shift of the fixed point induced by a parameter perturbation is controlled by the linearized dynamics through $\mathbf{Q}$. For an observable $\mathbf{B}(\vec{x}; \vec{p})$, the steady-state linear response is defined by
 \begin{equation}
     \langle \mathbf{B} \rangle_{ss, \vec{p}+\delta \vec{p}} = \langle \mathbf{B} \rangle_{ss, \vec{p}} + \boldsymbol{\chi} \delta \vec{p}.
     \label{response}
