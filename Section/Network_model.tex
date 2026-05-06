@@ -35,4 +35,36 @@ We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigen
 \begin{equation}
     \langle \vec{\eta}(t) \vec{\eta}^\intercal(t') \rangle = \boldsymbol{\sigma} \delta (t-t'),\;\langle \vec{\eta}(t) \rangle = 0,
 \end{equation}
-where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. In the examples studied below, we mainly use the linear intrinsic dynamics $f_i = r_i(1-x_i)$ and the Logistic one $f_i = r_i x_i(1-x_i)$, together with the coupling function $h(x_i,x_j) = x_j-x_i$, for which the nodes tend to synchronize. 
+where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
+\begin{equation}
+    \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
+    \label{Lyapunov_eq}
+\end{equation}
+This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The probability current associated with the linearized dynamics is
+\begin{equation}
+    \vec{J}(\vec{x},t; \vec{p}) = \mathbf{Q} \delta \vec{x} \psi(\vec{x},t;\vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p}).
+    \label{probability_current}
+\end{equation} The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
+\begin{equation}
+    \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
+    \label{steady-state prob}
+\end{equation}
+which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$.
+For a steady state, the current satisfies $\nabla \cdot \vec{J}_{ss} = 0$. Substituting the Gaussian distribution (\ref{steady-state prob}) into (\ref{probability_current}) gives
+\begin{equation}
+    \vec{J}_{ss} = \left( \mathbf{Q} + \frac{1}{2}\boldsymbol{\sigma} \mathbf{K}_0^{-1} \right) \delta \vec{x} \psi_{ss}.
+\end{equation}
+Thus, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. The steady-state condition only requires the current to be divergence-free, whereas detailed balance requires it to vanish pointwise. The equilibrium condition is therefore
+\begin{equation}
+    \mathbf{Q} + \frac{1}{2} \boldsymbol{\sigma} \mathbf{K}_0^{-1} = 0.
+\end{equation}
+Using (\ref{Lyapunov_eq}), this condition is equivalent to
+\begin{equation}
+    \mathbf{Q}\boldsymbol{\sigma} = \boldsymbol{\sigma}\mathbf{Q}^\intercal,
+\end{equation}
+that is, $\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the familiar case of symmetric $\mathbf{Q}$ with uniform diagonal noise, but it is more general and does not require $\mathbf{Q}$ itself to be symmetric. For diagonal $\boldsymbol{\sigma}$, the condition becomes
+\begin{equation}
+    Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
+\end{equation}
+When $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$, the couplings are asymmetric and/or the noise strengths are nonuniform across components. In that case, detailed balance is broken and the system reaches a NESS with persistent probability current, even though the distribution remains stationary. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$: for equilibrium cases such as $\mathbf{W}=\mathbf{W}^\intercal$ with uniform diagonal noise, one expects $(\mathbf{K}_{\tau})_{ij}=(\mathbf{K}_{\tau})_{ji}$, whereas asymmetric couplings or heterogeneous noise strengths generally lead to $(\mathbf{K}_{\tau})_{ij}\neq(\mathbf{K}_{\tau})_{ji}$, reflecting broken time-reversal symmetry.
+% In the examples studied below, we mainly use the linear intrinsic dynamics $f_i = r_i(1-x_i)$ and the Logistic one $f_i = r_i x_i(1-x_i)$, together with the coupling function $h(x_i,x_j) = x_j-x_i$, for which the nodes tend to synchronize. 

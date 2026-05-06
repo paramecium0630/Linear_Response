@@ -3,7 +3,7 @@
 \quad We perform Langevin simulations on Erd\H{o}s-R\'enyi networks to validate the steady-state response formulas. 
 For each realization, the adjacency matrix is generated independently with connection probability $p$, and the nonzero couplings and node parameters are then assigned from prescribed distributions specified below for each figure. 
 The dynamics are integrated with time step $\Delta t=0.0005$ up to time $T=10000$. We simulate both the unperturbed system and the corresponding perturbed system as two separate Langevin trajectories. The unperturbed trajectory is used to estimate the reference steady-state covariance matrix $\mathbf{K}_0$, while the perturbed trajectory is evolved to the new steady state and used to estimate the perturbed covariance matrix $\mathbf{K}_0^{\rm pert}$. The measured response is then defined as $\Delta \mathbf{K}_0 = \mathbf{K}_0^{\rm pert} - \mathbf{K}_0$.
-Starting from the same unperturbed network realization, a node perturbation is implemented by replacing $r_\alpha$ with $r_\alpha+\delta r_\alpha$, while an edge perturbation is implemented by replacing $W_{\alpha\beta}$ with $W_{\alpha\beta}+\delta W_{\alpha\beta}$. For undirected networks, the reciprocal edge is changed by the same amount, $W_{\beta\alpha}\to W_{\beta\alpha}+\delta W_{\alpha\beta}$, so that the symmetric topology is preserved after perturbation. For multiple perturbations, the same replacement is applied simultaneously to all selected nodes or edges. Edge removal is realized by setting the chosen edge weights to zero, corresponding to $\delta W_{\alpha\beta}=-W_{\alpha\beta}$, and node removal is realized by isolating the chosen node through setting all incident edge weights to zero. Each panel is obtained from a single network realization. Each scatter point corresponds to one covariance-matrix element $(\Delta \mathbf{K}_0)_{ij}$ from that realization, and different marker shapes denote different perturbation amplitudes when more than one amplitude is shown.
+Starting from the same unperturbed network realization, a node perturbation is implemented by replacing $r_\alpha$ with $r_\alpha+\delta r_\alpha$, while an edge perturbation is implemented by replacing $W_{\alpha\beta}$ with $W_{\alpha\beta}+\delta W_{\alpha\beta}$. For undirected networks, the reciprocal edge is changed by the same amount, $W_{\beta\alpha}\to W_{\beta\alpha}+\delta W_{\alpha\beta}$, so that the symmetric topology is preserved after perturbation. Each panel is obtained from a single network realization. Each scatter point corresponds to one covariance-matrix element $(\Delta \mathbf{K}_0)_{ij}$ from that realization, and different marker shapes denote different perturbation amplitudes when more than one amplitude is shown.
 For the steady-state validation, we use Erd\H{o}s-R\'enyi networks with $N=50$ or $100$ and connection probability $p \simeq 0.1\text{--}0.2$. The intrinsic dynamics are chosen so that the deterministic system has a stable fixed point, and the coupling is taken to be synchronizing. We consider two representative classes of intrinsic dynamics: the linear restoring force $f_i(x_i)=-r_i(x_i-1)$ and the Logistic force $f_i=r_i x_i(1-x_i)$, both with coupling function $h(x_i,x_j)=x_j-x_i$. Around the stable fixed point $X_i=1$, both choices lead to the same Jacobian matrix,
 \begin{equation}
     Q_{ii} = -r_i - \sum_{j\neq i} W_{ij},\; Q_{ij} = W_{ij},
@@ -57,25 +57,23 @@ Similar to the equilibrium case, we compare simulation results with the theoreti
 \end{figure}
 
 \subsection{Multiple perturbations within the linear regime}
-\quad After validating the linear-response theory for single-parameter perturbations, we next examine whether the response functions can be superposed to predict the effect of multiple simultaneous perturbations. We define the covariance change as
+\quad After validating the linear-response theory for single-parameter perturbations, we next examine whether the response functions can be superposed to predict the effect of multiple simultaneous perturbations. For multiple perturbations, the perturbations are applied simultaneously to all selected nodes or edges. Edge removal is realized by setting the chosen edge weights to zero, corresponding to $\delta W_{\alpha\beta}=-W_{\alpha\beta}$, and node removal is realized by isolating the chosen node through setting all incident edge weights to zero. We define the covariance change as
 \begin{equation}
     \Delta (\mathbf{K}_0)_{ij} =
     (\mathbf{K}_0^{\rm after})_{ij}-(\mathbf{K}_0^{\rm before})_{ij}.
 \end{equation}
 For a set of perturbed nodes
-\(\mathcal{P}_V=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}\), the first-order prediction is
+\(V^*=\{\alpha_1,\alpha_2,\ldots,\alpha_m\}\), the first-order prediction is
 \begin{equation}
-    \Delta (\mathbf{K}_0)_{ij}
-    =
-    \sum_{\alpha\in\mathcal{P}_V}
+    \Delta (\mathbf{K}_0)_{ij} = \sum_{\alpha\in V^*}
     \chi^{(r)}_{ij\alpha}\delta r_\alpha .
 \end{equation}
-Similarly, for a set of perturbed edges \(\mathcal{P}_E=\{(\alpha_1,\beta_1),(\alpha_2,\beta_2),\ldots, (\alpha_m,\beta_m)\}\), we use
+Similarly, for a set of perturbed edges \(E^*=\{(\alpha_1,\beta_1),(\alpha_2,\beta_2),\ldots, (\alpha_m,\beta_m)\}\), we use
 \begin{equation}
-    \Delta (\mathbf{K}_0)_{ij} = \sum_{(\alpha,\beta)\in\mathcal{P}_E} \chi^{(W)}_{ij(\alpha\beta)}\delta W_{\alpha\beta}.
+    \Delta (\mathbf{K}_0)_{ij} = \sum_{(\alpha,\beta)\in E^*} \chi^{(W)}_{ij(\alpha\beta)}\delta W_{\alpha\beta}.
 \end{equation}
 The perturbation amplitudes \(\delta r_\alpha\) and \(\delta W_{\alpha\beta}\) are allowed to be different for different perturbed nodes or edges. To test this superposition property, we perform Langevin simulations on Erd\H{o}s-R\'enyi networks with nonuniform noise sources. In each realization, multiple nodes or edges are randomly selected and perturbed simultaneously. The covariance change measured from the simulations is then compared with the first-order prediction obtained by summing the corresponding single-parameter response functions. Agreement with the diagonal line in the scatter plots indicates that the covariance response remains additive within the linear regime for the realization tested.\par
-In Fig. \ref{MultipledKdr}, ten randomly selected nodes are perturbed with the same amplitude $\delta r_\alpha=0.5$, where the set of perturbed nodes is denoted by $\mathcal{P}_V=\{ \alpha_1, \alpha_2, ..., \alpha_{10} \}$. For visual clarity, the covariance elements are separated into diagonal and off-diagonal components, and entries involving perturbed nodes are distinguished from those that do not. The data points collapse onto the diagonal line, indicating quantitative agreement between the linear-response prediction and the numerical simulation for multiple node perturbations in the realization considered here. In Fig. \ref{MultipledKdW}, twenty randomly selected undirected edges are perturbed with the same amplitude $\delta W_{\alpha\beta}=0.5$. The perturbed edges are represented as the set $\mathcal{P}_E = \{ (\alpha_k,\beta_k),\;k=1,2,...,20 \}$. The data again align along the diagonal, confirming that the first-order response remains additive for multiple edge perturbations within the linear regime for the realization shown.
+In Fig. \ref{MultipledKdr}, ten randomly selected nodes are perturbed with the same amplitude $\delta r_\alpha=0.5$, where the set of perturbed nodes is denoted by $V^*=\{ \alpha_1, \alpha_2, ..., \alpha_{10} \}$. For visual clarity, the covariance elements are separated into diagonal and off-diagonal components, and entries involving perturbed nodes are distinguished from those that do not. The data points collapse onto the diagonal line, indicating quantitative agreement between the linear-response prediction and the numerical simulation for multiple node perturbations in the realization considered here. In Fig. \ref{MultipledKdW}, twenty randomly selected undirected edges are perturbed with the same amplitude $\delta W_{\alpha\beta}=0.5$. The perturbed edges are represented as the set $E^* = \{ (\alpha_k,\beta_k),\;k=1,2,...,20 \}$. The data again align along the diagonal, confirming that the first-order response remains additive for multiple edge perturbations within the linear regime for the realization shown.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdrii_non.eps}}
@@ -90,8 +88,17 @@ In Fig. \ref{MultipledKdr}, ten randomly selected nodes are perturbed with the s
     \caption{Comparison between Langevin simulations and the superposed linear-response prediction for simultaneous perturbations of twenty undirected edges in an Erd\H{o}s-R\'enyi network ($N=100$) with nonuniform noise. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The alignment of the data along the diagonal shows that the first-order responses to individual edge perturbations remain additive in the linear regime.}
     \label{MultipledKdW}
 \end{figure}
-\subsection{Finite-amplitude removal tests}
-We next consider removal events as finite-amplitude stress tests of the linear-response framework. Unlike the multiple-perturbation tests above, these removal protocols are not infinitesimal perturbations, and therefore they are not expected to provide a quantitatively exact validation of the first-order theory. Instead, they are used to identify the regime in which the linear response remains informative and the regime in which higher-order effects become important. Edge removal is implemented by setting \(W_{\alpha\beta}\to 0\), corresponding to \(\delta W_{\alpha\beta}=-W_{\alpha\beta}\). Node removal is implemented by isolating the selected node through the removal of all incoming and outgoing edges connected to it. Figure \ref{MultipledKdW_remove} examines the removal of 40 directed edges in a directed Erd\H{o}s-R\'enyi network with nonuniform noise. The prediction is obtained by summing the single-edge response functions over all removed edges. The approximate agreement with the diagonal shows that, for this level of edge removal, the first-order response still captures the dominant covariance change. Figure \ref{MultipledKdW_noderemove} considers the removal of a single node in an undirected network with nonuniform noise. Because this operation simultaneously deletes all edges connected to the node, it represents a large perturbation. The visible deviations from the diagonal are therefore expected and indicate the onset of higher-order response terms beyond the first-order theory.
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/NRMSE_Node_Perturb.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/NRMSE_Edge_Perturb.eps}}
+    \caption{Comparison }
+    \label{NRMSE_Error_Perturb}
+\end{figure}
+
+\subsection{Stress test for removal of nodes and edges}
+We next consider removal events as large perturbation stress tests of the linear-response framework. Unlike the multiple-perturbation tests above, these removal protocols are not infinitesimal perturbations, and therefore they are not expected to provide a quantitatively exact validation of the first-order theory. Instead, they are used to identify the regime in which the linear response remains informative and the regime in which higher-order effects become important. Edge removal is implemented by setting \(W_{\alpha\beta}\to 0\), corresponding to \(\delta W_{\alpha\beta}=-W_{\alpha\beta}\). Node removal is implemented by isolating the selected node through the removal of all incoming and outgoing edges connected to it. Figure \ref{MultipledKdW_remove} examines the removal of 40 directed edges in a directed Erd\H{o}s-R\'enyi network with nonuniform noise. The prediction is obtained by summing the single-edge response functions over all removed edges. The approximate agreement with the diagonal shows that, for this level of edge removal, the first-order response still captures the dominant covariance change. Figure \ref{MultipledKdW_noderemove} considers the removal of a single node in an undirected network with nonuniform noise. Because this operation simultaneously deletes all edges connected to the node, it represents a large perturbation. The visible deviations from the diagonal are therefore expected and indicate the onset of higher-order response terms beyond the first-order theory.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.42\columnwidth]{Figure/Multiple/MultipledKdWii_remove.eps}}
@@ -105,4 +112,12 @@ We next consider removal events as finite-amplitude stress tests of the linear-r
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Multiple/MultipledKdWij_noderemove.eps}}
     \caption{Comparison between Langevin simulations and the first-order prediction for the removal of a single node in an undirected Erd\H{o}s-R\'enyi network ($N=100$) with nonuniform noise. The prediction is obtained by summing the responses of all incident edge removals associated with the deleted node. (a) Diagonal covariance changes $\Delta(\mathbf{K}_0)_{ii}$. (b) Off-diagonal covariance changes $\Delta(\mathbf{K}_0)_{ij}$. The visible deviations from the diagonal indicate the onset of higher-order effects for this large perturbation.}
     \label{MultipledKdW_noderemove}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/NRMSE_Edge_Remove.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/NRMSE_Edge_Weaken.eps}}
+    \caption{Comparison }
+    \label{NRMSE_Error_Remove}
 \end{figure}

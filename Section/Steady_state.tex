@@ -1,47 +1,6 @@
-\section{General steady-state linear response framework}
-\subsection{Steady-state probability distribution}
-\quad The linearized network dynamics in (\ref{linearized_dynamics}) can be formulated in terms of the Fokker-Planck equation
-\begin{equation}
-    \frac{\partial \psi (\vec{x},t;\vec{p})}{\partial t} = -\nabla \cdot (\mathbf{Q} \delta \vec{x} \psi (\vec{x},t; \vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p})),
-    \label{Fokker-Planck}
-\end{equation}
-where the Jacobian matrix $\bf Q$ describes deterministic forces, and $\bf{\sigma}$ is the diffusion matrix. Notice that the probability distribution $\psi (\vec{x},t;\vec{p})$ also depends on the parameters. The probability current is given by
-\begin{equation}
-    \vec{J}(\vec{x},t; \vec{p}) = \mathbf{Q} \delta \vec{x} \psi(\vec{x},t;\vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p}).
-    \label{probability_current}
-\end{equation}
-If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
-\begin{equation}
-    \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
-    \label{Lyapunov_eq}
-\end{equation}
-This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
-\begin{equation}
-    \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
-    \label{steady-state prob}
-\end{equation}
-which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$. The condition for a steady state is zero divergence of the probability current $\nabla \cdot \vec{J}_{ss} = 0$. From (\ref{steady-state prob}), the steady-state probability current gives
-\begin{equation}
-    \vec{J}_{ss} = \left( \mathbf{Q} + \frac{1}{2}\boldsymbol{\sigma} \mathbf{K}_0^{-1} \right) \delta \vec{x} \psi_{ss}.
-\end{equation}
-Even when a stationary Gaussian distribution exists, the system is not necessarily at equilibrium. The steady-state condition only implies that the probability current is divergence-free, not that it vanishes pointwise. Equilibrium requires $\vec{J}_{ss}$ vanishes, and the condition is equivalent to
-\begin{equation}
-    \mathbf{Q} + \frac{1}{2} \boldsymbol{\sigma} \mathbf{K}_0^{-1} = 0.
-\end{equation}
-With (\ref{Lyapunov_eq}), it gives the condition is equivalent to requiring $\mathbf{Q}\boldsymbol{\sigma}$ to be symmetric. This includes the case of symmetric $\mathbf{Q}$ with uniform diagonal noise matrix, but it is more general and does not require $\mathbf{Q}$ itself to be symmetric with the special case of $\boldsymbol{\sigma}$
-\begin{equation}
-    Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
-\end{equation}
-On the other hand, $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$ occurs when the couplings are asymmetric or the noise strengths are nonuniform across components. Both mechanisms break time-reversal symmetry and generate persistent probability current, even though the distribution remains stationary. To visualize the detailed balance condition, we measure the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$ when the network systems with different topologies reach a steady state through Langevin simulations ($dt=0.0005$). Fig. \ref{Ktauij}a and b show the asymmetry of $\mathbf{K}_{\tau},\;\tau = 0.01$ in four network conditions: (1) Undirected graph with uniform diagonal noise matrix, (2) undirected graph with nonuniform diagonal noise matrix, (3) directed graph with uniform diagonal noise matrix, and (4) directed graph with nonuniform diagonal noise matrix. The number of nodes is $N=100$, and the network dynamics is the intrinsic Logistic force $f_i = r_ix_i(1-x_i)$ with the coupling function $h(x_i,x_j) = x_j-x_i$. Except for the first case $\mathbf{W}=\mathbf{W}^\intercal$ with $\boldsymbol{\sigma} \propto \sigma_0 \mathbf{I}$, the other three cases show broken time-reversal symmetry, which we can tell from $(\mathbf{K}_{\tau})_{ij} \neq (\mathbf{K}_{\tau})_{ji}$.
-\begin{figure}[H]
-    \centering
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/Ktauun_vs_Ktaunon.eps}}
-    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Else/Ktaudir_vs_Ktaunondir.eps}}
-    \caption{The time-lagged covariance $\mathbf{K}_{\tau}$ with $\tau=0.01$ is measured in Langevin simulations of linearized network dynamics at a steady state under different network topologies (symmetric/asymmetric $\mathbf{W}$) and noise strengths (uniform/nonuniform $\sigma_{ii}$). The consistency of $(\mathbf{K}_{\tau})_{ij}$ and $(\mathbf{K}_{\tau})_{ji}$ only shows in the undirected graph $\mathbf{W}=\mathbf{W}^\intercal$ with uniform diagonal noise matrix $\boldsymbol_{\sigma}$. For the other three cases, the directed couplings and heterogeneous noise strengths break detailed balance and then the network system reaches NESS.}
-    \label{Ktauij}
-\end{figure}
-\subsection{Steady-state linear response in noisy network dynamics}
-We develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
+\section{Steady-state linear response in noisy network dynamics}
+% \subsection{}
+We now develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of the noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
 \begin{equation}
     \vec{F}(\vec{X}; \vec{p}) = 0.
 \end{equation}
@@ -55,7 +14,7 @@ to the linear order gives
 \end{equation}
 With $\mathbf{Q}\equiv\nabla\vec{F}\big|_{\vec{X}}$, and assuming $\mathbf{Q}^{-1}$ exists, one obtains
 \begin{equation}
-    \frac{\partial X_i}{\partial p_\alpha} = -(\mathbf{Q}^{-1} \nabla_{\vec{p}} \vec{F}\big|_{\vec{X}},\vec{p})_{i\alpha}.
+    \frac{\partial X_i}{\partial p_\alpha} = -\left(\mathbf{Q}^{-1} \nabla_{\vec{p}} \vec{F}\big|_{\vec{X}; \vec{p}}\right)_{i\alpha}.
 \end{equation}
 This relation shows that the shift of the fixed point induced by a parameter perturbation is controlled by the linearized dynamics through $\mathbf{Q}$. For an observable $\mathbf{B}(\vec{x}; \vec{p})$, the steady-state linear response is defined by
 \begin{equation}
@@ -77,4 +36,4 @@ one obtains
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathscr{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}
 \end{equation}
-This is the general steady-state linear response formula used throughout this work. Importantly, it does not require equilibrium. Instead, It only requires that the system fluctuates around a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$ and the connection weight $W_{\alpha\beta}$.
+This is the general steady-state linear response formula used throughout this work. Importantly, it does not require equilibrium. Instead, it only requires that the system fluctuates around a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$ and the connection weight $W_{\alpha\beta}$.

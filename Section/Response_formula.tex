@@ -1,6 +1,13 @@
 \section{Explicit Response Formula}
-\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, since it directly characherizes the fluctuations of the noisy network dynamics, and the observable becomes $\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations.
-
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, and the observable becomes $\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
+\begin{equation}
+    \chi_{ij\alpha} = \langle \partial_p \delta x_i \delta x_j \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
+\end{equation}
+Since $\delta x_i$ does not explicitly depend on the parameters ($r_\alpha$, $W_{\alpha\beta}$, and $\sigma_{\alpha\alpha}$), the first term vanishes. The second term can be written as
+\begin{eqnarray}
+    \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}} &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - \langle \delta x_i \delta x_j \rangle_{ss, \vec{p}} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}\nonumber\\
+    &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}
+\end{eqnarray}
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
 \quad We first consider the perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. From the general formula of the conjugate force, one obtains the steady-state response of the equal -time covariance matrix
 \begin{equation}
@@ -47,7 +54,7 @@ which makes the role of the perturbed connection especially transparent. In this
 \end{equation}
 This result emphasizes that a perturbation of the noise strength affects the steady-state fluctuations directly, without changing the deterministic fixed point.
 
-\subsection{Evaluation of $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$ in nonequilibrium steady states}
+\subsection{Evaluation of $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$ and $\partial \mathbf{K}_0/\partial \sigma_{\alpha\alpha}$}
 \quad The derivative of $\mathbf{K}_0$ with respect to $\mathbf{Q}$ is determined from the steady-state Lyapunov equation due to the dependence of $\mathbf{K}_0(\mathbf{Q})$. The derivatives of $\mathbf{K}_0$ with respect to the matrix elements of $\mathbf{Q}$ can be obtained by differentiating the Lyapunov equation
 \begin{equation}
     \mathbf{Q} \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} + \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{Q}^\intercal = \mathbf{M}^{(\alpha,\beta)},\; (\mathbf{M}^{(\alpha,\beta)})_{ij} \equiv -(\mathbf{K}_0)_{i\beta} \delta_{j\alpha} - (\mathbf{K}_0)_{j\beta} \delta_{i\alpha}.
@@ -58,10 +65,11 @@ Also, the derivative of the inverse of the covariance matrix gives
     \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
     \label{inverse_partialKo}
 \end{equation}
-The higher orders of the derivative can be obtained by the similar manner.
-
-\subsection{Equilibrium simplification for networks with symmetric $\mathbf{Q}\boldsymbol{\sigma}$}
-\quad The above formulas are further simplified when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
+The higher orders of the derivative can be obtained by the similar manner. For the response with respect to $\sigma_{\alpha\alpha}$, we have
+\begin{equation}
+    \mathbf{Q}\frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}} + \frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}}\mathbf{Q}^\intercal = -\mathbf{E}^{(\alpha\alpha)},\;\text{where}\;E^{(\alpha\alpha)}_{ij}=1\;\text{for}\;i=j=\alpha.
+\end{equation}
+The above formulas are further simplified when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = -Q^{-1}_{i\alpha} (\mathbf{K}_0)_{j\beta} = \frac{1}{2} Q^{-1}_{i\alpha} (\mathbf{Q}^{-1}\boldsymbol{\sigma})_{j\beta}.
 \end{equation}
@@ -74,9 +82,13 @@ This equilibrium form is especially useful because the explicit dependence of $\
     \chi_{ij(\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha},
     \label{chiKodr_eq}
 \end{equation}
-and the response function for the connection weight change gives
+and the response functions for the change in a connection weight and a noise strength
 \begin{equation}
-    \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
+    \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta},
     \label{chiKodW_eq}
+\end{equation}
+\begin{equation}
+    \chi_{ij(\alpha\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha}.
+    \label{chiKodsigma_eq}
 \end{equation}
 These results provide a simple reference form for comparison with the nonequilibrium steady-state response.
