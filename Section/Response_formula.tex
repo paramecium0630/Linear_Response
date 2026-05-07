@@ -25,7 +25,7 @@ For the simple cases of $f_i(x_i) = r_i(a_i-x_i)$ with linear $h$, or Logistic $
     \chi_{ij\alpha}^{(ss)} = -\left(\frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij}.
     \label{chiKodr_ss}
 \end{equation}
-This form shows that the response function of the covariance matrix is directly controlled by the diagonal element $Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j}$, namely by the local restoring parameter and the total incoming coupling associated with node $\alpha$.
+This form shows that the response function of the covariance matrix is directly controlled by the diagonal element $Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j}$, namely by the local restoring parameter and the total incoming coupling associated with node $\alpha$. The derivative of $\mathbf{K}_0$ can be solved by differentiating the two sides of the Lyapunov equation (\ref{Lyapunov_eq}), which will be discussed later in the section. 
 
 \subsection{Response due to Change in the Connection Weight $W$}
 \quad We next consider the perturbation of a directed connection weight $W_{\alpha\beta}$. The corresponding response function of the covariance matrix is
@@ -55,7 +55,7 @@ which makes the role of the perturbed connection especially transparent. In this
 This result emphasizes that a perturbation of the noise strength affects the steady-state fluctuations directly, without changing the deterministic fixed point.
 
 \subsection{Evaluation of $\partial \mathbf{K}_0/\partial Q_{\alpha\beta}$ and $\partial \mathbf{K}_0/\partial \sigma_{\alpha\alpha}$}
-\quad The derivative of $\mathbf{K}_0$ with respect to $\mathbf{Q}$ is determined from the steady-state Lyapunov equation due to the dependence of $\mathbf{K}_0(\mathbf{Q})$. The derivatives of $\mathbf{K}_0$ with respect to the matrix elements of $\mathbf{Q}$ can be obtained by differentiating the Lyapunov equation
+\quad The derivative of $\mathbf{K}_0$ with respect to $\mathbf{Q}$ or $\boldsymbol{\sigma}$ is determined from the steady-state Lyapunov equation due to the dependence of $\mathbf{K}_0(\mathbf{Q},\boldsymbol{\sigma})$. The derivatives of $\mathbf{K}_0$ with respect to the matrix elements of $\mathbf{Q}$ can be obtained by differentiating the Lyapunov equation
 \begin{equation}
     \mathbf{Q} \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} + \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{Q}^\intercal = \mathbf{M}^{(\alpha,\beta)},\; (\mathbf{M}^{(\alpha,\beta)})_{ij} \equiv -(\mathbf{K}_0)_{i\beta} \delta_{j\alpha} - (\mathbf{K}_0)_{j\beta} \delta_{i\alpha}.
     \label{derivative_Ko}
@@ -65,7 +65,7 @@ Also, the derivative of the inverse of the covariance matrix gives
     \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
     \label{inverse_partialKo}
 \end{equation}
-The higher orders of the derivative can be obtained by the similar manner. For the response with respect to $\sigma_{\alpha\alpha}$, we have
+The higher orders of the derivative can be obtained by the similar manner. For the derivative with respect to $\sigma_{\alpha\alpha}$, we have
 \begin{equation}
     \mathbf{Q}\frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}} + \frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}}\mathbf{Q}^\intercal = -\mathbf{E}^{(\alpha\alpha)},\;\text{where}\;E^{(\alpha\alpha)}_{ij}=1\;\text{for}\;i=j=\alpha.
 \end{equation}

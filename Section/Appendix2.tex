@@ -1,4 +1,4 @@
-\section*{Appendix B: Detailed derivation of the conjugate force and the response function of some observables}\label{sec:AppendixA}
+\section{Detailed derivation of the conjugate force and the response function of some observables}
 \subsection{General formula of the conjugate force}
 \quad From the effective potential in (\ref{steady-state prob}), the conjugate force is defined as $\vec{\mathscr{F}} \equiv -\nabla_p \Phi$. Then we have $\nabla_p \ln{\psi_{ss}} = \delta \vec{\mathscr{F}}$. Considering that the effective potential $\Phi(\vec{x}; \vec{p}, \vec{X}(\vec{p}))$ depends on the fixed point and the fixed point has the dependence on $\vec{p}$, one gets
 \begin{equation}
@@ -16,8 +16,8 @@ Then the dependence of $\Phi$ on the fixed point is
 For general NESS dynamics, the steady-state probability distribution is Gaussian near its mean $\langle \vec{x} \rangle$ with $\Phi = \frac{1}{2} \delta \vec{x}^\intercal \mathbf{K}^{-1}_0 \delta \vec{x} = \frac{1}{2} (\vec{x}-\langle \vec{x} \rangle)^\intercal \mathbf{K}^{-1}_0 (\vec{x}-\langle \vec{x} \rangle)$. Note that $\langle {\vec x} \rangle$ depends on the parameters ${\vec p} $ through $\psi_{ss}$, whose dependence is not possible to calculate explicitly for the high dimensional nonlinear Langevin systems. Nevertheless, the conjugate force ${\vec{\mathscr F}}$ and  correlations such as $\langle\delta \mathbf{B} \delta\vec{\mathscr F}\rangle_{ss,{\vec p}}$ can be explicitly computed from (\ref{scriptF}) using the functional dependence of ${\bf K}_0^{-1}$ on ${\vec p} $. From the Lyapunov equation (\ref{Lyapunov_eq}), one can see that ${\bf K}_0^{-1}={\bf K}_0^{-1}({\bf Q}({\vec p},{\vec X}({\vec p}))$. Hence the conjugate force corresponding to the parameter $p_\alpha$ can be derived to be
 \begin{eqnarray}
 {\mathscr F}_\alpha&=& -\sum_{m s} \left({\bf Q}^{-1} \nabla_p{\vec { F}} \right|_{\vec X})_{s\alpha}({\bf K}_0^{-1})_{sm}\delta x_m 
-- {1\over 2}  \sum_{m,\ell}\sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}  \delta x_m \delta x_\ell\label{Falp}\\
-& &+{1\over 2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} \right|_{\vec X})_{s\alpha} \sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
+ - \frac{1}{2}  \sum_{m,\ell}\sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}  \delta x_m \delta x_\ell\label{Falp}\\
+& &+\frac{1}{2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} \right|_{\vec X})_{s\alpha} \sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
  & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
  & &+ \sum_\nu W_{s\nu}\partial_1\partial_2h(X_s,X_\nu)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}}  + \sum_\mu W_{\mu s}\partial^2_2h(X_\mu,X_s) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} 
 \Biggr\} \delta x_m \delta x_\ell.\nonumber
@@ -29,7 +29,7 @@ One can derive or verify from (\ref{Falp}) that
 \end{equation}
 By using (\ref{inverse_partialKo}), we can write down the ensemble average of the conjugate force
 \begin{eqnarray}
- \langle{{\mathscr F}_\alpha}\rangle &=&{1\over 2}\sum_{\mu\nu} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \right) \frac{\partial Q_{\mu\nu}}{\partial p_\alpha} -{1\over 2} \sum_s \left({\bf Q}^{-1} \nabla_{\bf p} \vec{F} \Big|_{\vec{X}} \right)_{s\alpha} \Biggl\{
+ \langle{{\mathscr F}_\alpha}\rangle &=&\frac{1}{2}\sum_{\mu\nu} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \right) \frac{\partial Q_{\mu\nu}}{\partial p_\alpha} -\frac{1}{2} \sum_s \left({\bf Q}^{-1} \nabla_{\bf p} \vec{F} \Big|_{\vec{X}} \right)_{s\alpha} \Biggl\{
 f_s''\bigg|_{\vec X} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{ss}} \right) \label{avescrF}\\
 & &\sum_n W_{sn}\partial_1^2h(X_s,X_n) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{ss}} \right) +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s)\text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)+ \nonumber\\
  & &+ \sum_\nu W_{s\nu}\partial_1 \partial_2 h(X_s,X_\nu) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{s\nu}} \right) + \sum_\mu  W_{\mu s}\partial^2_2h(X_\mu,X_s) \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right) \Biggr\}.\nonumber
@@ -45,15 +45,15 @@ f_s''\bigg|_{\vec X} \text{Tr}\left( {\bf K}^{-1}_0 \frac{\partial {\bf K}_0}{\p
 and ${\mathscr F}_\alpha$  can then be calculated from (\ref{Falp}) to give
 \begin{eqnarray}
     {\mathscr F}_\alpha&=& \sum_{m,\ell  } \frac{\partial X_\ell}{\partial r_\alpha}({\bf K}_0^{-1})_{\ell m}\delta x_m 
-    - {1\over 2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}  \sum_{m,\ell} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\alpha\alpha}}  \delta x_m \delta x_\ell\\
-    & &+{1\over 2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\\
+    - \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}  \sum_{m,\ell} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\alpha\alpha}}  \delta x_m \delta x_\ell\\
+    & &+\frac{1}{2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\\
     & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
     & &+ \sum_\nu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}} W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} W_{\mu s}\partial^2_2h(X_\mu,X_s) 
     \Biggr\} \delta x_m \delta x_\ell .\nonumber
 \end{eqnarray}
 Average quantities involving ${\mathscr F}_\alpha$  can then be calculated. For example, one can obtain
 \begin{eqnarray}
- \langle{{\mathscr F}_\alpha}\rangle &=&-{1\over 2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\alpha\alpha}}  {\bf K}_0\right)   +{1\over 2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1} \Biggl\{
+ \langle{{\mathscr F}_\alpha}\rangle &=&-\frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\alpha\alpha}}  {\bf K}_0\right)   +\frac{1}{2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1} \Biggl\{
 f_s''\bigg|_{\vec X} \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) \label{avescrFr}\\
 & &\sum_n W_{sn}\partial_1^2h(X_s,X_n) \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}}  {\bf K}_0\right) +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s)\text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\mu}}  {\bf K}_0\right)+ \nonumber \\
  & &+ \sum_\nu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{s\nu}}  {\bf K}_0\right) W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu  \text{Tr}\left(  \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu s}}  {\bf K}_0\right) W_{\mu s}\partial^2_2h(X_\mu,X_s)  
@@ -67,7 +67,7 @@ To calculate the response function of some observables that have the dependence 
 \end{equation}
 \begin{eqnarray}
 \langle \delta x_i \delta x_j{\mathscr F}_\alpha\rangle&=& \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}\left[ ({\bf K}_0)_{ij}\text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}}\right)_{ij} \right]\nonumber\\
-& -&{1\over 2} \frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\Biggl\{ \left[ f
+& -&\frac{1}{2} \frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\Biggl\{ \left[ f
 _s''+  \sum_n W_{sn}\partial_1^2h(X_s,X_n)\right] \times\nonumber\\
 & &\left[ ({\bf K}_0)_{ij} \text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{ss}}\right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{ss}} \right)_{ij}\right] \nonumber\\
 &-&\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s) \left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)_{ij}\right] \nonumber\\
@@ -141,13 +141,13 @@ The two point correlation gives
 \left( e^{\tau{\bf Q}} \right)_{i\ell}, \label{dxtauscrF}
 \end{equation}
 \begin{eqnarray}
-\langle \delta x_i(\tau) \delta x_j(\tau){\mathscr F}_\alpha(0)\rangle&=&  \Biggl\{- {1\over 2} \sum_{m,\ell} \sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}\\
-& &+{1\over 2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{s\alpha} \sum_{m,\ell} \Bigg[ [f_s''+\sum_n W_{sn}  \partial^2_1 h(X_s,X_n)] \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
+\langle \delta x_i(\tau) \delta x_j(\tau){\mathscr F}_\alpha(0)\rangle&=&  \Biggl\{- \frac{1}{2} \sum_{m,\ell} \sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}\\
+& &+\frac{1}{2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{s\alpha} \sum_{m,\ell} \Bigg[ [f_s''+\sum_n W_{sn}  \partial^2_1 h(X_s,X_n)] \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
  & & + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}+ \sum_\nu W_{s\nu}\partial_1\partial_2h(X_s,X_\nu)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}}  \nonumber \\
  & &+ \sum_\mu W_{\mu s}\partial^2_2h(X_\mu,X_s) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} \Bigg]
 \Biggr\} \langle \delta x_i(\tau) \delta x_j(\tau)    \delta x_\ell(0) \delta x_m(0) \rangle \nonumber\\
-  &=&- {1\over 2}  \sum_{\mu,\nu}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}\biggl[ ({\bf K}_0)_{ij}\text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu \nu}} {\bf K}_0\right)+2 \left({\bf K}_\tau\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu \nu}} {\bf K}_\tau^\intercal\right)_{ij}\bigg]\nonumber\\
-  &&+{1\over 2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{s\alpha}  \Biggl\{ [ f_s''+  \sum_n W_{sn}\partial_1^2h(X_s,X_n)] \times\nonumber\\
+  &=&- \frac{1}{2}  \sum_{\mu,\nu}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha}\biggl[ ({\bf K}_0)_{ij}\text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu \nu}} {\bf K}_0\right)+2 \left({\bf K}_\tau\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu \nu}} {\bf K}_\tau^\intercal\right)_{ij}\bigg]\nonumber\\
+  &&+\frac{1}{2}  \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{s\alpha}  \Biggl\{ [ f_s''+  \sum_n W_{sn}\partial_1^2h(X_s,X_n)] \times\nonumber\\
     & &\biggl[ ({\bf K}_0)_{ij}\text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}} {\bf K}_0\right)+2 \left({\bf K}_\tau\frac{\partial {\bf K}_0^{-1}}{\partial Q_{ss}} {\bf K}_\tau^\intercal\right)_{ij}\bigg] \label{dxdxtauscrF}\\
    & & +\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s) \biggl[ ({\bf K}_0)_{ij}\text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\mu}} {\bf K}_0\right)+2 \left({\bf K}_\tau\frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\mu}} {\bf K}_\tau^\intercal\right)_{ij}\bigg] \nonumber\\
    & & +  \sum_\nu W_{s\nu} \partial_1\partial_2h(X_s,X_\nu)  \biggl[ ({\bf K}_0)_{ij}\text{Tr}\left(\frac{\partial {\bf K}_0^{-1}}{\partial Q_{s\nu}} {\bf K}_0\right)+2 \left({\bf K}_\tau\frac{\partial {\bf K}_0^{-1}}{\partial Q_{s\nu}} {\bf K}_\tau^\intercal\right)_{ij}\bigg]    \nonumber\\
@@ -173,7 +173,7 @@ The non-steady response function of the force is
 \end{equation}
 \begin{eqnarray}
 \langle \delta {F}_i(t) \mathscr F_\alpha(0)\rangle&=& \langle \delta f_i(t)  {\mathscr F}_\alpha(0)\rangle +\sum_{j\neq i} W_{ij} \Biggl\{ \partial_1 h(X_i,X_j) \langle \delta x_i(t) {\mathscr F}_\alpha(0)\rangle \nonumber\\ &+&\partial_2h(X_i,X_j)\langle \delta x_j(t){\mathscr F}_\alpha(0)\rangle 
-+{1\over 2} \Big[\partial_1^2h(X_i,X_j) \langle \delta x_i^2(t) {\mathscr F}_\alpha(0) \rangle\nonumber\\
++\frac{1}{2} \Big[\partial_1^2h(X_i,X_j) \langle \delta x_i^2(t) {\mathscr F}_\alpha(0) \rangle\nonumber\\
 &+& \partial_2^2h(X_i,X_j) \langle \delta x_j^2(t) {\mathscr F}_\alpha(0)\rangle \Big] +\partial_1 \partial_2h(X_i,X_j)\langle \delta x_i(t) \delta x_j(t) {\mathscr F}_\alpha(0)\rangle \Biggr\}.
 \end{eqnarray}
 If we only consider the linear term, then it becomes

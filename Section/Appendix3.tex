@@ -1,5 +1,5 @@
-\section*{Appendix C: Solution of the Lyapunov Equation by Spectral decomposition}\label{sec:AppendixC}
-     Consider the Lyapunov Equation for the unknown ${\bf K}$ of the form
+\section{Solution of the Lyapunov Equation by Spectral decomposition}
+\quad Consider the Lyapunov Equation for the unknown ${\bf K}$ of the form
  \begin{equation}
   {\bf Q} {\bf K}+ {\bf K} {\bf Q}^\intercal={\bf S}\label{lyap}
   \end{equation}    
@@ -15,9 +15,7 @@ Hence the solution of the Lyapunov Eq. (\ref{lyap}) is
  {\bf K}={\bf P}  {\tilde {\bf K}}{\bf P}^\intercal
 \end{equation}
 where ${\tilde   {\bf K}}$ is given by (\ref{Ktil}).
-Note that for the noisy network that fluctuates about some stable noise-free solution, the real part of all the eigenvalues are negative, and hence $\lambda_i+\lambda_j\neq 0$ in (\ref{Ktil}).
-
-The above solution can also be written in terms of the spectral decomposition of ${\bf Q}$ with
+Note that for the noisy network that fluctuates about some stable noise-free solution, the real part of all the eigenvalues are negative, and hence $\lambda_i+\lambda_j\neq 0$ in (\ref{Ktil}). The above solution can also be written in terms of the spectral decomposition of ${\bf Q}$ with
 \begin{equation}
     {\bf Q}=\sum_{\ell=1}^N \lambda_\ell {\bf M}^{(\ell)},
 \end{equation}
@@ -53,8 +51,20 @@ For the covariance response, the time-dependent integral can be written as
 Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
 \begin{eqnarray}
     I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
-    &=&\begin{cases} \frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau}-e^{-(\lambda_m+\lambda_\ell)t}\left(\frac{\pi}{\tau}\text{cos}(\frac{\pi t}{\tau})+(\lambda_m+\lambda_\ell)\text{sin}\left(\frac{\pi t}{\tau}\right)\right) \right],\;t \le \tau \\
-    -\frac{b\pi e^{\left(\lambda_m+\lambda_\ell\right)t}}{2\tau\left[(\lambda_m+\lambda_\ell)^2+\left(\frac{\pi}{\tau}\right)^2\right]}\left[ \frac{\pi}{\tau} - \frac{\pi}{\tau}e^{-(\lambda_m+\lambda_\ell)\tau} \right],\;t > \tau
+    &=&\begin{cases}
+    \displaystyle
+    \frac{b}{2\left[1+\left(\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\right)^2\right]}
+    \left[
+    e^{(\lambda_m+\lambda_\ell)t}
+    -\cos\left(\frac{\pi t}{\tau}\right)
+    -\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\sin\left(\frac{\pi t}{\tau}\right)
+    \right],\;0\le t\le \tau \\
+    \displaystyle
+    \frac{b}{2\left[1+\left(\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\right)^2\right]}
+    \left[
+    e^{(\lambda_m+\lambda_\ell)t}
+    +e^{(\lambda_m+\lambda_\ell)(t-\tau)}
+    \right],\;t>\tau
      \end{cases}.
 \end{eqnarray}
 The same spectral decomposition and protocol integral are used in Sec. \ref{sec:time-dependent} for the edge-perturbation case.
