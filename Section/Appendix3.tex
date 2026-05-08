@@ -45,12 +45,12 @@ ${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ , ${\bf Q}{\vec u_i}=\lambda
 \end{equation}
 For the covariance response, the time-dependent integral can be written as
 \begin{eqnarray}
-    &&\int_0^{min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t)\\
-    &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right)_{ij} \int_0^{min(t,\tau)} dt' e^{(t-t')(\lambda_m+\lambda_\ell)} \delta \dot{r}_\alpha(t').
+    &&\int_0^{\min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t')\\
+    &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right) I_{m\ell}(t),
 \end{eqnarray}
 Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
 \begin{eqnarray}
-    I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
+    I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{\min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
     &=&\begin{cases}
     \displaystyle
     \frac{b}{2\left[1+\left(\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\right)^2\right]}

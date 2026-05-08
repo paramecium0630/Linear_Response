@@ -127,7 +127,7 @@ noise strengths and are determined solely by ${\bf Q}$. From Eq.
 (\ref{chitKolinear}), the time-dependent response of ${\bf K}(t,t)$ to the
 change in $r_\alpha(t)$ is
 \begin{equation}
-    {\bf K}_{ij}(t,t) = ({\bf K_0})_{ij} +\chi_{ij\alpha}^{ss} \delta r_\alpha(t)+\int_0^t dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t),
+    {\bf K}_{ij}(t,t) = ({\bf K_0})_{ij} +\chi_{ij\alpha}^{ss} \delta r_\alpha(t)+\int_0^t dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t'),
 \end{equation}
 Using the same spectral decomposition, the covariance integral can also be
 evaluated explicitly. For the cosine protocol (\ref{dra(t)cos}), we define
@@ -217,9 +217,9 @@ and
 \end{equation}
 The response function of the covariance is
 \begin{eqnarray}
-    {\bf K}_{ij}(t,t) &=& ({\bf K_0})_{ij} + \chi_{ij\alpha\beta}^{ss} \delta W_{\alpha\beta}(t)+\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t)\nonumber\\
+    {\bf K}_{ij}(t,t) &=& ({\bf K_0})_{ij} + \chi_{ij\alpha\beta}^{ss} \delta W_{\alpha\beta}(t)+\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t')\nonumber\\
     &=&({\bf K_0})_{ij}+\left[- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
-    &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left(- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right)_{ij} \vec{v}_\ell \right] I_{m\ell}(t).
+    &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left(- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right) \vec{v}_\ell \right] I_{m\ell}(t).
 \end{eqnarray}
 Here the protocol integral $I_{m\ell}(t)$ is the same quantity defined in
 Eq. (\ref{Iml}), since the edge perturbation uses the same cosine time
@@ -235,7 +235,6 @@ Increasing $W_{12}$ strengthens the pull of node 2 on node 1. Since the unpertur
     \caption{Comparison between Langevin simulations (dashed) and the time-dependent linear-response prediction (solid) for an edge perturbation in the four-node undirected network. The coupling on the link between nodes $1$ and $2$ is varied according to $\delta W_{12}(t)=\delta W_{21}(t)$. (a) Mean state response for $\langle x_1(t)\rangle-\langle x_1(0)\rangle$ and $\langle x_2(t)\rangle-\langle x_2(0)\rangle$. (b) Mean force response for $\langle F_1(t)\rangle$ and $\langle F_2(t)\rangle$. (c) Equal-time covariance response for $K_{11}(t,t)$ and $K_{12}(t,t)$. The agreement confirms the predicted transient and long-time response for a time-dependent perturbation of an undirected coupling.}
     \label{Time-dependent_undirected_dW} 
 \end{figure}
-
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdW.eps}}
@@ -243,4 +242,91 @@ Increasing $W_{12}$ strengthens the pull of node 2 on node 1. Since the unpertur
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_KodirdW.eps}}
     \caption{Same comparison as in Fig. \ref{Time-dependent_undirected_dW}, but for a directed perturbation $\delta W_{12}(t)$ in the nonequilibrium network of Fig. \ref{graphN4}b. Panels (a)-(c) show components of the mean state, mean force, and equal-time covariance, respectively. The close agreement between simulation and prediction demonstrates that the time-dependent response theory also captures the propagation of directed coupling perturbations in a nonequilibrium steady state.}
     \label{Time-dependent_directed_dW} 
+\end{figure}
+\subsection{Non-steady Response due to the time-dependent perturbation in a noise strength}
+\quad We next consider a time-dependent perturbation of the diagonal noise
+strength, $\delta \sigma_{\alpha\alpha}(t)$. Unlike node and edge perturbations,
+a perturbation in $\sigma_{\alpha\alpha}$ does not modify the deterministic
+drift matrix ${\bf Q}$. Therefore, for linear dynamics with additive zero-mean
+noise, the ensemble averages of the mean state and deterministic force remain
+unchanged to first order. In other words, a perturbation in the noise strength
+affects only the fluctuation sector at linear order, while the nontrivial
+response appears in the equal-time covariance matrix. Using Eq.~(\ref{Bnoneqm}),
+the time-dependent covariance response is
+\begin{equation}
+    {\bf K}(t,t)
+    =
+    {\bf K}_0
+    +
+    \frac{\partial {\bf K}_0}{\partial \sigma_{\alpha\alpha}}
+    \,\delta \sigma_{\alpha\alpha}(t)
+    -
+    \int_0^t dt'\,
+    e^{(t-t'){\bf Q}}
+    \frac{\partial {\bf K}_0}{\partial \sigma_{\alpha\alpha}}
+    e^{(t-t'){\bf Q}^\intercal}
+    \,\delta \dot{\sigma}_{\alpha\alpha}(t').
+    \label{Ksigma_time_response}
+\end{equation}
+This expression has the same structure as in the node- and edge-perturbation
+cases, except that the kernel is now determined by
+$\partial {\bf K}_0/\partial \sigma_{\alpha\alpha}$ rather than by derivatives
+with respect to entries of ${\bf Q}$. With the spectral decomposition
+${\bf Q}=\sum_m \lambda_m {\vec u_m}{\vec v_m}^\intercal$, the covariance
+response can be written as
+\begin{equation}
+    K_{ij}(t,t)
+    =
+    (K_0)_{ij}
+    +
+    \left(
+    \frac{\partial {\bf K}_0}{\partial \sigma_{\alpha\alpha}}
+    \right)_{ij}
+    \delta \sigma_{\alpha\alpha}(t)
+    -
+    \sum_{m,\ell}
+    u_{im}u_{j\ell}
+    \left(
+    {\vec v_m}^\intercal
+    \frac{\partial {\bf K}_0}{\partial \sigma_{\alpha\alpha}}
+    {\vec v_\ell}
+    \right)
+    I_{m\ell}(t),
+    \label{Ksigma_mode_expansion}
+\end{equation}
+where the protocol integral $I_{m\ell}(t)$ is the same as that defined in
+Eq.~(\ref{Iml}), with $\delta r_\alpha(t)$ replaced by
+$\delta \sigma_{\alpha\alpha}(t)$. For the cosine protocol used in the
+numerical test, we apply a time-dependent perturbation on $\sigma_{11}$ as
+\begin{equation}
+    \delta \sigma_{\alpha\alpha}(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau \\
+              b                                      & t>\tau
+    \end{cases}.\label{dsaa(t)cos}
+\end{equation}
+Figure \ref{Time-dependent_Ko_ds} compares the predicted and simulated
+non-steady responses of $K_{11}(t,t)$ and $K_{12}(t,t)$ for the two four-node
+graphs in Fig. \ref{graphN4}. Since the perturbation acts directly on the noise
+amplitude at node $1$, the most pronounced effect is seen in the local variance
+$K_{11}(t,t)$. The cross-covariance $K_{12}(t,t)$ responds more indirectly,
+through the propagation of fluctuations across the network. In the directed
+network of Fig. \ref{graphN4}b, node $2$ is not directly driven by node $1$, so
+the response of $K_{12}(t,t)$ is weaker than in the undirected case. By
+contrast, the bidirectional couplings in Fig. \ref{graphN4}a transmit the
+noise perturbation more efficiently, leading to a stronger covariance response.
+\begin{figure}[H]
+    \centering
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Ko11ds.eps}}
+    \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Ko12ds.eps}}
+    \caption{Comparison between Langevin simulations (dashed) and the
+        time-dependent linear-response prediction (solid) for a noise-strength
+        perturbation $\delta \sigma_{11}(t)$ in the two four-node networks of Fig.
+        \ref{graphN4}. Panel (a) shows the equal-time variance $K_{11}(t,t)$ and
+        panel (b) shows the equal-time covariance $K_{12}(t,t)$. In each panel, the
+        responses for the undirected equilibrium network (graph a) and the directed
+        nonequilibrium network (graph b) are plotted together. The close agreement
+        confirms that a time-dependent perturbation of the local noise strength is
+        captured accurately by the covariance response formula, while the weaker
+        $K_{12}(t,t)$ signal in the directed case reflects the reduced propagation
+        of fluctuations from node $1$ to node $2$.}
+    \label{Time-dependent_Ko_ds}
 \end{figure}
