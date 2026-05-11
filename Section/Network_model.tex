@@ -4,7 +4,7 @@
     \dot{x}_i = f_i(x_i;r_i) + \sum_{j\neq i} W_{ij} h(x_i, x_j) + \eta_i(t),\;i=1,2,...,N,
     \label{noisy_network}
 \end{equation}
-where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$, the adjacency matrix or the connection weights are in general asymmetric for directed networks. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
+where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$, the adjacency matrix or the connection weights are in general asymmetric for directed networks. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
 \begin{equation}
     \dot{\vec{x}} = \vec{F}(\vec{x};\vec{p}) + \vec{\eta}(t),
     \label{deterministic_force}
@@ -30,41 +30,37 @@ encodes both the network topology and the local dynamics, and is asymmetric in g
 with the Jacobian matrix which depends on the parameters
 \begin{equation}
     Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X+i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
+    \label{Qij_definition}
 \end{equation}
 We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigenvalues of $\mathbf{Q}$ have non-positive real parts. The noise is taken to be additive Gaussian white noise with covariance matrix
 \begin{equation}
     \langle \vec{\eta}(t) \vec{\eta}^\intercal(t') \rangle = \boldsymbol{\sigma} \delta (t-t'),\;\langle \vec{\eta}(t) \rangle = 0,
 \end{equation}
-where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. If the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
+where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. When the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
 \begin{equation}
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
-This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT, and it is valid both in and out of equilibrium. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The probability current associated with the linearized dynamics is
-\begin{equation}
-    \vec{J}(\vec{x},t; \vec{p}) = \mathbf{Q} \delta \vec{x} \psi(\vec{x},t;\vec{p}) - \frac{1}{2}\boldsymbol{\sigma} \nabla \psi(\vec{x},t; \vec{p}).
-    \label{probability_current}
-\end{equation} The steady-state probability distribution of the linearized multidimensional system obeys the Gaussian distribution
+This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The dynamics is also known as a multivariate Ornstein-Uhlenbeck process, and its steady-state probability distribution obeys the Gaussian distribution
 \begin{equation}
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
 \end{equation}
-which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$.
-For a steady state, the current satisfies $\nabla \cdot \vec{J}_{ss} = 0$. Substituting the Gaussian distribution (\ref{steady-state prob}) into (\ref{probability_current}) gives
+which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$.\par
+However, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$. $\mathbf{K}_\tau = \mathbf{K}^{\intercal}_\tau$ means time-reversal symmetric, and equilibrium is achieved. By using
 \begin{equation}
-    \vec{J}_{ss} = \left( \mathbf{Q} + \frac{1}{2}\boldsymbol{\sigma} \mathbf{K}_0^{-1} \right) \delta \vec{x} \psi_{ss}.
+    \delta \vec{x}(t+\tau) = e^{\tau \mathbf{Q}} \delta \vec{x}(t) + \int_t^{t+\tau} ds e^{(t+\tau+s)Q} \vec{\eta}(s),
 \end{equation}
-Thus, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. The steady-state condition only requires the current to be divergence-free, whereas detailed balance requires it to vanish pointwise. The equilibrium condition is therefore
+one gets $\mathbf{K}_\tau = e^{\tau \mathbf{Q}}\mathbf{K}_0$, where $s > t$, so $\vec{\eta}(s)$ does not correlate with $\vec{x}(t)$. The equilibrium condition is therefore
 \begin{equation}
-    \mathbf{Q} + \frac{1}{2} \boldsymbol{\sigma} \mathbf{K}_0^{-1} = 0.
+    \mathbf{Q}\mathbf{K}_0 = \mathbf{K}_0\mathbf{Q}^\intercal,
 \end{equation}
-Using (\ref{Lyapunov_eq}), this condition is equivalent to
+or equivalently
 \begin{equation}
-    \mathbf{Q}\boldsymbol{\sigma} = \boldsymbol{\sigma}\mathbf{Q}^\intercal,
+    \mathbf{Q}\boldsymbol{\sigma} = \boldsymbol{\sigma}\mathbf{Q}^\intercal.
 \end{equation}
-that is, $\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the familiar case of symmetric $\mathbf{Q}$ with uniform diagonal noise, but it is more general and does not require $\mathbf{Q}$ itself to be symmetric. For diagonal $\boldsymbol{\sigma}$, the condition becomes
+$\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the case of symmetric $\mathbf{Q}$ with uniform diagonal noise matrix $\boldsymbol{\sigma}\propto \sigma_0 \mathbf{I}$, but it is more general and does not require $\mathbf{Q}$ itself to be symmetric for special choices of $\boldsymbol{\sigma}$. For diagonal $\boldsymbol{\sigma}$, the condition becomes
 \begin{equation}
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
 \end{equation}
-When $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$, the couplings are asymmetric and/or the noise strengths are nonuniform across components. In that case, detailed balance is broken and the system reaches a NESS with persistent probability current, even though the distribution remains stationary. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$: for equilibrium cases such as $\mathbf{W}=\mathbf{W}^\intercal$ with uniform diagonal noise, one expects $(\mathbf{K}_{\tau})_{ij}=(\mathbf{K}_{\tau})_{ji}$, whereas asymmetric couplings or heterogeneous noise strengths generally lead to $(\mathbf{K}_{\tau})_{ij}\neq(\mathbf{K}_{\tau})_{ji}$, reflecting broken time-reversal symmetry. It may also be viewed as a network generalization of Brownian-ratchet-like dynamics \cite{10.1143/PTPS.130.17}, where asymmetric couplings and heterogeneous fluctuations can generate directed nonequilibrium responses even in the absence of detailed balance.
-% In the examples studied below, we mainly use the linear intrinsic dynamics $f_i = r_i(1-x_i)$ and the Logistic one $f_i = r_i x_i(1-x_i)$, together with the coupling function $h(x_i,x_j) = x_j-x_i$, for which the nodes tend to synchronize. 
+When $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$, the couplings are asymmetric and/or the noise strengths are nonuniform across components. In that case, detailed balance is broken and the system reaches a NESS with persistent probability current, even though the distribution remains stationary. For network dynamics, from Eq. (\ref{Qij_definition}), the equilibrium condition is a symmetric coupling $\mathbf{W}=\mathbf{W}^\intercal$ with a uniform diagonal noise strength, whereas asymmetric couplings or heterogeneous noise strengths generally lead to broken time-reversal symmetry and reach NESSs.
