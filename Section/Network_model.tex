@@ -14,7 +14,7 @@ with
     F_j(\vec{x}; r_j, {\bf W}) = f_j(x_j;r_j) + \sum_{k} W_{jk} h(x_j,x_k).
 \end{equation}
 Here the parameters are assumed to be externally tunable and time-independent. Such a formulation is applicable to a wide range of noisy network systems. For example, in neuroscience, $x_i(t)$ may represent the membrane potential and $W_{ij}$ the strength and direction of synaptic connections; in ecological systems, $x_i(t)$ may represent the population of species $i$, coupled to other species through interaction terms.\par
-We assume that the system fluctuates around a noise-free solution $\vec{X}$, where $\vec{F}(\vec{X}) = 0$ in the presence of noises. To analyze fluctuations near a stable fixed point, we introduce the deviation
+We assume that the system fluctuates around a noise-free fixed point $\vec{X}$, defined by $\vec{F}(\vec{X}) = 0$. To analyze fluctuations near a stable fixed point, we introduce the deviation
 \begin{equation}
     \Delta \vec{x} \equiv \vec{x} - \vec{X},
 \end{equation}
@@ -29,7 +29,7 @@ encodes both the network topology and the local dynamics, and is asymmetric in g
 \end{equation}
 with the Jacobian matrix which depends on the parameters
 \begin{equation}
-    Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X+i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
+    Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X_i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
     \label{Qij_definition}
 \end{equation}
 We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigenvalues of $\mathbf{Q}$ have non-positive real parts. The noise is taken to be additive Gaussian white noise with covariance matrix
@@ -41,7 +41,7 @@ where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. When the system rea
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
-This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The dynamics is also known as a multivariate Ornstein-Uhlenbeck process, and its steady-state probability distribution obeys the Gaussian distribution
+This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, which can be treated as the network version of FDT \cite{lai2026steadystate}. With a given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The dynamics is also known as a multivariate Ornstein-Uhlenbeck process, and its steady-state probability distribution obeys the Gaussian distribution
 \begin{equation}
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
@@ -49,7 +49,7 @@ This relation directly links the steady-state fluctuation statistics to the line
 which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$. Then, the ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}) d\vec{x}$.\par
 However, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$. $\mathbf{K}_\tau = \mathbf{K}^{\intercal}_\tau$ means time-reversal symmetric, and equilibrium is achieved. By using
 \begin{equation}
-    \delta \vec{x}(t+\tau) = e^{\tau \mathbf{Q}} \delta \vec{x}(t) + \int_t^{t+\tau} ds e^{(t+\tau+s)Q} \vec{\eta}(s),
+    \delta \vec{x}(t+\tau) = e^{\tau \mathbf{Q}} \delta \vec{x}(t) + \int_t^{t+\tau} ds\, e^{(t+\tau-s)\mathbf{Q}} \vec{\eta}(s),
 \end{equation}
 one gets $\mathbf{K}_\tau = e^{\tau \mathbf{Q}}\mathbf{K}_0$, where $s > t$, so $\vec{\eta}(s)$ does not correlate with $\vec{x}(t)$. The equilibrium condition is therefore
 \begin{equation}
@@ -63,4 +63,4 @@ $\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the case of sym
 \begin{equation}
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
 \end{equation}
-When $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$, the couplings are asymmetric and/or the noise strengths are nonuniform across components. In that case, detailed balance is broken and the system reaches a NESS with persistent probability current, even though the distribution remains stationary. For network dynamics, from Eq. (\ref{Qij_definition}), the equilibrium condition is a symmetric coupling $\mathbf{W}=\mathbf{W}^\intercal$ with a uniform diagonal noise strength, whereas asymmetric couplings or heterogeneous noise strengths generally lead to broken time-reversal symmetry and reach NESSs.
+When $\mathbf{Q}\boldsymbol{\sigma} \neq \boldsymbol{\sigma}\mathbf{Q}^\intercal$, the couplings are asymmetric and/or the noise strengths are nonuniform across components. In that case, detailed balance is broken and the system reaches a NESS with persistent probability current, even though the distribution remains stationary. For network dynamics, from Eq. (\ref{Qij_definition}), the equilibrium condition is a symmetric coupling $\mathbf{W}=\mathbf{W}^\intercal$ with a uniform diagonal noise strength, whereas asymmetric couplings or heterogeneous noise strengths generally lead to broken time-reversal symmetry and reach NESSs. Beyond the linearized regime, the full nonlinear dynamics still admits a steady-state form $\psi_{ss}(\vec{x}) \propto e^{-\Phi_{\mathrm{nl}}(\vec{x})}$, but $\Phi_{\mathrm{nl}}$ is generally not quadratic and the local peak of $\psi_{ss}$ need not coincide exactly with the noise-free fixed point or the steady-state mean \cite{PhysRevE.84.061106}. Near a stable fixed point, however, the leading contribution reduces to the quadratic form in Eq. (\ref{steady-state prob}), so the linearized theory captures the local steady-state structure and response to leading order.
