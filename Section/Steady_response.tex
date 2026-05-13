@@ -1,6 +1,6 @@
 \section{Steady-state linear response in noisy network dynamics}
 % \subsection{}
-We now develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the pre-perturbed steady state. We first consider the dependence of the noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
+We now develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When some observables change $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the average of some observables ${\bf B}(\vec{x}; \vec{p})$ respond to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the unperturbed steady state. We first consider the dependence of the noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
 \begin{equation}
     \vec{F}(\vec{X}; \vec{p}) = 0.
 \end{equation}
@@ -36,5 +36,5 @@ one obtains
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathscr{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}
 \end{equation}
-This is the general steady-state linear response formula used throughout this work \cite{softmatter}. Importantly, it does not require equilibrium. Instead, it only requires that the system fluctuates around a steady state. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$, the connection weight $W_{\alpha\beta}$, and the noise strength $\sigma_{\alpha\alpha}$.
+This is the steady-state linear response formula used throughout this work \cite{softmatter}. Importantly, it does not require equilibrium. Instead, it only requires that the system fluctuates around a fixed point. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$, the connection weight $W_{\alpha\beta}$, and the noise strength $\sigma_{\alpha\alpha}$.
 The detailed derivation of the conjugate force and the related response identities is summarized in Appendix~B.
