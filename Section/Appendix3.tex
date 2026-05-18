@@ -15,11 +15,11 @@ Hence the solution of the Lyapunov Eq. (\ref{lyap}) is
  {\bf K}={\bf P}  {\tilde {\bf K}}{\bf P}^\intercal
 \end{equation}
 where ${\tilde   {\bf K}}$ is given by (\ref{Ktil}).
-Note that for the noisy network that fluctuates about some stable noise-free solution, the real part of all the eigenvalues are negative, and hence $\lambda_i+\lambda_j\neq 0$ in (\ref{Ktil}). The above solution can also be written in terms of the spectral decomposition of ${\bf Q}$ with
+Note that for the noisy network that fluctuates about some stable noise-free solution, the real part of all eigenvalues are negative, and hence $\lambda_i+\lambda_j\neq 0$ in (\ref{Ktil}). The above solution can also be written in terms of the spectral decomposition of ${\bf Q}$ with
 \begin{equation}
     {\bf Q}=\sum_{\ell=1}^N \lambda_\ell {\bf M}^{(\ell)},
 \end{equation}
-where the matrices ${\bf M}^{(\ell)}$ formed by   is  given  by 
+where the matrices ${\bf M}^{(\ell)}$ are defined by 
 \begin{equation}
 {\bf M}^{(\ell)}\equiv  {\vec u_\ell} {\vv v_\ell}^\intercal ,\quad \ell=1,2,\cdots,N  
 \end{equation}
@@ -34,10 +34,7 @@ Then the solution of $ {\bf K}$  is given by
 \end{equation}
 
 \subsection*{Mode expansion for the time-dependent protocol integrals}
-\quad In Sec. \ref{sec:time-dependent}, the transient response to the cosine
-driving protocol is evaluated by the spectral decomposition of ${\bf Q}$. For the
-node perturbation, the integral in (\ref{xi(t)drlinear}) can be evaluated by finding
-the eigenvalues and eigenvector of ${\bf Q}$:  ${\bf P}^{-1}{\bf Q}{\bf P}=\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where $\lambda_i$ are the eigenvalues and ${\bf P}$ is the matrix of eigenvectors:
+\quad In Sec. \ref{sec:time-dependent}, the transient response to the cosine driving protocol is evaluated by the spectral decomposition of ${\bf Q}$. For the node perturbation, the integral in (\ref{xi(t)drlinear}) can be evaluated by finding the eigenvalues and eigenvectors of ${\bf Q}$:  ${\bf P}^{-1}{\bf Q}{\bf P}=\hbox{diag}(\lambda_1,\lambda_2,\cdots,\lambda_N)$, where $\lambda_i$ are the eigenvalues and ${\bf P}$ is the matrix of eigenvectors:
 ${\bf P}=({\vec u_1},{\vec u_2},\cdots,{\vec u_N})$ , ${\bf Q}{\vec u_i}=\lambda_i{\vec u_i}$. The inverse of ${\bf P}$ is given by ${\bf P}^{-\intercal}=({\vec v_1},{\vec v_2},\cdots,{\vec v_N})$, with  $ {\vv v_i}^\intercal  {\vec u_j}=\delta_{ij}$, $\sum_{j=1}^N{\vec v_j} {\vv u_j}^\intercal={\bf I}$.
  ${\bf Q}$ can be spectral decomposed as ${\bf Q}=\sum_{m=1}^N\lambda_m {\vec u_m}{\vec v_m}^\intercal$. Then in terms of the components of the vectors ${\vec u_i}^\intercal=(u_{i1},u_{i2},\cdots,u_{iN})$ and ${\vec v_i}^\intercal=(v_{i1},v_{i2},\cdots,v_{iN})$,  (\ref{xi(t)drlinear}) can be expressed as
  \begin{equation}
@@ -48,7 +45,7 @@ For the covariance response, the time-dependent integral can be written as
     &&\int_0^{\min(t,\tau)} dt' \left( e^{(t-t'){\bf Q}}\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha} } e^{(t-t'){\bf Q}^\intercal} \right)_{ij} \delta \dot{r}_\alpha(t')\\
     &=&\sum_{m,\ell} u_{im}u_{j\ell}\left(\vec{v}^\intercal_m\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} \vec{v}_\ell\right) I_{m\ell}(t),
 \end{eqnarray}
-Consider the protocol in equ. (\ref{dra(t)cos}) and the integral becomes
+Consider the protocol in Eq. (\ref{dra(t)cos}) and the integral becomes
 \begin{eqnarray}
     I_{m\ell}(t) &=& \frac{b\pi}{2\tau}\int_0^{\min(t,\tau)}dt'e^{(t-t')(\lambda_m+\lambda_\ell)} \text{sin}\left( \frac{\pi t'}{\tau} \right)\\
     &=&\begin{cases}

@@ -4,7 +4,7 @@
     \dot{x}_i = f_i(x_i;r_i) + \sum_{k\neq i} W_{ik} h(x_i, x_k) + \eta_i(t),\;i=1,2,...,N,
     \label{noisy_network}
 \end{equation}
-where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. $\mathbf{A}$ and $\mathbf{W}$ are in general asymmetric and we use the direction convention of $W_{ij}$ as an edge from node $j$ to node $i$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$, the adjacency matrix or the connection weights are in general asymmetric for directed networks. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
+where $\eta_i(t)$ is zero-mean Gaussian white noise acting on node $i$. In many situations, the weighted matrix takes the $W_{ij}=g_{ij}A_{ij}$, with adjacency matrix elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$. $\mathbf{A}$ and $\mathbf{W}$ are in general asymmetric and we use the direction convention of $W_{ij}$ as an edge from node $j$ to node $i$. The coupling function $h(x_i,x_j)$ describes the interaction between nodes $i$ and $j$, and the adjacency matrix or the connection weights are in general asymmetric for directed networks. This stochastic network dynamics can be viewed as an overdamped Langevin system defined on a network. It is convenient to combine the intrinsic and coupling terms into a deterministic force $\vec{F}(\vec{x};\vec{p})$, where $\vec{p}$ denotes a set of control parameters, including the node parameters $r_i$ and the network connection weights $W_{ij}$. Then the dynamics can be written as
 \begin{equation}
     \dot{\vec{x}} = \vec{F}(\vec{x};\vec{p}) + \vec{\eta}(t),
     \label{deterministic_force}
@@ -27,7 +27,7 @@ encodes both the network topology and the local dynamics, and is asymmetric in g
     \Delta \dot{\vec{x}} = {\bf Q}\Delta \vec{x} + \vec{\eta}(t),
     \label{linearized_dynamics}
 \end{equation}
-with the Jacobian matrix which depends on the parameters
+where the Jacobian matrix is given by
 \begin{equation}
     Q_{ij} = W_{ij} \partial_2 h(X_i,X_j) + \left[ f_i'(X_i;r_i) + \sum_m W_{im} \partial_1 h(X_i,X_m) \right] \delta_{ij}.
     \label{Qij_definition}
@@ -36,7 +36,7 @@ We assume that the fixed point $\vec{X}$ is linearly stable, such that all eigen
 \begin{equation}
     \langle \vec{\eta}(t) \vec{\eta}^\intercal(t') \rangle = \boldsymbol{\sigma} \delta (t-t'),\;\langle \vec{\eta}(t) \rangle = 0,
 \end{equation}
-where, $\boldsymbol{\sigma}$ is chosen as a diagonal matrix. When the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
+where $\boldsymbol{\sigma}$ is chosen to be diagonal. When the system reaches a steady state, the equal-time covariance matrix ${\bf K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ satisfies the Lyapunov equation
 \begin{equation}
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
@@ -46,8 +46,8 @@ This relation directly links the steady-state fluctuation statistics to the line
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
 \end{equation}
-which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$, where $\delta \vec{x} \equiv \vec{x} - \langle \vec{x} \rangle$. The fixed points statisy $\vec{X}=\langle \vec{x} \rangle$ when the force is lineari(zed), and the difference in the two quantities when the force is nonlinear is explained in Appendix~A. The ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}; \vec{p}) d\vec{x}$.\par
-However, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$. $\mathbf{K}_\tau = \mathbf{K}^{\intercal}_\tau$ means time-reversal symmetric, and equilibrium is achieved. By using
+which can be expressed as the effective potential $\Phi \equiv \frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}$, where $\delta \vec{x} \equiv \vec{x} - \langle \vec{x} \rangle$. For a linearized force, the fixed points statisy $\vec{X}=\langle \vec{x} \rangle$, and the difference in the two quantities when the force is nonlinear is explained in Appendix~A. The ensemble average of an observable $B(\vec{x}; \vec{p})$ is given by $\langle B \rangle = \int B(\vec{x}; \vec{p}) \psi_{ss}(\vec{x}; \vec{p}) d\vec{x}$.\par
+However, the existence of a stationary Gaussian distribution does not by itself imply equilibrium. This distinction can also be detected from the time-lagged covariance $\mathbf{K}_{\tau} \equiv \langle \delta \vec{x}(t+\tau) \delta \vec{x}^\intercal(t) \rangle$. The condition $\mathbf{K}_\tau = \mathbf{K}^{\intercal}_\tau$ for all $\tau$ is the time-reversal symmetry condition associated with detailed balance in the linear Gaussian dynamics. By using
 \begin{equation}
     \delta \vec{x}(t+\tau) = e^{\tau \mathbf{Q}} \delta \vec{x}(t) + \int_t^{t+\tau} ds\, e^{(t+\tau-s)\mathbf{Q}} \vec{\eta}(s),
 \end{equation}
@@ -65,5 +65,5 @@ $\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the case of sym
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
     \label{equilibrium_condition_diagonal}
 \end{equation}
-For network dynamics, asymmetric couplings or heterogeneous noise generally break detailed balance, but detailed balance is determined by Eq. (\ref{equilibrium_condition}), and there exist a special choice of diagonal $\boldsymbol{\sigma}$ that satisfied Eq. (\ref{equilibrium_condition_diagonal}) with asymmetric $\mathbf{Q}$. Beyond the linearized regime, the full nonlinear dynamics still admits a steady-state form $\psi_{ss}(\vec{x}) \propto e^{-\Phi(\vec{x})}$, but $\Phi$ is generally not quadratic and the local peak of $\psi_{ss}$ need not coincide exactly with the noise-free fixed point or the steady-state mean \cite{PhysRevE.84.061106}. Near a stable fixed point, however, the leading contribution reduces to the quadratic form in Eq. (\ref{steady-state prob}), so the linearized theory captures the local steady-state structure and response to leading order.
+Although asymmetric couplings or heterogeneous noise generally break detailed balance, detailed balance is determined by Eq. (\ref{equilibrium_condition}). There is still a special choice of diagonal $\boldsymbol{\sigma}$ that satisfies Eq. (\ref{equilibrium_condition_diagonal}) even with asymmetric $\mathbf{Q}$. Beyond the linearized regime, the full nonlinear dynamics still admits a steady-state form $\psi_{ss}(\vec{x}) \propto e^{-\Phi(\vec{x})}$, but $\Phi$ is generally not quadratic and the local peak of $\psi_{ss}$ need not coincide exactly with the noise-free fixed point or the steady-state mean \cite{PhysRevE.84.061106}. Near a stable fixed point, however, the leading contribution reduces to the quadratic form in Eq. (\ref{steady-state prob}), so the linearized theory captures the local steady-state structure and response to leading order.
 From the reconstruction perspective, a fuller derivation of the relations involving $\mathbf{K}_\tau$, $\mathbf{Q}$, and $\boldsymbol{\sigma}$ is summarized in Appendix~A.

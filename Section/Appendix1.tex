@@ -1,12 +1,12 @@
 \section{Noisy network reconstruction formulas}
-Consider a network with $N$ nodes whose intrinsic 1-dimensional dynamics, $x_i(t)$,  is described by the nonlinear function $f_i(x_i;r_i)$, where $r_i$ denotes the node parameter. Nodes $i$ and $j$ are connected by directed and weighted links given by the matrix ${\bf W}$. The dynamics are governed by
+Consider a network with $N$ nodes whose intrinsic one-dimensional dynamics, $x_i(t)$,  is described by the nonlinear function $f_i(x_i;r_i)$, where $r_i$ denotes the node parameter. Nodes $i$ and $j$ are connected by directed and weighted links given by the matrix ${\bf W}$. The dynamics are governed by
  \begin{eqnarray}
 {\dot {\vec x}}& =&{\vec { F}}({\vec x})  +{\vec \eta}(t) \\
 { F}_i({\vec x})&=&f_i(x_i;r_i)+\sum_{j\neq i}^N W_{ij} h(x_i, x_j)
 \label{xiapp}
 \end{eqnarray}
 where ${\vec { F}}({\vec x})$ is the force that drives the autonomous deterministic dynamics and $\eta_i$ is zero-mean Gaussian white noise that acts on the node $i$.  In many situations, the weighted matrix takes the form $W_{ij}= g_{ij} A_{ij}$,  with the adjacency matrix of elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$.
-$h$ is a coupling function that describes the interaction between nodes $i$ and $j$. Furthermore, we assume that the system approaches some asymptotic dynamics in the presence of noises, and $x_i(t)$  fluctuates around its mean value $\langle x_i\rangle$ (local maximum of the probability density function $\psi_{ss}({\vec x})$  which is close to the noise-free solution $X_i$. Then up to linear order in $\Delta{\vec x}\equiv{\vec x}-{\vec X}  $, one has
+$h$ is a coupling function that describes the interaction between nodes $i$ and $j$. Furthermore, we assume that the system approaches some asymptotic dynamics in the presence of noise, and $x_i(t)$  fluctuates around its mean value $\langle x_i\rangle$ (local maximum of the probability density function $\psi_{ss}({\vec x})$  which is close to the noise-free solution $X_i$. Then up to linear order in $\Delta{\vec x}\equiv{\vec x}-{\vec X}  $, one has
  \begin{eqnarray}
 \Delta{\dot{\vec x}} &=&{\bf Q}\Delta{\vec x} +{\vec \eta}(t)+{\cal O}(\Delta x ^2),\quad{\hbox{where }}\label{deltax}\\
  Q_{ij}&\equiv& W_{ij}\partial_2h(X_i,X_j)+\left[  f_i'(X_i;r_i)+ \sum_mW_{im} \partial_1 h(X_i,X_m) \right]\delta_{ij}.
@@ -31,8 +31,7 @@ First is the case of linear  ${\vec{ F}}({\vec x}) $ (both $f_i(x_i)$ and the co
 The second is the equilibrium case such as ${\vec{ F}}({\vec x})=-\nabla U({\vec x})$ and $\boldsymbol{\sigma}=2c{\bf I}$, the equilibrium probability distribution is Boltzmann $\psi_{eqm}\sim e^{-U({\vec x})/c}$, which implies the local peak of $\psi_{eqm} $ is ${\vec X}$.
 Also for the more general equilibrium condition for noisy network dynamics, ${\bf Q}\boldsymbol{\sigma}$ is symmetric (which implies $\boldsymbol{\sigma}^{-1}{\bf Q}$ is also symmetric), then one can construct $ U({\vec x})=-\frac{\Delta{\vec x}^\intercal\boldsymbol{\sigma}^{-1}{\bf Q}\Delta{\vec x}}{2}$, which has a minimum at ${\vec X}$.
 
-On the other hand, the interplay of nonlinearity in  ${\vec{ F}}({\vec x})$ and the non-equilibrium condition gives rise to a shift of the local maximum of $\psi_{ss}({\vec x})$ from ${\vec X}$, and one has $\langle{\vec x}\rangle={\vec X} + \langle \Delta \vec x\rangle$ with $\langle \Delta \vec x\rangle\sim {\cal O}(\delta x^2)$ as discussed in above.
-Although $ \delta{\vec x}$ and $\Delta{\vec x}$  in general differ by $ {\cal O}(\delta x^2)$, their corresponding  time-lag correlation functions  (in the long-time limit for the steady-state) agree much better, as shown below :
+On the other hand, the interplay of nonlinearity in  ${\vec{ F}}({\vec x})$ and the non-equilibrium condition gives rise to a shift of the local maximum of $\psi_{ss}({\vec x})$ from ${\vec X}$, and one has $\langle{\vec x}\rangle={\vec X} + \langle \Delta \vec x\rangle$ with $\langle \Delta \vec x\rangle\sim {\cal O}(\delta x^2)$ as discussed above. Although $ \delta{\vec x}$ and $\Delta{\vec x}$  in general differ by $ {\cal O}(\delta x^2)$, their corresponding time-lag correlation functions (in the long-time limit for the steady-state) agree much better, as shown below:
 \begin{eqnarray}
     {\bf K}_\tau&\equiv& \langle \delta{\vec x}(\tau)\delta{\vec x}^\intercal(0)\rangle \\
  &=&  \langle{\vec x}(\tau){\vec x}(0)^\intercal\rangle -  \langle{\vec x}(\tau)\rangle  \langle{\vec x}^\intercal(0)\rangle \label{ktau2} \\

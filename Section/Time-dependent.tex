@@ -2,7 +2,7 @@
 We now extend the steady-state framework to time-dependent perturbations. We first derive a formal non-steady response identity for noisy network dynamics near a steady state and then specialize it to linearized network dynamics, where the
 transient responses of the mean state, deterministic force, and equal-time covariance can be written explicitly. Explicit closed-form results and numerical validation are then presented for linear network dynamics in both an equilibrium reference network and a nonequilibrium steady-state network.
 \subsection{General Formula for Time-Dependent Linear Response Function}
-\quad We consider the non-steady response induced by a time-dependent perturbation
+\quad We consider the time-dependent response induced by a time-dependent perturbation
 of the network parameters, $\vec{p}\rightarrow\vec{p}+\delta \vec{p}(t)$, and
 assume that the system is in the unperturbed steady state for $t\le 0$. The
 non-steady linear response function of an observable $\mathbf{B}(t)$ is then
@@ -31,7 +31,7 @@ For the linearized noisy dynamics, both the time-lagged covariance $\mathbf{K}_\
 
 This result shows that, within the linearized theory, the time-dependent response is determined by two ingredients: the parameter-induced shift of the noise-free fixed point and $e^{\tau\mathbf{Q}}$, which governs how the perturbation is transmitted through the network in time.
 \subsection{Linear-Dynamics Specialization}
-\quad We next consider the special case of linear network dynamics, with $f_i(x_i;r_i) = r_i(a_i-x_i)$ and a coupling function $h$ that is also linear in $x_i$. In this case the system can be solved explicitly, and $\langle x_i \rangle = X_i$. The time-dependent response of the mean state variable is
+\quad We next consider the special case of linear network dynamics, with $f_i(x_i;r_i) = r_i(a_i-x_i)$ and a coupling function $h$ that is linear. In this case the system can be solved explicitly, and $\langle x_i \rangle = X_i$. The time-dependent response of the mean state variable is
 \begin{equation}
     \chi_{i\alpha}^{(x)}(t)=\left(e^{t{\bf Q}}{\bf Q}^{-1} \nabla_p{\vec { F}}|_{\vec X} \right)_{i\alpha}-\left({\bf Q}^{-1} \nabla_p{\vec { F}} |_{\vec X}\right)_{i\alpha}. \label{chinsslinear}
 \end{equation}
@@ -74,7 +74,7 @@ time-series comparisons below, dashed curves denote direct Langevin simulations 
     \label{graphN4} 
 \end{figure}
 
-\subsection{Non-steady Response due to the time-dependent perturbation in a node parameter}
+\subsection{Time-dependent Response due to the time-dependent perturbation in a node parameter}
 \quad We first consider a time-dependent perturbation of a single node parameter
 $\delta r_\alpha(t)$. We begin with the explicit response formulas for linear
 dynamics and then compare them with direct simulations. For the linear
@@ -182,7 +182,7 @@ relaxation for $t>\tau$, during which the system approaches the new steady state
 Increasing $r_1$ strengthens the local restoring force on node 1 toward its intrinsic target $a_1$. Since the unperturbed state satisfies $X_1>a_1$ due to the couplings, the perturbation drives $\langle x_1(t)\rangle$ downward and
 gives a negative response in $\langle F_1(t)\rangle$. The stronger local relaxation also suppresses fluctuations around node 1, leading to a decrease in $K_{11}(t,t)$. In the undirected case, the perturbation is transmitted more
 directly to node 2, so both the coupled response and the covariance $K_{12}(t,t)$ decrease. In the directed case, node 2 is not directly affected by node 1, and its response can therefore differ in amplitude and transient shape.
-\subsection{Non-steady Response due to the time-dependent perturbation in a connection weight}
+\subsection{Time-dependent Response due to the time-dependent perturbation in a connection weight}
 \quad We next consider a time-dependent perturbation of a single connection weight. The derivation parallels the node-perturbation case, so we state the corresponding response formulas and then compare them with direct simulations.
 For linear network dynamics, the relaxation response of the mean position is
 \begin{eqnarray}
@@ -243,16 +243,10 @@ Increasing $W_{12}$ strengthens the pull of node 2 on node 1. Since the unpertur
     \caption{Same comparison as in Fig. \ref{Time-dependent_undirected_dW}, but for a directed perturbation $\delta W_{12}(t)$ in the nonequilibrium network of Fig. \ref{graphN4}b. Panels (a)-(c) show components of the mean state, mean force, and equal-time covariance, respectively. The close agreement between simulation and prediction demonstrates that the time-dependent response theory also captures the propagation of directed coupling perturbations in a nonequilibrium steady state.}
     \label{Time-dependent_directed_dW} 
 \end{figure}
-\subsection{Non-steady Response due to the time-dependent perturbation in a noise strength}
-\quad We next consider a time-dependent perturbation of the diagonal noise
-strength, $\delta \sigma_{\alpha\alpha}(t)$. Unlike node and edge perturbations,
-a perturbation in $\sigma_{\alpha\alpha}$ does not modify the deterministic
-drift matrix ${\bf Q}$. Therefore, for linear dynamics with additive zero-mean
-noise, the ensemble averages of the mean state and deterministic force remain
-unchanged to first order. In other words, a perturbation in the noise strength
-affects only the fluctuation sector at linear order, while the nontrivial
-response appears in the equal-time covariance matrix. Using Eq.~(\ref{Bnoneqm}),
-the time-dependent covariance response is
+\subsection{Time-dependent Response due to the time-dependent perturbation in a noise strength}
+\quad We next consider a time-dependent perturbation of the diagonal noise strength, $\delta \sigma_{\alpha\alpha}(t)$. Unlike node and edge perturbations, a perturbation in $\sigma_{\alpha\alpha}$ does not modify the deterministic
+drift matrix ${\bf Q}$. Therefore, for linear dynamics with additive zero-mean noise, the ensemble averages of the mean state and deterministic force remain unchanged to first order. In other words, a perturbation in the noise strength
+affects only the fluctuation sector at linear order, while the nontrivial response appears in the equal-time covariance matrix. Using Eq.~(\ref{Bnoneqm}), the time-dependent covariance response is
 \begin{equation}
     {\bf K}(t,t)
     =
@@ -268,11 +262,7 @@ the time-dependent covariance response is
     \,\delta \dot{\sigma}_{\alpha\alpha}(t').
     \label{Ksigma_time_response}
 \end{equation}
-This expression has the same structure as in the node- and edge-perturbation
-cases, except that the kernel is now determined by
-$\partial {\bf K}_0/\partial \sigma_{\alpha\alpha}$ rather than by derivatives
-with respect to entries of ${\bf Q}$. With the spectral decomposition
-${\bf Q}=\sum_m \lambda_m {\vec u_m}{\vec v_m}^\intercal$, the covariance
+This expression has the same structure as in the node- and edge-perturbation cases, except that the kernel is now determined by $\partial {\bf K}_0/\partial \sigma_{\alpha\alpha}$ rather than by derivatives with respect to entries of ${\bf Q}$. With the spectral decomposition ${\bf Q}=\sum_m \lambda_m {\vec u_m}{\vec v_m}^\intercal$, the covariance
 response can be written as
 \begin{equation}
     K_{ij}(t,t)
@@ -294,25 +284,13 @@ response can be written as
     I_{m\ell}(t),
     \label{Ksigma_mode_expansion}
 \end{equation}
-where the protocol integral $I_{m\ell}(t)$ is the same as that defined in
-Eq.~(\ref{Iml}), with $\delta r_\alpha(t)$ replaced by
-$\delta \sigma_{\alpha\alpha}(t)$. For the cosine protocol used in the
-numerical test, we apply a time-dependent perturbation on $\sigma_{11}$ as
+where the protocol integral $I_{m\ell}(t)$ is the same as that defined in Eq.~(\ref{Iml}), with $\delta r_\alpha(t)$ replaced by $\delta \sigma_{\alpha\alpha}(t)$. For the cosine protocol used in the numerical test, we apply a time-dependent perturbation on $\sigma_{11}$ as
 \begin{equation}
     \delta \sigma_{\alpha\alpha}(t)=\begin{cases} \frac{b}{2}(1-\cos\frac{\pi t}{\tau}), & 0\leq t\leq\tau \\
               b                                      & t>\tau
     \end{cases}.\label{dsaa(t)cos}
 \end{equation}
-Figure \ref{Time-dependent_Ko_ds} compares the predicted and simulated
-non-steady responses of $K_{11}(t,t)$ and $K_{12}(t,t)$ for the two four-node
-graphs in Fig. \ref{graphN4}. Since the perturbation acts directly on the noise
-amplitude at node $1$, the most pronounced effect is seen in the local variance
-$K_{11}(t,t)$. The cross-covariance $K_{12}(t,t)$ responds more indirectly,
-through the propagation of fluctuations across the network. In the directed
-network of Fig. \ref{graphN4}b, node $2$ is not directly driven by node $1$, so
-the response of $K_{12}(t,t)$ is weaker than in the undirected case. By
-contrast, the bidirectional couplings in Fig. \ref{graphN4}a transmit the
-noise perturbation more efficiently, leading to a stronger covariance response.
+Figure \ref{Time-dependent_Ko_ds} compares the predicted and simulated non-steady responses of $K_{11}(t,t)$ and $K_{12}(t,t)$ for the two four-node graphs in Fig. \ref{graphN4}. Since the perturbation acts directly on the noise strength at node $1$, the most pronounced effect is seen in the local variance $K_{11}(t,t)$. The cross-covariance $K_{12}(t,t)$ responds more indirectly, through the propagation of fluctuations across the network. In the directed network of Fig. \ref{graphN4}b, node $2$ is not directly driven by node $1$, so the response of $K_{12}(t,t)$ is weaker than in the undirected case. In contrast, the bidirectional couplings in Fig. \ref{graphN4}a transmit the noise perturbation more efficiently, leading to a stronger covariance response.
 \begin{figure}[H]
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/nonsteady_response_Ko11ds.eps}}

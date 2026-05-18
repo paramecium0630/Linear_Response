@@ -1,5 +1,5 @@
 \section{Explicit Response Formula}
-\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We take the response of equal-time covariance matrix $\mathbf{K}_0$ for example, and the observable becomes $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. As an example, we consider the response of the equal-time covariance matrix $\mathbf{K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$, and the observable becomes $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
 \begin{equation}
     \chi_{ij\alpha} = \langle \partial_p \delta x_i \delta x_j \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{equation}
@@ -13,7 +13,7 @@ Since $\langle \delta x_i \rangle = 0$, the first term vanishes. The second term
     &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}
 \end{eqnarray}
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
-\quad We first consider the perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. One obtains the steady-state response of the equal-time covariance matrix
+\quad We first consider a perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. One obtains the steady-state response of the equal-time covariance matrix
 \begin{equation}
     \chi_{ij\alpha} = \langle \delta x_i \delta x_j \mathscr{F}_\alpha \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle.
     \label{response_Ko_r}
@@ -69,7 +69,7 @@ Also, the derivative of the inverse of the covariance matrix gives
     \mathbf{K}_0 \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}} \mathbf{K}_0 = - \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}}\;\text{or}\;\mathbf{K}^{-1}_0 \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \mathbf{K}^{-1}_0 = - \frac{\partial \mathbf{K}^{-1}_0}{\partial Q_{\alpha\beta}}.
     \label{inverse_partialKo}
 \end{equation}
-The higher orders of the derivative can be obtained by the similar manner. For the derivative with respect to $\sigma_{\alpha\alpha}$, we have
+Higher-order derivatives can be obtained by the similar manner. For the derivative with respect to $\sigma_{\alpha\alpha}$, we have
 \begin{equation}
     \mathbf{Q}\frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}} + \frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}}\mathbf{Q}^\intercal = -\mathbf{E}^{(\alpha\alpha)},\;\text{where}\;E^{(\alpha\alpha)}_{ij}=1\;\text{for}\;i=j=\alpha.
     \label{partialKo_sigma}
@@ -87,7 +87,7 @@ This equilibrium form is especially useful because the explicit dependence of $\
     \chi_{ij(\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha},
     \label{chiKodr_eq}
 \end{equation}
-and the response functions for the change in a connection weight and a noise strength
+and the response functions for the change in a connection weight gives
 \begin{equation}
     \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta},
     \label{chiKodW_eq}
