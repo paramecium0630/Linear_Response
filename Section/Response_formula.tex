@@ -1,11 +1,15 @@
 \section{Explicit Response Formula}
-\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We focus on the response of equal-time covariance matrix $\mathbf{K}_0$, and the observable becomes $\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. We take the response of equal-time covariance matrix $\mathbf{K}_0$ for example, and the observable becomes $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
 \begin{equation}
     \chi_{ij\alpha} = \langle \partial_p \delta x_i \delta x_j \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{equation}
-Since $\delta x_i$ does not explicitly depend on the parameters ($r_\alpha$, $W_{\alpha\beta}$, and $\sigma_{\alpha\alpha}$), the first term vanishes. The second term can be written as
+The observable is written as $\delta x_i \delta x_j= [x_i - \langle x_i \rangle][x_j - \langle x_j \rangle]$. Then
+\begin{equation}
+    \left\langle \frac{\partial B_{ij}}{\partial p_\alpha} \right\rangle = -\frac{\partial \langle x_i \rangle}{\partial p_\alpha} \delta x_j - \frac{\partial \left\langle x_j \right\rangle}{\partial p_\alpha} \delta x_i.
+\end{equation}
+Since $\langle \delta x_i \rangle = 0$, the first term vanishes. The second term can be written as
 \begin{eqnarray}
-    \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}} &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - \langle \delta x_i \delta x_j \rangle_{ss, \vec{p}} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}\nonumber\\
+    \left\langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} &=& \left\langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} - \left\langle \delta x_i \delta x_j \right\rangle_{ss, \vec{p}} \left\langle \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}}\nonumber\\
     &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}
 \end{eqnarray}
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
@@ -68,8 +72,9 @@ Also, the derivative of the inverse of the covariance matrix gives
 The higher orders of the derivative can be obtained by the similar manner. For the derivative with respect to $\sigma_{\alpha\alpha}$, we have
 \begin{equation}
     \mathbf{Q}\frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}} + \frac{\partial\mathbf{K}_0}{\partial\sigma_{\alpha\alpha}}\mathbf{Q}^\intercal = -\mathbf{E}^{(\alpha\alpha)},\;\text{where}\;E^{(\alpha\alpha)}_{ij}=1\;\text{for}\;i=j=\alpha.
+    \label{partialKo_sigma}
 \end{equation}
-The above formulas are further simplified when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
+Moreover, the above formulas are further simplified when the network satisfies the equilibrium condition $\mathbf{Q}\boldsymbol{\sigma}=\boldsymbol{\sigma}\mathbf{Q}^\intercal$. In that case, the covariance matrix satisfies $\mathbf{K}_0 = -\frac{1}{2} \mathbf{Q}^{-1} \boldsymbol{\sigma}$, and therefore
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = -Q^{-1}_{i\alpha} (\mathbf{K}_0)_{j\beta} = \frac{1}{2} Q^{-1}_{i\alpha} (\mathbf{Q}^{-1}\boldsymbol{\sigma})_{j\beta}.
 \end{equation}
@@ -87,8 +92,4 @@ and the response functions for the change in a connection weight and a noise str
     \chi_{ij(\alpha\beta)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha}+\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta},
     \label{chiKodW_eq}
 \end{equation}
-\begin{equation}
-    \chi_{ij(\alpha\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha}.
-    \label{chiKodsigma_eq}
-\end{equation}
-These results provide a simple reference form for comparison with the nonequilibrium steady-state response.
+Notice that a noise perturbation usually breaks detailed balance. For a system originally at equilibrium, its perturbed state does not satisfy detailed balance. The equilibrium response formula of noise perturbations should be derived from Eq. (\ref{partialKo_sigma}). These results provide a simple reference form for comparison with the nonequilibrium steady-state response.
