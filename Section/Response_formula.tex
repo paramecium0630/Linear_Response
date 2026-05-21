@@ -1,17 +1,18 @@
 \section{Explicit Response Formula}
-\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. As an example, we consider the response of the equal-time covariance matrix $\mathbf{K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$, and the observable becomes $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function gives
+\quad We write down the explicit response formulas corresponding to the steady-state linear response theory developed in the previous section. As an example, we consider the response of the equal-time covariance matrix $\mathbf{K}_0 \equiv \langle \delta \vec{x} \delta \vec{x}^\intercal \rangle$ with respect to the change in $\vec{p}$, and $\vec{p}$ can be $\vec{r}$, $\mathbf{W}$, and $\boldsymbol{\sigma}$. The observable becomes $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function with respect to $p_\alpha$ gives
 \begin{equation}
-    \chi_{ij\alpha} = \langle \partial_p \delta x_i \delta x_j \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
+    \chi_{ij\alpha} = \langle \partial_p (\delta x_i \delta x_j) \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{equation}
 The observable is written as $\delta x_i \delta x_j= [x_i - \langle x_i \rangle][x_j - \langle x_j \rangle]$. Then
 \begin{equation}
-    \left\langle \frac{\partial B_{ij}}{\partial p_\alpha} \right\rangle = -\frac{\partial \langle x_i \rangle}{\partial p_\alpha} \delta x_j - \frac{\partial \left\langle x_j \right\rangle}{\partial p_\alpha} \delta x_i.
+    \left\langle \frac{\partial B_{ij}}{\partial p_\alpha} \right\rangle = -\frac{\partial \langle x_i \rangle}{\partial p_\alpha} \langle \delta x_j \rangle - \frac{\partial \left\langle x_j \right\rangle}{\partial p_\alpha} \langle \delta x_i \rangle.
 \end{equation}
 Since $\langle \delta x_i \rangle = 0$, the first term vanishes. The second term can be written as
 \begin{eqnarray}
     \left\langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} &=& \left\langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} - \left\langle \delta x_i \delta x_j \right\rangle_{ss, \vec{p}} \left\langle \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}}\nonumber\\
-    &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}
+    &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{eqnarray}
+The explicit formulas of $\mathscr{F}_\alpha$ for three kinds of the network parameters are shown in Appendix~B.
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
 \quad We first consider a perturbation of a single node perturbation $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. One obtains the steady-state response of the equal-time covariance matrix
 \begin{equation}
@@ -78,7 +79,7 @@ Moreover, the above formulas are further simplified when the network satisfies t
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = -Q^{-1}_{i\alpha} (\mathbf{K}_0)_{j\beta} = \frac{1}{2} Q^{-1}_{i\alpha} (\mathbf{Q}^{-1}\boldsymbol{\sigma})_{j\beta}.
 \end{equation}
-For uniform diagonal noise matrix, this becomes
+If the nodes share the same noise strength $\boldsymbol{\sigma}=\sigma \mathbf{I}$, the formula is further simplified
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = \frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
 \end{equation}

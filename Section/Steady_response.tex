@@ -26,12 +26,16 @@ The steady-state response function is then
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \int d\vec{x} \mathbf{B} \nabla_{\vec{p}} \psi_{ss}.
     \label{response_function}
 \end{equation}
-Defining the conjugate force with respect to parameters
+Writing $\psi_{ss}=Z^{-1}e^{-\Phi}$, and defining the conjugate force with respect to parameters
 \begin{equation}
     \vec{\mathscr{F}} \equiv -\nabla_{\vec{p}} \Phi,
     \label{conjugate_force}
 \end{equation} 
 one obtains
+\begin{equation}
+    \partial_{p_\alpha} \psi_{ss} = \psi_{ss}(\mathscr{F}_\alpha-\langle \mathscr{F}_\alpha \rangle).
+\end{equation}
+Therefore,
 \begin{equation}
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathscr{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}

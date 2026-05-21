@@ -21,7 +21,6 @@ For general NESS dynamics, the steady-state probability distribution is Gaussian
  & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
  & &+ \sum_\nu W_{s\nu}\partial_1\partial_2h(X_s,X_\nu)\frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}}  + \sum_\mu W_{\mu s}\partial^2_2h(X_\mu,X_s) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} 
 \Biggr\} \delta x_m \delta x_\ell.\nonumber
-\label{scriptF_parameter}
 \end{eqnarray}
 One can derive or verify from (\ref{Falp}) that
 \begin{equation}
@@ -46,7 +45,7 @@ and ${\mathscr F}_\alpha$  can then be calculated from (\ref{Falp}) to give
 \begin{eqnarray}
     {\mathscr F}_\alpha&=& \sum_{m,\ell  } \frac{\partial X_\ell}{\partial r_\alpha}({\bf K}_0^{-1})_{\ell m}\delta x_m 
     - \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}  \sum_{m,\ell} \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\alpha\alpha}}  \delta x_m \delta x_\ell\\
-    & &+\frac{1}{2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\\
+    & &+\frac{1}{2}\frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\sum_{m,\ell}  \Biggl\{ f_s''   \frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{ss}}\nonumber\\
     & &+\sum_n W_{sn}  \partial^2_1h(X_s,X_n) \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{ss}} + \sum_\mu W_{\mu s} \partial_1\partial_2h(X_\mu,X_s)\frac{\partial ({\bf K}_0^{-1})_{m\ell}} {\partial Q_{\mu\mu}}\nonumber \\
     & &+ \sum_\nu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{s\nu}} W_{s\nu}\partial_1\partial_2h(X_s,X_\nu) + \sum_\mu \frac{\partial ({\bf K}_0^{-1})_{m\ell}}{\partial Q_{\mu s}} W_{\mu s}\partial^2_2h(X_\mu,X_s) 
     \Biggr\} \delta x_m \delta x_\ell .\nonumber
@@ -66,14 +65,13 @@ To calculate the response function of some observables that have the dependence 
     \label{dxdr}
 \end{equation}
 \begin{eqnarray}
-\langle \delta x_i \delta x_j{\mathscr F}_\alpha\rangle&=& \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}\left[ ({\bf K}_0)_{ij}\text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}}\right)_{ij} \right]\nonumber\\
+\langle \delta x_i \delta x_j{\mathscr F}_\alpha\rangle&=& \frac{1}{2}\frac{\partial f'_\alpha}{\partial r_\alpha}\bigg|_{\vec X}\left[ ({\bf K}_0)_{ij}\text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\alpha \alpha}}\right)_{ij} \right]\label{dxdxscrF}\\
 & -&\frac{1}{2} \frac{\partial f_\alpha}{\partial r_\alpha}\bigg|_{\vec X} \sum_s Q_{s\alpha}^{-1}\Biggl\{ \left[ f
 _s''+  \sum_n W_{sn}\partial_1^2h(X_s,X_n)\right] \times\nonumber\\
 & &\left[ ({\bf K}_0)_{ij} \text{Tr}\left({\bf K}^{-1}_0\frac{\partial {\bf K}_0}{\partial Q_{ss}}\right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{ss}} \right)_{ij}\right] \nonumber\\
 &-&\sum_\mu W_{\mu s}\partial_1\partial_2h(X_\mu,X_s) \left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu\mu}} \right)_{ij}\right] \nonumber\\
 &-& \sum_\nu W_{s\nu} \partial_1\partial_2h(X_s,X_\nu)  \left[ ({\bf K}_0)_{ij}\text{Tr} \left({\bf K}_0^{-1}\frac{\partial {\bf K}_0}{\partial Q_{s\mu}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{s\nu}} \right)_{ij}\right]    \nonumber\\
-& -&\sum_\mu W_{\mu s}  \partial_2^2 h(X_\mu,X_s)\left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)_{ij}\right]\Biggr\}.
-\label{dxdxscrF}
+& -&\sum_\mu W_{\mu s}  \partial_2^2 h(X_\mu,X_s)\left[ ({\bf K}_0)_{ij} \text{Tr} \left({\bf K}_0^{-1} \frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)+2 \left(\frac{\partial {\bf K}_0}{\partial Q_{\mu s}} \right)_{ij}\right]\Biggr\}.\nonumber
 \end{eqnarray}
 \subsection{Conjugate force with respect to the change in the connection weight W}
 \quad We next consider perturbations to a network connection $W_{\alpha\beta}$, which directly modify the interaction topology. As we have done in the previous sections, we now compute the derivatives with respect to the directed connection $W_{\alpha\beta}$
