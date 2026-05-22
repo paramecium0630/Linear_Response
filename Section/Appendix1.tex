@@ -1,28 +1,10 @@
 \section{Noisy network reconstruction formulas}
-Consider a network with $N$ nodes whose intrinsic one-dimensional dynamics, $x_i(t)$,  is described by the nonlinear function $f_i(x_i;r_i)$, where $r_i$ denotes the node parameter. Nodes $i$ and $j$ are connected by directed and weighted links given by the matrix ${\bf W}$. The dynamics are governed by
- \begin{eqnarray}
-{\dot {\vec x}}& =&{\vec { F}}({\vec x})  +{\vec \eta}(t) \\
-{ F}_i({\vec x})&=&f_i(x_i;r_i)+\sum_{j\neq i}^N W_{ij} h(x_i, x_j)
-\label{xiapp}
-\end{eqnarray}
-where ${\vec { F}}({\vec x})$ is the force that drives the autonomous deterministic dynamics and $\eta_i$ is zero-mean Gaussian white noise that acts on the node $i$.  In many situations, the weighted matrix takes the form $W_{ij}= g_{ij} A_{ij}$,  with the adjacency matrix of elements $A_{ij}=0$ or 1, and connection weights $g_{ij}$.
-$h$ is a coupling function that describes the interaction between nodes $i$ and $j$. Furthermore, we assume that the system approaches some asymptotic dynamics in the presence of noise, and $x_i(t)$  fluctuates around its mean value $\langle x_i\rangle$ (local maximum of the probability density function $\psi_{ss}({\vec x})$  which is close to the noise-free solution $X_i$. Then up to linear order in $\Delta{\vec x}\equiv{\vec x}-{\vec X}  $, one has
- \begin{eqnarray}
-\Delta{\dot{\vec x}} &=&{\bf Q}\Delta{\vec x} +{\vec \eta}(t)+{\cal O}(\Delta x ^2),\quad{\hbox{where }}\label{deltax}\\
- Q_{ij}&\equiv& W_{ij}\partial_2h(X_i,X_j)+\left[  f_i'(X_i;r_i)+ \sum_mW_{im} \partial_1 h(X_i,X_m) \right]\delta_{ij}.
-\label{QApp}
-\end{eqnarray}
-It can be shown that
-\begin{eqnarray}
-    \frac{\partial Q^{-1}_{ij}}{\partial r_\alpha}&=& Q^{-1}_{i\alpha} Q^{-1}_{\alpha j}.
-\end{eqnarray}
-For stable noise-free fixed points, the real parts of all eigenvalues of ${\bf Q}$ cannot be positive.
-The symmetric noise covariance matrix $\boldsymbol{\sigma}$ is given by:
+\quad Starting from Eq. (\ref{linearized_dynamics}), we have
 \begin{equation}
-\overline{{\vec \eta(t)} {\vv \eta^\intercal(t')}} = \boldsymbol{\sigma}\delta(t-t'); \qquad \overline{{\vec \eta(t)}}=0,
+\Delta{\dot{\vec x}} ={\bf Q}\Delta{\vec x} +{\vec \eta}(t)+{\cal O}(\Delta x ^2)\label{deltax}.
 \end{equation}
-where the $\overline{\cdots}$ stands for ensemble average over the noise, which can be obtained in practice by
-time-average over the asymptotic dynamics over an extended period of time, $\langle\cdots\rangle$. For steady-state noise-free dynamics, ${\bf Q}$ is time-independent, and  the linearized motion in (\ref{deltax}) can be solved to give
+For stable noise-free fixed points, the real parts of all eigenvalues of ${\bf Q}$ cannot be positive.
+${\bf Q}$ is time-independent, and  the linearized motion in (\ref{deltax}) can be solved to give
 \begin{equation}
     \Delta{\vec x}(t)=e^{ t{\bf Q}}\Delta{\vec x}(0)+\int^t_0 dt' e^{ (t-t'){\bf Q}}{\vec \eta}(t') \xrightarrow{t\to\infty}\int^t_0 dt' e^{ (t-t'){\bf Q}}{\vec \eta}(t').\label{Deltaxt}
 \end{equation}
