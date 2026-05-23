@@ -1,6 +1,6 @@
 \section{Steady-state linear response in noisy network dynamics}
 % \subsection{}
-We now develop a general steady-state linear response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When the parameters are perturbed as $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the steady-state average of an observable ${\bf B}(\vec{x}; \vec{p})$ responds to this change. The goal is to express the response of steady-state observables in terms of quantities measured in the unperturbed steady state. We first consider the dependence of the noise-free fixed point on parameter changes. In (\ref{deterministic_force}), the noise-free fixed point satisfies
+We now develop a general steady-state linear-response framework for noisy network dynamics under parameter perturbations. We focus on systems that relax to a stable fixed point and fluctuate around it under Gaussian white noise. When the parameters are perturbed as $\vec{p} \rightarrow \vec{p} + \delta \vec{p}$, the steady-state average of an observable ${\bf B}(\vec{x}; \vec{p})$ changes accordingly. Our goal is to express the response of steady-state observables in terms of quantities measured in the unperturbed steady state. We first consider how the noise-free fixed point depends on the parameters. In Eq. (\ref{deterministic_force}), the noise-free fixed point satisfies
 \begin{equation}
     \vec{F}(\vec{X}; \vec{p}) = 0.
 \end{equation}
@@ -12,7 +12,7 @@ to linear order gives
 \begin{equation}
     \nabla \vec{F}\big|_{\vec{X}; \vec{p}} \delta \vec{X} + \nabla_{\vec{p}}\vec{F}\big|_{\vec{X}; \vec{p}} \delta \vec {p} = 0.
 \end{equation}
-With $\mathbf{Q}\equiv\nabla\vec{F}\big|_{\vec{X}}$, and assuming $\mathbf{Q}^{-1}$ exists, one obtains
+With $\mathbf{Q}\equiv\nabla\vec{F}\big|_{\vec{X}}$ and assuming that $\mathbf{Q}^{-1}$ exists, one obtains
 \begin{equation}
     \frac{\partial X_i}{\partial p_\alpha} = -\left(\mathbf{Q}^{-1} \nabla_{\vec{p}} \vec{F}\big|_{\vec{X}; \vec{p}}\right)_{i\alpha}.
 \end{equation}
@@ -26,7 +26,7 @@ The steady-state response function is then
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \int d\vec{x} \mathbf{B} \nabla_{\vec{p}} \psi_{ss}.
     \label{response_function}
 \end{equation}
-Writing $\psi_{ss}=Z^{-1}e^{-\Phi}$, and defining the conjugate force with respect to parameters
+Writing $\psi_{ss}=Z^{-1}e^{-\Phi}$ and defining the conjugate force with respect to the parameters by
 \begin{equation}
     \vec{\mathscr{F}} \equiv -\nabla_{\vec{p}} \Phi,
     \label{conjugate_force}
@@ -40,4 +40,4 @@ Therefore,
     \boldsymbol{\chi} = \langle \nabla_{\vec{p}} \mathbf{B} \rangle_{ss, \vec{p}} + \langle \delta \mathbf{B} \delta \vec{\mathscr{F}}^\intercal \rangle_{ss, \vec{p}}.
     \label{response_function2}
 \end{equation}
-This is the steady-state linear response formula used throughout this work \cite{softmatter}. This formula requires a differentiable steady-state distribution around a stable fixed point, but does not require equilibrium. In the following sections, we apply this general framework to parameter changes in the intrinsic node parameter $r_\alpha$, the connection weight $W_{\alpha\beta}$, and the noise strength $\sigma_{\alpha\alpha}$. The detailed derivation of the conjugate force and the related response identities is summarized in Appendix~B.
+This is the steady-state linear-response formula used throughout this work \cite{softmatter}. It requires a differentiable steady-state distribution near a stable fixed point, but it does not require equilibrium. In the following sections, we apply this framework to perturbations of the intrinsic node parameter $r_\alpha$, the connection weight $W_{\alpha\beta}$, and the noise strength $\sigma_{\alpha\alpha}$. The detailed derivation of the conjugate force and the related response identities is summarized in Appendix~B.

@@ -1,10 +1,8 @@
 \section{Spectral solution of the Lyapunov equation and transient protocol integrals}
-\quad This appendix collects two technical steps used in the main text: the
-spectral solution of the Lyapunov equation and the mode expansion of the
-time-dependent convolution integrals in Sec. \ref{sec:time-dependent}.
+\quad This appendix collects two technical steps used in the main text: the spectral solution of the Lyapunov equation and the mode expansion of the time-dependent convolution integrals in Sec. \ref{sec:time-dependent}.
 
 \subsection*{Spectral solution of the Lyapunov equation}
-Consider the Lyapunov equation for the unknown ${\bf K}$ \cite{Behr2019SylvesterLyapunov}
+Consider the Lyapunov equation for the unknown matrix ${\bf K}$ \cite{Behr2019SylvesterLyapunov}
 \begin{equation}
 {\bf Q}{\bf K}+{\bf K}{\bf Q}^\intercal={\bf S},
 \label{lyap}
@@ -39,9 +37,7 @@ Hence
 \begin{equation}
 {\bf K}={\bf P}{\tilde{\bf K}}{\bf P}^\intercal.
 \end{equation}
-For the stable fixed points considered here, $\mathrm{Re}\,\lambda_i<0$, so
-$\lambda_i+\lambda_j\neq 0$ in Eq. (\ref{Ktil}). Using the biorthogonal
-decomposition
+For the stable fixed points considered here, $\mathrm{Re}\,\lambda_i<0$, so $\lambda_i+\lambda_j\neq 0$ in Eq. (\ref{Ktil}). Using the biorthogonal decomposition
 \begin{equation}
 {\bf Q}=\sum_{m=1}^N \lambda_m {\vec u_m}{\vec v_m}^\intercal,
 \end{equation}
@@ -53,8 +49,7 @@ the same solution can be written more compactly as
 \end{equation}
 
 \subsection*{Mode expansion for the time-dependent protocol integrals}
-The transient formulas in Sec. \ref{sec:time-dependent} follow from the same
-biorthogonal decomposition. Since
+The transient formulas in Sec. \ref{sec:time-dependent} follow from the same biorthogonal decomposition. Since
 \begin{equation}
 e^{t{\bf Q}}=\sum_{k=1}^N e^{\lambda_k t}{\vec u_k}{\vec v_k}^\intercal,
 \qquad
@@ -89,8 +84,4 @@ with
 I_{m\ell}(t)\equiv
 \int_0^t dt' \, e^{(t-t')(\lambda_m+\lambda_\ell)}\delta \dot r_\alpha(t').
 \end{equation}
-For the cosine protocol in Eq. (\ref{dra(t)cos}), this is the same quantity
-introduced in Eq. (\ref{Iml}); its explicit piecewise form is given there. The
-edge-perturbation formulas in Sec. \ref{sec:time-dependent} follow from the
-same expansion, with only the prefactor and the covariance derivative replaced
-according to the perturbation under consideration.
+For the cosine protocol in Eq. (\ref{dra(t)cos}), this is the same quantity introduced in Eq. (\ref{Iml}); its explicit piecewise form is given there. The edge-perturbation formulas in Sec. \ref{sec:time-dependent} follow from the same expansion, with only the prefactor and the covariance derivative replaced according to the perturbation under consideration.
