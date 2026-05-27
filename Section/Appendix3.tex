@@ -1,6 +1,5 @@
 \section{Spectral solution of the Lyapunov equation and transient protocol integrals}
 \quad This appendix collects two technical steps used in the main text: the spectral solution of the Lyapunov equation and the mode expansion of the time-dependent convolution integrals in Sec. \ref{sec:time-dependent}.
-
 \subsection*{Spectral solution of the Lyapunov equation}
 Consider the Lyapunov equation for the unknown matrix ${\bf K}$ \cite{Behr2019SylvesterLyapunov}
 \begin{equation}
@@ -24,8 +23,7 @@ so that
 {\vec v_i}^\intercal{\vec u_j}=\delta_{ij},\qquad
 \sum_{j=1}^N {\vec u_j}{\vec v_j}^\intercal={\bf I}.
 \end{equation}
-Defining ${\tilde{\bf K}}={\bf P}^{-1}{\bf K}{\bf P}^{-\intercal}$,
-Eq. (\ref{lyap}) becomes
+Defining ${\tilde{\bf K}}={\bf P}^{-1}{\bf K}{\bf P}^{-\intercal}$, Eq. (\ref{lyap}) becomes
 \begin{eqnarray}
 \boldsymbol{\Lambda}{\tilde{\bf K}}+{\tilde{\bf K}}\boldsymbol{\Lambda}
 &=&{\bf P}^{-1}{\bf S}{\bf P}^{-\intercal},\\
@@ -47,9 +45,8 @@ the same solution can be written more compactly as
 \frac{({\vec v_m}^\intercal{\bf S}{\vec v_\ell})\,{\vec u_m}{\vec u_\ell}^\intercal}
 {\lambda_m+\lambda_\ell}.
 \end{equation}
-
 \subsection*{Mode expansion for the time-dependent protocol integrals}
-The transient formulas in Sec. \ref{sec:time-dependent} follow from the same biorthogonal decomposition. Since
+The time-dependent formulas in Sec. \ref{sec:time-dependent} follow from the decomposition of $\mathbf{Q}$. Since
 \begin{equation}
 e^{t{\bf Q}}=\sum_{k=1}^N e^{\lambda_k t}{\vec u_k}{\vec v_k}^\intercal,
 \qquad
@@ -64,7 +61,24 @@ e^{(t-t')\lambda_k}\delta{\dot r}_\alpha(t')
 \label{xi(t)drlinearb}
 \end{equation}
 where $u_{ik}\equiv({\vec u_k})_i$ and $v_{\alpha k}\equiv({\vec v_k})_\alpha$.
-
+The time-dependent relaxation response is then
+\begin{equation}
+      \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (a_\alpha-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)-&Q^{-1}_{i\alpha} (1-\cos\frac{\pi t}{\tau})\bigg] \\
+     & 0\leq t\leq\tau\\
+     X_i-b (a_\alpha-X_\alpha)Q^{-1}_{i\alpha}+\frac{b}{2} (a_\alpha-X_\alpha)\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}[ e^{\lambda_kt}+e^{\lambda_k(t-\tau)}]}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)} &t>\tau
+     \end{cases}.
+\end{equation}
+For the force response,
+\begin{equation}
+\langle { F}_i(t)\rangle = \begin{cases}  (a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^tdt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, &0\leq t\leq\tau\\
+(a_\alpha-X_\alpha)\sum_{k=1}^N u_{ik}v_{\alpha k}\int_0^\tau dt' \delta {\dot r}_\alpha(t')e^{(t-t')\lambda_k}, & t>\tau
+\end{cases}
+\end{equation}
+\begin{equation}
+\langle { F}_i(t)\rangle= \begin{cases} \frac{b}{2}(a_\alpha-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2}\left[ e^{\lambda_k t} - \cos\left( \frac{\pi t}{\tau} \right) - \frac{\lambda_k \tau}{\pi}\sin\left( \frac{\pi t}{\tau} \right) \right], &0\leq t\leq\tau\\
+\frac{b}{2}(a_\alpha-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
+\end{cases}.
+\end{equation}
 Likewise, for the covariance response,
 \begin{eqnarray}
 &&\int_0^t dt' \left(
@@ -82,6 +96,48 @@ u_{im}u_{j\ell}\left(
 with
 \begin{equation}
 I_{m\ell}(t)\equiv
-\int_0^t dt' \, e^{(t-t')(\lambda_m+\lambda_\ell)}\delta \dot r_\alpha(t').
+\int_0^t dt' \, e^{(t-t')(\lambda_m+\lambda_\ell)}\delta \dot r_\alpha(t')
+=\frac{b\pi}{2\tau}\int_0^{\min(t,\tau)} dt' \, e^{(t-t')(\lambda_m+\lambda_\ell)}\sin\left(\frac{\pi t'}{\tau}\right),
+\label{Iml}
 \end{equation}
-For the cosine protocol in Eq. (\ref{dra(t)cos}), this is the same quantity introduced in Eq. (\ref{Iml}); its explicit piecewise form is given there. The edge-perturbation formulas in Sec. \ref{sec:time-dependent} follow from the same expansion, with only the prefactor and the covariance derivative replaced according to the perturbation under consideration.
+which evaluates to
+\begin{equation}
+I_{m\ell}(t)=
+\begin{cases}
+\displaystyle
+\frac{b}{2\left[1+\left(\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\right)^2\right]}
+\left[
+e^{(\lambda_m+\lambda_\ell)t}
+-\cos\left(\frac{\pi t}{\tau}\right)
+-\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\sin\left(\frac{\pi t}{\tau}\right)
+\right], & 0\le t\le \tau, \\[1.2ex]
+\displaystyle
+\frac{b}{2\left[1+\left(\frac{(\lambda_m+\lambda_\ell)\tau}{\pi}\right)^2\right]}
+\left[
+e^{(\lambda_m+\lambda_\ell)t}
++e^{(\lambda_m+\lambda_\ell)(t-\tau)}
+\right], & t>\tau .
+\end{cases}
+\end{equation}
+The edge-perturbation formulas in Sec. \ref{sec:time-dependent} follow from the same expansion, with only the prefactor and the covariance derivative replaced according to the perturbation under consideration.
+
+The corresponding time-dependent response of each node state variable is
+\begin{equation}
+      \langle x_i(t)\rangle=\begin{cases}  X_i+ \frac{b}{2} (X_\beta-X_\alpha)\bigg[\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)}\left(e^{\lambda_kt}-\cos\frac{\pi t}{\tau}-\frac{\lambda_k\tau}{\pi}\sin\frac{\pi t}{\tau}  \right)&-Q^{-1}_{i\alpha} \left(1-\cos\frac{\pi t}{\tau}\right)\bigg] \\
+     & 0\leq t\leq\tau\\
+     X_i-b (X_\beta-X_\alpha)Q^{-1}_{i\alpha}+\frac{b}{2} (X_\beta-X_\alpha)\sum_{k=1}^N\frac{u_{ik}v_{\alpha k}[ e^{\lambda_kt}+e^{\lambda_k(t-\tau)}]}{\lambda_k(1+(\frac{\lambda_k\tau}{\pi})^2)} &t>\tau
+     \end{cases}.
+\end{equation}
+
+\begin{equation}
+\langle { F}_i(t)\rangle= \begin{cases} \frac{b}{2}(X_\beta-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2}\left[ e^{\lambda_k t} - \cos\left( \frac{\pi t}{\tau} \right) - \frac{\lambda_k \tau}{\pi}\sin\left( \frac{\pi t}{\tau} \right) \right], &0\leq t\leq\tau\\
+\frac{b}{2}(X_\beta-X_\alpha)\sum_{k=1}^N \frac{u_{ik}v_{\alpha k}}{1+\left(\frac{\lambda_k\tau}{\pi}\right)^2} \left[ e^{\lambda_k t}+e^{\lambda_k(t-\tau)} \right], & t>\tau
+\end{cases}.
+\end{equation}
+
+The time-dependent response function of the covariance is
+\begin{eqnarray}
+    {\bf K}_{ij}(t,t) &=& ({\bf K_0})_{ij} + \chi_{ij\alpha\beta}^{ss} \delta W_{\alpha\beta}(t)+\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t')\nonumber\\
+    &=&({\bf K_0})_{ij}+\left[- \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
+    &+& \sum_{m,\ell} u_{im}u_{j\ell} \left[ \vec{v}^\intercal_m \left( \frac{\partial {\bf K_0}}{\partial Q_{\alpha\alpha}}-\frac{\partial {\bf K_0}}{\partial Q_{\alpha\beta}} \right) \vec{v}_\ell \right] I_{m\ell}(t).
+\end{eqnarray}
