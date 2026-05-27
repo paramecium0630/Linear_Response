@@ -1,5 +1,5 @@
 \section{Explicit Response Formula For the Covariance Matrix}
-\quad We now present the explicit response formulas corresponding to the steady-state linear-response theory developed in the previous section. Throughout this section, the formulas are understood within the local Gaussian approximation associated with the linearized dynamics around a stable fixed point. As discussed in Appendix~A, $\Delta \vec{x}$ and $\delta \vec{x}$ need not coincide exactly for general nonlinear noisy systems, but they agree to leading order near the fixed point and coincide exactly for linear dynamics. As a representative example, we consider the response of this equal-time covariance matrix with respect to a parameter change in $\vec{p}$, where $\vec{p}$ may denote $\vec{r}$, $\mathbf{W}$, or $\boldsymbol{\sigma}$. The observable is then $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function with respect to $p_\alpha$ is
+\quad We now present the explicit response formulas corresponding to the steady-state linear-response theory developed in the previous section. Throughout this section, the formulas are understood within the local Gaussian approximation associated with the linearized dynamics around a stable fixed point. Equivalently, they give the exact first-order susceptibilities of the linearized Ornstein-Uhlenbeck process and provide the leading fixed-point approximation for the original nonlinear noisy network. As discussed in Appendix~A, $\Delta \vec{x}$ and $\delta \vec{x}$ need not coincide exactly for general nonlinear noisy systems, but they agree to leading order near the fixed point and coincide exactly for linear dynamics. As a representative example, we consider the response of this equal-time covariance matrix with respect to a parameter change in $\vec{p}$, where $\vec{p}$ may denote $\vec{r}$, $\mathbf{W}$, or $\boldsymbol{\sigma}$. The observable is then $B_{ij}(\vec{x}; \vec{p})=\delta x_i \delta x_j$. We also present the corresponding response functions for the different types of parameter perturbations. From the general formula (\ref{response_function2}), the response function with respect to $p_\alpha$ is
 \begin{equation}
     \chi_{ij\alpha} = \langle \partial_p (\delta x_i \delta x_j) \rangle_{ss, \vec{p}} + \langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{equation}
@@ -12,31 +12,37 @@ Since $\langle \delta x_i \rangle = \langle \delta x_j \rangle = 0$, the first t
     \left\langle \delta (\delta x_i \delta x_j) \delta \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} &=& \left\langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}} - \left\langle \delta x_i \delta x_j \right\rangle_{ss, \vec{p}} \left\langle \mathscr{F}_\alpha \right\rangle_{ss, \vec{p}}\nonumber\\
     &=& \langle (\delta x_i \delta x_j) \mathscr{F}_\alpha \rangle_{ss, \vec{p}} - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle_{ss, \vec{p}}.
 \end{eqnarray}
-The explicit conjugate-force formulas and the resulting covariance-response identities for node, edge, and noise perturbations are derived in Appendix~B; see in particular Eqs. (\ref{chiKodr_ss_appB}), (\ref{chiKodW_ss_appB}), and (\ref{chiKosigma_ss_appB}).
+The explicit conjugate-force formulas and the resulting covariance-response identities for node, edge, and noise perturbations are derived in Appendix~B; see in particular Eqs. (\ref{chiKodr_ss_appB}), (\ref{chiKodW_ss_appB}), and (\ref{chiKosigma_ss_appB}). Those appendix expressions give the general first-order covariance responses within the linearized Gaussian description. The simplified formulas written below apply only under the stated model assumptions.
+
+For the benchmark simplifications used below and later validated in Sec.~V, we restrict attention to the two model classes introduced there: the linear restoring-force system $f_i(x_i)=-r_i(x_i-1)$ with diffusive coupling $h(x_i,x_j)=x_j-x_i$, and the logistic benchmark $f_i(x_i)=r_i x_i(1-x_i)$ with the same diffusive coupling evaluated at the synchronized fixed point $X_i=1$. Under these benchmark assumptions, one has $h(X_i,X_j)=0$, $\partial_1 h(X_i,X_j)=-1$, $\partial_2 h(X_i,X_j)=1$, and
+\begin{equation}
+    Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j},\qquad Q_{\alpha\beta}=W_{\alpha\beta}\;\;(\alpha\neq\beta).
+\end{equation}
+For the logistic benchmark at $X_i=1$, one also has $\partial f_\alpha/\partial r_\alpha|_{\vec X}=0$ and $\partial f'_\alpha/\partial r_\alpha|_{\vec X}=-1$.
 \subsection{Response due to Change in the Intrinsic Node Parameter $r$}
 \quad We first consider a perturbation of a single node parameter $r_\alpha$, where $\alpha$ denotes the index of the perturbed node. The steady-state response of the equal-time covariance matrix is
 \begin{equation}
     \chi_{ij\alpha} = \langle \delta x_i \delta x_j \mathscr{F}_\alpha \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_\alpha \rangle.
     \label{response_Ko_r}
 \end{equation}
-For simple cases such as $f_i(x_i) = r_i(a_i-x_i)$ with linear $h$, or the logistic benchmark used in the numerical validation, $f_i(x_i) = r_i x_i (1-x_i)$ with diffusive coupling at the synchronized fixed point $X_i=1$ (so that $h(X_i, X_j)=0$, $\partial f_\alpha/\partial r_\alpha|_{\vec X}=0$, and $\partial f'_\alpha/\partial r_\alpha|_{\vec X}=-1$), the Appendix~B expression reduces to
+Under the benchmark assumptions stated above, the perturbation enters the Jacobian through the diagonal element $Q_{\alpha\alpha}$, so Eq. (\ref{response_Ko_r}) reduces to
 \begin{equation}
     \chi_{ij\alpha}^{(ss)} = -\left(\frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij}.
     \label{chiKodr_ss}
 \end{equation}
-For both benchmark models used in the numerical validation, namely the linear restoring-force system and the logistic system with diffusive coupling evaluated at the synchronized fixed point $X_i=1$, one has $Q_{\alpha\alpha}=-r_\alpha-\sum_j W_{\alpha j}$. In these cases, the covariance response is therefore directly controlled by the local restoring parameter and the total incoming coupling associated with node $\alpha$. The derivative of $\mathbf{K}_0$ can be obtained by differentiating both sides of the Lyapunov equation (\ref{Lyapunov_eq}), as discussed later in this section.
+In these cases, the covariance response is directly controlled by the local restoring parameter and the total incoming coupling associated with node $\alpha$. The derivative of $\mathbf{K}_0$ can be obtained by differentiating both sides of the Lyapunov equation (\ref{Lyapunov_eq}), as discussed later in this section.
 \subsection{Response due to Change in the Connection Weight $W$}
 \quad We next consider a perturbation of a directed connection weight $W_{\alpha\beta}$. The corresponding response function of the covariance matrix is
 \begin{equation}
     \chi_{ij(\alpha\beta)} = \langle \delta x_i \delta x_j \mathscr{F}_{\alpha\beta} \rangle - (\mathbf{K}_0)_{ij} \langle \mathscr{F}_{\alpha\beta} \rangle.
     \label{response_Ko_W}
 \end{equation}
-For systems that can achieve a fully synchronized noise-free state with synchronizing coupling function $h(X_i, X_j)=0$, the formula reduces to
+Under the same benchmark assumptions, the perturbed coupling does not shift the fixed point at leading order because $h(X_\alpha, X_\beta)=0$. The terms proportional to $h(X_\alpha,X_\beta)$ in Appendix~B then vanish, and Eq. (\ref{response_Ko_W}) reduces to
 \begin{equation}
     \chi_{ij(\alpha\beta)} = \partial_1 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\alpha}} \right)_{ij} + \partial_2 h(X_\alpha,X_\beta) \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij},
     \label{chiKodW_ss}
 \end{equation}
-which makes the role of the perturbed connection especially transparent. In this case, the response is determined by two contributions: the change in the local diagonal term $Q_{\alpha\alpha}$ and the change in the directed off-diagonal coupling $Q_{\alpha\beta}$. For an undirected network, since $W_{\alpha\beta}=W_{\beta\alpha}$, the total response is the sum of the two directed contributions associated with $W_{\alpha\beta}$ and $W_{\beta\alpha}$.
+which makes the role of the perturbed connection especially transparent. In this restricted setting, the response is determined by two contributions: the change in the local diagonal term $Q_{\alpha\alpha}$ and the change in the directed off-diagonal coupling $Q_{\alpha\beta}$. For an undirected network, since $W_{\alpha\beta}=W_{\beta\alpha}$, the total response is the sum of the two directed contributions associated with $W_{\alpha\beta}$ and $W_{\beta\alpha}$.
 \subsection{Response due to Change in the Noise Strength $\sigma$}
 \quad Finally, we consider a perturbation of a noise strength. In contrast to the previous two cases, a change in $\sigma_{\alpha\alpha}$ does not alter the deterministic force and therefore does not shift the fixed point. The corresponding response function is
 \begin{equation}
@@ -68,7 +74,7 @@ If the nodes share the same noise strength $\boldsymbol{\sigma}=\sigma \mathbf{I
 \begin{equation}
     \left( \frac{\partial \mathbf{K}_0}{\partial Q_{\alpha\beta}} \right)_{ij} = \frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\beta}.
 \end{equation}
-This equilibrium form is especially useful because the dependence of $\mathbf{K}_0$ on $\mathbf{Q}$ is explicit, so the response functions can be written directly in terms of $\mathbf{Q}^{-1}$. The response function of $\mathbf{K}_0$ to a node-parameter perturbation then simplifies to
+This equilibrium derivative identity is especially useful because the dependence of $\mathbf{K}_0$ on $\mathbf{Q}$ is explicit. However, the parameter-response formulas obtained from it still depend on how a given perturbation modifies $\mathbf{Q}$ or $\boldsymbol{\sigma}$. Under the equilibrium version of the benchmark assumptions above, a node perturbation changes only $Q_{\alpha\alpha}$ according to $\delta Q_{\alpha\alpha}=-\delta r_\alpha$, and an edge perturbation changes $Q_{\alpha\alpha}$ and $Q_{\alpha\beta}$ according to $\delta Q_{\alpha\alpha}=-\delta W_{\alpha\beta}$ and $\delta Q_{\alpha\beta}=\delta W_{\alpha\beta}$. The response function of $\mathbf{K}_0$ to a node-parameter perturbation then simplifies to
 \begin{equation}
     \chi_{ij(\alpha)} = -\frac{\sigma}{2} Q^{-1}_{i\alpha} Q^{-1}_{j\alpha},
     \label{chiKodr_eq}

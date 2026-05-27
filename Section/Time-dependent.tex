@@ -1,5 +1,5 @@
 \section{Time-Dependent Linear Response Theory in Noisy Network Dynamics}\label{sec:time-dependent}
-\quad The steady-state response developed above characterizes the difference between two nearby stationary states before and after a small parameter perturbation. In many situations, however, a perturbation is applied through a finite-time protocol rather than instantaneously. We therefore consider parameter protocols that drive the system from one steady state to another. Starting from a system that initially fluctuates near a fixed point, we derive a time-dependent response theory that predicts the average change of observables as a function of time. In particular, we derive the responses of the mean state, deterministic force, and equal-time covariance to time-dependent perturbations of the network parameters. We then validate the theory numerically for linear network dynamics in both an equilibrium reference network and a nonequilibrium steady-state network.
+\quad The steady-state response developed above characterizes the difference between two nearby stationary states before and after a small parameter perturbation. In many situations, however, a perturbation is applied through a finite-time protocol. We therefore consider parameter protocols that drive the system from one steady state to another. Starting from a system that initially fluctuates at a steady state, we derive a time-dependent response theory that predicts the average change of observables as a function of time. As in the steady-state case, the explicit formulas in this section give exact first-order response kernels for the linearized Ornstein-Uhlenbeck dynamics and provide the corresponding local fixed-point approximation for the original nonlinear network. In particular, we derive the responses of the mean state, deterministic force, and equal-time covariance to time-dependent perturbations of the network parameters. We then validate the theory numerically for linear network dynamics in both an equilibrium reference network and a nonequilibrium steady-state network.
 \subsection{General Formula for Time-Dependent Linear Response Function}
 \quad We consider the response induced by a time-dependent perturbation of the network parameters, $\vec{p}\rightarrow\vec{p}+\delta \vec{p}(t)$, and assume that the system is in the unperturbed steady state for $t\le 0$. The time-dependent linear-response function of an observable $\mathbf{B}(t)$ is defined as
 \begin{equation}
@@ -51,7 +51,7 @@ with intrinsic target states $\vec{a}=(2,4,6,8)$, and the coupling function is d
 \begin{equation}
     h(x_i,x_j)=x_j-x_i .
 \end{equation}
-For the undirected network, all nodes have identical noise strengths, $\sigma_{ii}=0.01$, so the system serves as an equilibrium reference case. In contrast, the directed network contains four unidirectional edges, thereby producing a nonequilibrium steady state.\par
+For the undirected network, all nodes have identical noise strengths, $\sigma_{ii}=0.01$, so the system serves as an equilibrium reference case. In contrast, the directed network realizes a nonequilibrium steady state through its asymmetric couplings.\par
 We perturb either the node parameter $r_1(t)$ or a single coupling weight $W_{12}(t)$, corresponding to the edge from node 2 to node 1 under our convention. For the undirected network, the same perturbation is applied to the reciprocal edge between nodes 1 and 2. The time-dependent perturbation protocols are given in Eqs. \eqref{dra(t)cos} and \eqref{dWab(t)cos}, with amplitude $b=0.5$ and protocol duration $\tau=10$. The same protocol parameters are used for all time-dependent comparisons shown below. In the following subsections, we evaluate the corresponding explicit linear-response formulas for single-node and single-edge perturbations and compare them with direct Langevin simulations.
 
 The observables used for validation are the mean state $\langle x_i(t)\rangle$, 
@@ -65,12 +65,12 @@ All ensemble averages are computed from $10^5$ independent trajectories over the
     \centering
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/undirected_graph_N4.eps}}
     \subfigure[]{\includegraphics*[width=.45\columnwidth]{Figure/Time_dependent/directed_graph_N4.eps}} 
-    \caption{Four-node networks used to validate the time-dependent response formulas. (a) Undirected cycle with uniform noise, which serves as an equilibrium reference case. (b) Directed cycle with heterogeneous noise, which realizes a nonequilibrium steady state. In the numerical tests, we perturb either node $1$ through $\delta r_1(t)$ or the directed edge from node $2$ to node $1$ through $\delta W_{12}(t)$; for the undirected network, the reciprocal edge is changed by the same amount to preserve the symmetric topology.}
+    \caption{Four-node networks used to validate the time-dependent response formulas. (a) Undirected cycle with uniform noise, which serves as an equilibrium reference case. (b) Directed cycle whose asymmetric couplings realize a nonequilibrium steady state. In the numerical tests, we perturb either node $1$ through $\delta r_1(t)$ or the directed edge from node $2$ to node $1$ through $\delta W_{12}(t)$; for the undirected network, the reciprocal edge is changed by the same amount to preserve the symmetric topology.}
     \label{graphN4} 
 \end{figure}
 
 \subsection{Time-dependent Response due to the time-dependent perturbation in a node parameter}
-\quad We first consider a time-dependent perturbation of a single node parameter $\delta r_\alpha(t)$. For $f_i(x_i;r_i) = r_i(a_i-x_i)$ and $h(x_i,x_j)=x_j-x_i$, the time-dependent response of $x_i$ is
+\quad We first consider a time-dependent perturbation of a single node parameter $\delta r_\alpha(t)$. For the four-node benchmark introduced above, the time-dependent response of $x_i$ is
 \begin{equation}
     \langle x_i(t)\rangle_{r+\delta r_\alpha(t)}=X_i+ (a_\alpha-X_\alpha)\bigg[\int_0^tdt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1}  \right)_{i\alpha}\delta{\dot r}_\alpha(t') -Q^{-1}_{i\alpha} \delta r_\alpha(t)\bigg].\label{xi(t)drlinear}
 \end{equation}
@@ -114,8 +114,7 @@ Figures \ref{Time-dependent_undirected_dr} and \ref{Time-dependent_directed_dr} 
 \end{figure}
 Increasing $r_1$ strengthens the local restoring force on node 1 toward its intrinsic target $a_1$. Since the unperturbed state satisfies $X_1>a_1$ because of the couplings, the perturbation drives $\langle x_1(t)\rangle$ downward and gives a negative response in $\langle F_1(t)\rangle$. The stronger local relaxation also suppresses fluctuations around node 1, leading to a decrease in $K_{11}(t,t)$. In the undirected case, the perturbation is transmitted more directly to node 2, so both the coupled response and the covariance $K_{12}(t,t)$ decrease. In the directed case, node 2 is not directly affected by node 1, and its response can therefore differ in amplitude and transient shape.
 \subsection{Time-dependent Response due to the time-dependent perturbation in a connection weight}
-\quad We next consider a time-dependent perturbation of a single connection weight. The derivation parallels the node-perturbation case, so we state the corresponding formulas for the same linear force and diffusive coupling used in the simulations and then compare them with direct simulations.
-For this specific network model, the relaxation response of the mean position is
+\quad We next consider a time-dependent perturbation of a single connection weight. The derivation parallels the node-perturbation case, so we state the corresponding formulas for the same four-node benchmark and then compare them with direct simulations. The relaxation response of the mean position is
 \begin{equation}
     \langle x_i(t)\rangle_{{\bf W}+\delta W_{\alpha\beta}(t)}
     =X_i+ (X_\beta-X_\alpha)\bigg[\int_0^t dt'\left(e^{(t-t'){\bf Q}}{\bf Q}^{-1} \right)_{i\alpha}\delta{\dot W}_{\alpha\beta}(t') -Q^{-1}_{i\alpha} \delta W_{\alpha\beta}(t)\bigg].
@@ -138,7 +137,7 @@ The equal-time covariance response is
 \begin{eqnarray}
     K_{ij}(t,t)&=&({\bf K_0})_{ij}
     +\left[- \frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}}+\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}} \right]_{ij}\delta W_{\alpha\beta}(t)\nonumber\\
-    &+&\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t').
+    &-&\int_0^t dt' \left[ e^{(t-t'){\bf Q}}\left(-\frac{\partial {\bf K}_0}{\partial Q_{\alpha\alpha}} +\frac{\partial {\bf K}_0}{\partial Q_{\alpha\beta}}\right) e^{(t-t'){\bf Q}^\intercal} \right]_{ij} \delta \dot{W}_{\alpha\beta}(t').
     \label{Kij(t)dWlinear}
 \end{eqnarray}
 For the cosine protocol (\ref{dWab(t)cos}), the convolution integrals in Eqs. (\ref{xi(t)dWlinear})--(\ref{Kij(t)dWlinear}) can be evaluated explicitly by the same spectral decomposition of ${\bf Q}$ used in Appendix C. Figures \ref{Time-dependent_undirected_dW} and \ref{Time-dependent_directed_dW} show the corresponding validation for a time-dependent edge perturbation. The response is driven by the contrast $X_\beta-X_\alpha$ across the perturbed link, so the transient signals directly probe how a local change in coupling propagates through the network and modifies both the deterministic relaxation and the covariance dynamics.\par
