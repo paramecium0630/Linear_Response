@@ -97,12 +97,12 @@ The ensemble averages of $\vec{x}(t)$ and $\vec{F}(t)$ do not depend on the nois
 where $\mathbf{K}_0$ denotes the steady-state covariance for $t\leq 0$. For the cosine protocol (\ref{dra(t)cos}), the convolution integrals in Eqs. (\ref{xi(t)drlinear})--(\ref{Kij(t)drlinear}) can be analyzed by spectral decomposition of ${\bf Q}$. Appendix C gives the resulting closed-form expressions for $\langle x_i(t)\rangle$ and $\langle F_i(t)\rangle$, together with the mode-expanded covariance response written in terms of the protocol integral $I_{m\ell}(t)$.
 \begin{figure}[H]
     \centering
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddr.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdr.eps}}\\
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_funddr.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdr.eps}}\\
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_Kounddr.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_Kodirdr.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddr.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdr.eps}}\\
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_funddr.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdr.eps}}\\
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_Kounddr.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_Kodirdr.eps}}
     \caption{Comparison between Langevin simulations (dashed) and the time-dependent linear-response prediction (solid) for a node perturbation $\delta r_1(t)$ in the four-node networks of Fig. \ref{graphN4}. The left column corresponds to the undirected equilibrium network [Fig. \ref{graphN4}a], and the right column to the directed nonequilibrium network [Fig. \ref{graphN4}b]. Panels (a) and (b) show the mean-state responses $\langle x_1(t)\rangle-\langle x_1(0)\rangle$ and $\langle x_2(t)\rangle-\langle x_2(0)\rangle$. Panels (c) and (d) show the mean-force responses $\langle F_1(t)\rangle$ and $\langle F_2(t)\rangle$. Panels (e) and (f) show the equal-time covariance responses for $K_{11}(t,t)$ and $K_{12}(t,t)$. The close overlap between theory and simulation over both the driving stage and the post-driving relaxation verifies the time-dependent response theory in both the equilibrium and nonequilibrium cases.}
     \label{Time-dependent_dr}
 \end{figure}
@@ -139,12 +139,12 @@ For the cosine protocol (\ref{dWab(t)cos}), the convolution integrals in Eqs. (\
 Increasing $W_{12}$ strengthens the pull of node 2 on node 1. Since the unperturbed state satisfies $X_2>X_1$, the perturbation drives $\langle x_1(t)\rangle$ upward and gives a positive response in $\langle F_1(t)\rangle$. In the undirected case, the same perturbation also acts on $W_{21}$, reduces the state difference between the two nodes, and enhances their correlation, so $K_{12}(t,t)$ increases while $K_{11}(t,t)$ decreases. In the directed case, the response of node 2 is not directly affected by $\delta W_{12}$, so its amplitude is smaller and its time dependence is set by the network propagation.
 \begin{figure}[H]
     \centering
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddW.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdW.eps}}\\
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_funddW.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdW.eps}}\\
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_KounddW.eps}}
-    \subfigure[]{\includegraphics*[width=.30\columnwidth]{Figure/Time_dependent/nonsteady_response_KodirdW.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_xunddW.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_xdirdW.eps}}\\
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_funddW.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_fdirdW.eps}}\\
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_KounddW.eps}}
+    \subfigure[]{\includegraphics*[width=.34\columnwidth]{Figure/Time_dependent/nonsteady_response_KodirdW.eps}}
     \caption{Comparison between Langevin simulations (dashed) and the time-dependent linear-response prediction (solid) for an edge perturbation in the four-node networks of Fig. \ref{graphN4}. The left column corresponds to the undirected equilibrium network with $\delta W_{12}(t)=\delta W_{21}(t)$, and the right column to the directed nonequilibrium perturbation $\delta W_{12}(t)$. Panels (a) and (b) show the mean-state responses $\langle x_1(t)\rangle-\langle x_1(0)\rangle$ and $\langle x_2(t)\rangle-\langle x_2(0)\rangle$. Panels (c) and (d) show the mean-force responses $\langle F_1(t)\rangle$ and $\langle F_2(t)\rangle$. Panels (e) and (f) show the equal-time covariance responses for $K_{11}(t,t)$ and $K_{12}(t,t)$. The close agreement between simulation and prediction demonstrates that the time-dependent response theory captures the propagation of coupling perturbations in both equilibrium and nonequilibrium settings.}
     \label{Time-dependent_dW}
 \end{figure}
