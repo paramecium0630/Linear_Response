@@ -22,7 +22,7 @@ and linearize the deterministic force around $\vec{X}$. The Jacobian matrix
 \begin{equation}
     \mathbf{Q} = \nabla \vec{F}\big|_{\vec{X}}
 \end{equation}
-encodes both the network topology and the local dynamics, and is asymmetric in general. Up to linear order in $\Delta \vec{x}$, the stochastic dynamics becomes
+encodes both the network topology and the local dynamics, and is asymmetric in general. Up to linear order in $\Delta \vec{x}$, the stochastic dynamics becomes a local Ornstein-Uhlenbeck process near the stable fixed point \cite{doi:10.1073/pnas.0506347102}:
 \begin{equation}
     \Delta \dot{\vec{x}} = {\bf Q}\Delta \vec{x} + \vec{\eta}(t),
     \label{linearized_dynamics}
@@ -41,7 +41,7 @@ where $\boldsymbol{\sigma}$ is chosen to be diagonal. When the system reaches a 
     \boldsymbol{\sigma} = -\mathbf{Q K}_0 - \mathbf{K}_0 \mathbf{Q}^\intercal.
     \label{Lyapunov_eq}
 \end{equation}
-This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, and can be viewed as a multidimensional version of the FDT \cite{lai2026steadystate}. Given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The dynamics is also known as a multivariate Ornstein-Uhlenbeck process, and its steady-state probability distribution is Gaussian \cite{softmatter}:
+This relation directly links the steady-state fluctuation statistics to the linearized drift matrix and noise matrix, and can be viewed as a multidimensional version of the FDT. Given $\mathbf{Q}$ and $\boldsymbol{\sigma}$, $\mathbf{K}_0$ can be obtained by solving the Lyapunov equation. The dynamics is also known as a multivariate Ornstein-Uhlenbeck process, and its steady-state probability distribution is Gaussian:
 \begin{equation}
     \psi_{ss}(\delta \vec{x}; \vec{p}) = \frac{1}{(2\pi)^{N/2}\sqrt{|{\bf K}_0|}} e^{-\frac{1}{2} \delta \vec{x}^\intercal {\bf K}^{-1}_0 \delta \vec{x}},
     \label{steady-state prob}
@@ -65,5 +65,5 @@ Thus $\mathbf{Q}\boldsymbol{\sigma}$ must be symmetric. This includes the case o
     Q_{ij} \sigma_{jj} = Q_{ji} \sigma_{ii}.
     \label{equilibrium_condition_diagonal}
 \end{equation}
-Although asymmetric couplings or heterogeneous noise generally break detailed balance \cite{PhysRevE.110.034313}, the equilibrium criterion is fully determined by Eq. (\ref{equilibrium_condition}). In particular, there can still be special diagonal choices of $\boldsymbol{\sigma}$ that satisfy Eq. (\ref{equilibrium_condition_diagonal}) even when $\mathbf{Q}$ is asymmetric. Beyond the linearized regime, the full nonlinear dynamics still admits a steady-state form $\psi_{ss}(\vec{x}) \propto e^{-\Phi(\vec{x})}$, but $\Phi$ is generally not quadratic and the local peak of $\psi_{ss}$ need not coincide exactly with either the noise-free fixed point or the steady-state mean \cite{PhysRevE.84.061106}. Near a stable fixed point, however, the leading contribution reduces to the quadratic form in Eq. (\ref{steady-state prob}), so the linearized theory captures the local steady-state structure and response to leading order.\par
+Although asymmetric couplings or heterogeneous noise generally break detailed balance, the equilibrium criterion is fully determined by Eq. (\ref{equilibrium_condition}). In particular, there can still be special diagonal choices of $\boldsymbol{\sigma}$ that satisfy Eq. (\ref{equilibrium_condition_diagonal}) even when $\mathbf{Q}$ is asymmetric. Beyond the linearized regime, the full nonlinear dynamics may still possess a stationary density $\psi_{ss}(\vec{x})$; one may then introduce $\Phi(\vec{x})\equiv -\ln \psi_{ss}(\vec{x})+\text{const}$ so that $\psi_{ss}(\vec{x}) \propto e^{-\Phi(\vec{x})}$. In a NESS, however, this $\Phi$ is only a representation of the stationary density rather than an equilibrium potential. It is generally not quadratic, and the local peak of $\psi_{ss}$ need not coincide exactly with either the noise-free fixed point or the steady-state mean \cite{PhysRevE.84.061106}. Near a stable fixed point, however, the leading contribution reduces to the quadratic form in Eq. (\ref{steady-state prob}), so the linearized theory captures the local steady-state structure and response to leading order.\par
 From the reconstruction perspective, a fuller derivation of the relations among $\mathbf{K}_\tau$, $\mathbf{Q}$, and $\boldsymbol{\sigma}$ is summarized in Appendix~A.

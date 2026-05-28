@@ -19,13 +19,13 @@ where we use
     &+&\delta_{\mu s} W_{s\nu} \partial_1 \partial_2 h (X_s,X_\nu)+\delta_{\nu s} W_{\mu s} \partial_2^2 h (X_\mu,X_s).
 \end{eqnarray}
 $ \frac{\partial {\bf K}_0^{-1}}{\partial Q_{\mu\nu}}  $ denotes the matrix whose $i,j$ elements are $\frac{\partial ({\bf K}_0^{-1})_{ij}}{\partial Q_{\mu\nu}}$.\par
-In the linearized noisy network dynamics, the steady-state probability distribution is approximated by a Gaussian distribution near its mean $\langle \vec{x} \rangle$, with $\Phi = \frac{1}{2} \delta \vec{x}^\intercal \mathbf{K}^{-1}_0 \delta \vec{x} = \frac{1}{2} (\vec{x}-\langle \vec{x} \rangle)^\intercal \mathbf{K}^{-1}_0 (\vec{x}-\langle \vec{x} \rangle)$. Note that $\langle {\vec x} \rangle$ depends on the parameters ${\vec p}$ through $\psi_{ss}$, and this dependence is generally difficult to compute explicitly in high-dimensional nonlinear Langevin systems. We therefore approximate $\langle \vec{x} \rangle$ by $\langle \vec{X} \rangle$. Nevertheless, the conjugate force ${\vec{\mathscr F}}$ and correlations such as $\langle\delta \mathbf{B} \delta\vec{\mathscr F}\rangle_{ss,{\vec p}}$ can still be computed explicitly from (\ref{scriptF}) using the functional dependence of ${\bf K}_0^{-1}$ on ${\vec p}$. From the Lyapunov equation (\ref{Lyapunov_eq}), one sees that ${\bf K}_0^{-1}={\bf K}_0^{-1}({\bf Q}({\vec p},{\vec X}({\vec p})))$. Hence the conjugate force corresponding to the parameter $p_\alpha$ can be written as
+In the linearized noisy network dynamics, the steady-state probability distribution is approximated by a Gaussian distribution near its mean $\langle \vec{x} \rangle$, with $\Phi = \frac{1}{2} \delta \vec{x}^\intercal \mathbf{K}^{-1}_0 \delta \vec{x} = \frac{1}{2} (\vec{x}-\langle \vec{x} \rangle)^\intercal \mathbf{K}^{-1}_0 (\vec{x}-\langle \vec{x} \rangle)$. Note that $\langle {\vec x} \rangle$ depends on the parameters ${\vec p}$ through $\psi_{ss}$, and this dependence is generally difficult to compute explicitly in high-dimensional nonlinear Langevin systems. In the fixed-point approximation used throughout this work, we therefore replace $\langle \vec{x} \rangle$ by the noise-free fixed point $\vec{X}(\vec p)$. Throughout the paper, the control set $\vec p$ may include both deterministic parameters and noise strengths. Accordingly, one may regard ${\bf K}_0^{-1}$ more generally as ${\bf K}_0^{-1}({\bf Q}({\vec p},{\vec X}({\vec p})),\boldsymbol{\sigma}(\vec p))$. The conjugate force ${\vec{\mathscr F}}$ and correlations such as $\langle\delta \mathbf{B} \delta\vec{\mathscr F}\rangle_{ss,{\vec p}}$ can then be computed explicitly from (\ref{scriptF}) using this parameter dependence. For perturbations that act through the deterministic dynamics while leaving $\boldsymbol{\sigma}$ fixed, the dependence enters through $\mathbf{Q}$ and $\vec X$, and the conjugate force can be written as
 \begin{eqnarray}
 {\mathscr F}_\alpha&=& - \frac{1}{2} \sum_{\ell, m}\sum_{\mu,\nu} \frac{\partial ({\bf K}_0^{-1})_{\ell m}} {\partial Q_{\mu\nu}}\frac {\partial Q_{\mu\nu}}{\partial p_\alpha} \delta x_\ell \delta x_m -\sum_{\ell, m} \left({\bf Q}^{-1} \nabla_p{\vec { F}} \Big|_{\vec X}\right)_{\ell\alpha}({\bf K}_0^{-1})_{\ell m}\delta x_m \label{Falp}\\
 &+&\frac{1}{2} \sum_s \left({\bf Q}^{-1} \nabla_p{\vec { F}} \Big|_{\vec X}\right)_{s\alpha} \sum_{\ell,m} \Bigg\{ \frac{\partial (\mathbf{K}_0^{-1})_{\ell m}}{\partial Q_{ss}}\left( f_s''(X_s;r_s)+\sum_{n\neq s} W_{sn} \partial^2_1 h(X_s, X_n) \right)\nonumber\\
 &+& \sum_\mu \frac{\partial (\mathbf{K}_0^{-1})_{\ell m}}{\partial Q_{\mu\mu}} W_{\mu s} \partial_1 \partial_2 h(X_\mu, X_s) + \sum_\nu \frac{\partial (\mathbf{K}_0^{-1})_{\ell m}}{\partial Q_{s\nu}} W_{s\nu}\partial_1\partial_2 h(X_s,X_\nu)\nonumber\\ &+& \sum_\mu \frac{\partial (\mathbf{K}_0^{-1})_{\ell m}}{\partial Q_{\mu s}} W_{\mu s} \partial^2_2 h(X_\mu, X_s) \Bigg\} \delta x_\ell \delta x_m .\nonumber
 \end{eqnarray}
-One can derive, or directly verify from (\ref{Falp}), that
+If $p_\alpha$ is instead a noise-strength parameter, then $\partial \mathbf{Q}/\partial p_\alpha=0$ and $\partial \vec{X}/\partial p_\alpha=0$, so the response arises from the explicit dependence on $\boldsymbol{\sigma}$; this case is treated separately in Subsec. B.4. One can derive, or directly verify from (\ref{Falp}), that
 \begin{equation}
     \frac{\partial X_i}{\partial p_\alpha} =\langle \delta x_i {\mathscr F}_\alpha\rangle,
 \end{equation}
@@ -185,7 +185,7 @@ The time-dependent response function of the state is
 -\sum_{\ell} \frac{\partial X_\ell}{\partial p_\alpha}
 \left( e^{t{\bf Q}} \right)_{i\ell}\nonumber
 \end{eqnarray}
-The non-steady response function of the force is
+The time-dependent response function of the force is
 \begin{equation}
     \chi_{i\alpha}(t)= \chi_{i\alpha}^{(ss)}-\langle \delta F_i(t) {\mathscr F}_\alpha(0)\rangle
 \end{equation}
@@ -198,7 +198,7 @@ If we only consider the linear term, then it becomes
 \begin{equation}
     \langle \delta F_i(t) \mathscr{F}_\alpha(0) \rangle = \sum_{\ell} ({\bf Q}e^{t{\bf Q}})_{i\ell} \frac{\partial X_\ell}{\partial p_\alpha}.
 \end{equation}
-The non-steady, time-dependent response function of the fluctuation correlation can then be written as
+The time-dependent response function of the fluctuation correlation can then be written as
 \begin{equation}
     \chi_{ij\alpha}(t)= \chi_{ij\alpha}^{(ss)}-[\langle \delta x_i(t) \delta x_j(t){\mathscr F}_\alpha(0)\rangle -({\bf K}_0)_{ij}\langle{\mathscr F}_\alpha\rangle ],\hbox{  where }
 \end{equation}
